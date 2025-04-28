@@ -1,0 +1,30 @@
+<ResourceDictionary
+    x:ClassModifier="internal"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:msg="https://github.com/xiyaowong/Message.Avalonia">
+    <Design.PreviewWith>
+        <msg:MessageHost />
+    </Design.PreviewWith>
+
+    <ControlTheme TargetType="msg:MessageHost" x:Key="NotificationHostTheme">
+        <Setter Property="Padding" Value="5" />
+        <Setter Property="ItemsPanel">
+            <ItemsPanelTemplate>
+                <DockPanel LastChildFill="True" />
+            </ItemsPanelTemplate>
+        </Setter>
+        <Setter Property="Template">
+            <ControlTemplate>
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <ItemsPresenter />
+                </ScrollViewer>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+
+    <ControlTheme
+        BasedOn="{StaticResource NotificationHostTheme}"
+        TargetType="msg:MessageHost"
+        x:Key="{x:Type msg:MessageHost}" />
+</ResourceDictionary>

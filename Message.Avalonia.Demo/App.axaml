@@ -1,0 +1,24 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:msg="https://github.com/xiyaowong/Message.Avalonia"
+             x:Class="Message.Avalonia.Demo.App"
+             xmlns:fa="clr-namespace:FluentAvalonia.Styling;assembly=FluentAvalonia"
+             RequestedThemeVariant="Dark">
+    <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
+
+    <Application.Styles>
+        <msg:Theme />
+        <FluentTheme />
+        <fa:FluentAvaloniaTheme />
+        <StyleInclude Source="avares://AvaloniaEdit/Themes/Fluent/AvaloniaEdit.xaml" />
+        <Style Selector="Button.red">
+            <Setter Property="Background" Value="Red"></Setter>
+        </Style>
+        <Style Selector="Button.green">
+            <Setter Property="Background" Value="Green"></Setter>
+        </Style>
+        <Style Selector="Button.blue">
+            <Setter Property="Background" Value="Blue"></Setter>
+        </Style>
+    </Application.Styles>
+</Application>

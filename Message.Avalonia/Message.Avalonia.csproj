@@ -1,0 +1,34 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.1</TargetFramework>
+        <Nullable>enable</Nullable>
+        <AvaloniaVersion>11.2.8</AvaloniaVersion>
+        <Version>$(AvaloniaVersion)</Version>
+        <FileVersion>$(AvaloniaVersion)</FileVersion>
+        <AssemblyVersion>$(AvaloniaVersion)</AssemblyVersion>
+        <LangVersion>latest</LangVersion>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <IsPackable>true</IsPackable>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <PackageDescription>Avalonia-based Notification Library</PackageDescription>
+        <PackageTags>avalonia;avaloniaui;ui;theme;notification</PackageTags>
+        <PackageProjectUrl>https://github.com/xiyaowong/AvaloniaNotification.git</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/xiyaowong/AvaloniaNotification.git</RepositoryUrl>
+<!--        <PackageIcon>icon.png</PackageIcon>-->
+        <Authors>xiyaowong</Authors>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Avalonia" Version="$(AvaloniaVersion)"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Include="..\README.md" Pack="true" PackagePath="\"/>
+<!--        <None Include="..\icon.png" Pack="true" PackagePath="\"/>-->
+    </ItemGroup>
+
+</Project>

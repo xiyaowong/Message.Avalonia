@@ -1,0 +1,120 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:Message.Avalonia.Demo.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="1200" d:DesignHeight="900"
+        x:Class="Message.Avalonia.Demo.Views.MainWindow"
+        Width="1200"
+        xmlns:msg="https://github.com/xiyaowong/Message.Avalonia"
+        xmlns:msgModels="clr-namespace:Message.Avalonia.Models;assembly=Message.Avalonia"
+        xmlns:AvaloniaEdit="clr-namespace:AvaloniaEdit;assembly=AvaloniaEdit"
+        Height="900"
+        CanResize="False"
+        x:DataType="vm:MainWindowViewModel"
+        WindowStartupLocation="CenterScreen"
+        Title="Message.Avalonia.Demo">
+
+    <Design.DataContext>
+        <!-- This only sets the DataContext for the previewer in an IDE,
+             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+        <vm:MainWindowViewModel />
+    </Design.DataContext>
+
+    <Panel>
+        <Border Padding="8 8 8 24">
+            <Grid RowDefinitions="Auto *">
+                <StackPanel Spacing="4">
+                    <ComboBox PlaceholderText="Select Message Position" Width="200" Name="PositionBox">
+                        <ComboBoxItem Content="{x:Static msgModels:MessagePosition.BottomRight}" />
+                        <ComboBoxItem Content="{x:Static msgModels:MessagePosition.BottomCenter}" />
+                        <ComboBoxItem Content="{x:Static msgModels:MessagePosition.BottomLeft}" />
+                        <ComboBoxItem Content="{x:Static msgModels:MessagePosition.TopRight}" />
+                        <ComboBoxItem Content="{x:Static msgModels:MessagePosition.TopCenter}" />
+                        <ComboBoxItem Content="{x:Static msgModels:MessagePosition.TopLeft}" />
+                        <ComboBoxItem Content="{x:Static msgModels:MessagePosition.CenterCenter}" />
+                    </ComboBox>
+                    <Grid ColumnDefinitions="* 4 *">
+                        <Expander Header="Message Builder" IsExpanded="True" Grid.Column="0">
+                            <StackPanel Orientation="Horizontal" Spacing="20">
+                                <StackPanel Orientation="Horizontal" Spacing="10">
+                                    <Button Command="{Binding BuilderDefaultManagerCommand}"
+                                            Content="Default Manager" />
+                                    <Button Command="{Binding BuilderHelloCommand}"
+                                            Content="Hello" />
+                                    <Button Command="{Binding BuilderImageCommand}"
+                                            Content="Image" />
+                                </StackPanel>
+                            </StackPanel>
+                        </Expander>
+                        <!-- // Simple messages // -->
+                        <Expander Header="Simple messages" IsExpanded="True" Grid.Column="2">
+                            <StackPanel Orientation="Horizontal" Spacing="20">
+                                <StackPanel Orientation="Horizontal" Spacing="10">
+                                    <Button Command="{Binding TestTypeCommand}"
+                                            CommandParameter="info" Content="Info" />
+                                    <Button Command="{Binding TestTypeCommand}"
+                                            CommandParameter="success" Content="Success" />
+                                    <Button Command="{Binding TestTypeCommand}"
+                                            CommandParameter="warning" Content="Warning" />
+                                    <Button Command="{Binding TestTypeCommand}"
+                                            CommandParameter="error" Content="Error" />
+                                </StackPanel>
+                                <Separator />
+                                <StackPanel Orientation="Horizontal" Spacing="10">
+                                    <Button Command="{Binding TestTypeCommand}"
+                                            CommandParameter="info-title" Content="Info (Title)" />
+                                    <Button Command="{Binding TestTypeCommand}"
+                                            CommandParameter="success-title" Content="Success (Title)" />
+                                    <!-- <Button Command="{Binding TestTypeCommand}" -->
+                                    <!--         CommandParameter="warning-title" Content="Warning (Title)" /> -->
+                                    <!-- <Button Command="{Binding TestTypeCommand}" -->
+                                    <!--         CommandParameter="error-title" Content="Error (Title)" /> -->
+                                </StackPanel>
+                            </StackPanel>
+                        </Expander>
+                    </Grid>
+                    <!-- // Actions // -->
+                    <Grid ColumnDefinitions="* 4 *">
+                        <Expander Header="Actions" IsExpanded="True">
+                            <StackPanel Orientation="Horizontal" Spacing="12">
+                                <Button Command="{Binding YesOrNoCommand}" Content="Yes or No" />
+                                <Button Command="{Binding CustomActionStyleCommand}" Content="Custom action style" />
+                                <Button Command="{Binding ChooseColorCommand}" Content="Choose Color" />
+                                <Button Command="{Binding ExitApplicationCommand}" Content="Action Callback" />
+                            </StackPanel>
+                        </Expander>
+                        <!-- // Custom content // -->
+                        <Expander Header="Custom Content" IsExpanded="True" Grid.Column="2">
+                            <StackPanel Orientation="Horizontal" Spacing="12">
+                                <Button Command="{Binding ShowLoginCardCommand}" Content="Login" />
+                            </StackPanel>
+                        </Expander>
+                    </Grid>
+                </StackPanel>
+                <AvaloniaEdit:TextEditor Document="{Binding SourceDocument}"
+                                         Name="Editor"
+                                         Margin="0 24"
+                                         Grid.Row="1"
+                                         IsReadOnly="True"
+                                         HorizontalAlignment="Stretch"
+                                         ShowLineNumbers="True"
+                                         FontFamily="Cascadia Code,Consolas,Menlo,Monospace">
+                    <AvaloniaEdit:TextEditor.ContextFlyout>
+                        <MenuFlyout>
+                            <MenuItem Header="Copy" InputGesture="ctrl+C" Command="{Binding CopyCodeCommand}"
+                                      CommandParameter="{Binding #Editor.TextArea}">
+                            </MenuItem>
+                        </MenuFlyout>
+                    </AvaloniaEdit:TextEditor.ContextFlyout>
+                </AvaloniaEdit:TextEditor>
+            </Grid>
+        </Border>
+
+        <Button Name="ToggleThemeButton" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="12 0  0 12">Toggle Theme</Button>
+
+        <msg:MessageHost Name="DefaultHost" />
+        <msg:MessageHost Name="AnotherHost" Position="BottomCenter" HostId="Another" />
+    </Panel>
+
+</Window>

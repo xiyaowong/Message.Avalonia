@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AvaloniaProject">
+    <option name="projectPerEditor">
+      <map>
+        <entry key="Message.Avalonia.Demo/App.axaml" value="Message.Avalonia.Demo/Message.Avalonia.Demo.csproj" />
+        <entry key="Message.Avalonia.Demo/Controls/LoginCard.axaml" value="Message.Avalonia.Demo/Message.Avalonia.Demo.csproj" />
+        <entry key="Message.Avalonia.Demo/LoginCard.axaml" value="Message.Avalonia.Demo/Message.Avalonia.Demo.csproj" />
+        <entry key="Message.Avalonia.Demo/MainWindow.axaml" value="Message.Avalonia.Demo/Message.Avalonia.Demo.csproj" />
+        <entry key="Message.Avalonia.Demo/Views/MainWindow.axaml" value="Message.Avalonia.Demo/Message.Avalonia.Demo.csproj" />
+        <entry key="Message.Avalonia.Demo1/App.axaml" value="Message.Avalonia.Demo1/Message.Avalonia.Demo1.csproj" />
+        <entry key="Message.Avalonia.Demo1/LoginCard.axaml" value="Message.Avalonia.Demo1/Message.Avalonia.Demo1.csproj" />
+        <entry key="Message.Avalonia.Demo1/MainWindow.axaml" value="Message.Avalonia.Demo1/Message.Avalonia.Demo1.csproj" />
+        <entry key="Message.Avalonia/Theme.axaml" value="Message.Avalonia.Demo/Message.Avalonia.Demo.csproj" />
+        <entry key="Message.Avalonia/UI/Host/MessageHost.axaml" value="Message.Avalonia.Demo/Message.Avalonia.Demo.csproj" />
+        <entry key="Message.Avalonia/UI/MessageItem.axaml" value="Message.Avalonia.Demo/Message.Avalonia.Demo.csproj" />
+      </map>
+    </option>
+  </component>
+</project>

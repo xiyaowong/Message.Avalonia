@@ -1,0 +1,180 @@
+<ResourceDictionary
+    x:ClassModifier="internal"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:model="clr-namespace:Message.Avalonia.Models"
+    xmlns:ui="clr-namespace:Message.Avalonia.UI">
+    <Design.PreviewWith>
+        <StackPanel>
+            <ui:MessageItem Message="Message" />
+            <ui:MessageItem Title="Title" Message="Message" Type="Warning">
+                <ui:MessageItem.Actions>
+                    <model:MessageAction Title="Action"></model:MessageAction>
+                </ui:MessageItem.Actions>
+            </ui:MessageItem>
+        </StackPanel>
+    </Design.PreviewWith>
+
+    <x:Double x:Key="MessageIconSize">18</x:Double>
+    <x:Double x:Key="MessageActionButtonSpacing">10</x:Double>
+    <Thickness x:Key="MessageRootPadding">12,0,12,12</Thickness>
+    <x:Double x:Key="MessageMaxWidth">500</x:Double>
+    <Thickness x:Key="MessageIconMargin">0,2,8,0</Thickness>
+
+    <ControlTheme TargetType="ui:MessageItem" x:Key="NotificationTheme">
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border
+                    Name="PART_BorderRoot"
+                    Padding="{StaticResource MessageRootPadding}"
+                    BoxShadow="0 0 10 4 #00000070">
+                    <Border Name="PART_BorderInner" MinWidth="350"
+                            MaxWidth="{StaticResource MessageMaxWidth}"
+                            Background="{DynamicResource MenuFlyoutPresenterBackground}"
+                            BorderThickness="1"
+                            ClipToBounds="True"
+                            CornerRadius="{DynamicResource ControlCornerRadius}">
+                        <Panel>
+                            <Grid RowDefinitions="Auto * Auto" Margin="16">
+                                <Grid ColumnDefinitions="Auto *">
+                                    <PathIcon
+                                        Height="{StaticResource MessageIconSize}"
+                                        Margin="{StaticResource MessageIconMargin}"
+                                        Name="PART_Icon"
+                                        VerticalAlignment="Top"
+                                        Width="{StaticResource MessageIconSize}">
+                                        <PathIcon.IsVisible>
+                                            <MultiBinding Converter="{x:Static BoolConverters.And}">
+                                                <Binding RelativeSource="{RelativeSource TemplatedParent}"
+                                                         Path="ShowIcon" />
+                                                <Binding ElementName="PART_Icon" Path="Data"
+                                                         Converter="{x:Static ObjectConverters.IsNotNull}" />
+                                            </MultiBinding>
+                                        </PathIcon.IsVisible>
+                                    </PathIcon>
+                                    <StackPanel Grid.Column="1" Spacing="5">
+                                        <TextBlock Name="PART_Title" Text="{TemplateBinding Title}"
+                                                   VerticalAlignment="Top"
+                                                   TextWrapping="Wrap"
+                                                   IsVisible="{TemplateBinding Title,Converter={x:Static StringConverters.IsNotNullOrEmpty}}">
+                                        </TextBlock>
+                                        <TextBlock Name="PART_Message"
+                                                   TextWrapping="Wrap"
+                                                   Text="{TemplateBinding Message}"
+                                                   IsVisible="{TemplateBinding Message,Converter={x:Static StringConverters.IsNotNullOrEmpty}}">
+                                        </TextBlock>
+                                    </StackPanel>
+                                </Grid>
+                                <ContentPresenter Name="PART_Content"
+                                                  Grid.Row="1"
+                                                  Content="{TemplateBinding Content}">
+                                </ContentPresenter>
+                                <ItemsControl ItemsSource="{TemplateBinding Actions}" Grid.Row="2"
+                                              Name="PART_ActionsPanel">
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <StackPanel Orientation="Horizontal"
+                                                        Spacing="{StaticResource MessageActionButtonSpacing}" />
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate x:DataType="model:MessageAction">
+                                            <Button Content="{Binding Title}"
+                                                    Margin="0 12 0 0"
+                                                    Tag="{Binding Title}"
+                                                    CommandParameter="{Binding}"
+                                                    Command="{Binding $parent[ui:MessageItem].ExecuteAction}" />
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                            </Grid>
+                            <Button
+                                CornerRadius="{DynamicResource FullCornerRadius}"
+                                Height="20"
+                                HorizontalAlignment="Right"
+                                HotKey="Escape"
+                                Margin="4"
+                                Name="PART_CloseButton"
+                                Opacity="0"
+                                Background="Transparent"
+                                VerticalAlignment="Top"
+                                HorizontalContentAlignment="Center"
+                                VerticalContentAlignment="Center"
+                                IsVisible="{TemplateBinding ShowClose}"
+                                Width="20">
+                                <Button.Transitions>
+                                    <Transitions>
+                                        <DoubleTransition Property="Opacity" Duration="0:0:0.1" />
+                                    </Transitions>
+                                </Button.Transitions>
+                                <PathIcon
+                                    Data="{DynamicResource Message_close_icon}"
+                                    Height="8"
+                                    Name="PART_CloseButtonIcon"
+                                    Width="8" />
+                            </Button>
+                        </Panel>
+                    </Border>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+        <Style Selector="^ /template/ TextBlock#PART_Title">
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="FontWeight" Value="DemiBold" />
+        </Style>
+        <Style Selector="^[IsOnlyTitle=True]">
+            <Style Selector="^ /template/ TextBlock#PART_Title">
+                <Setter Property="FontWeight" Value="Regular" />
+            </Style>
+        </Style>
+        <Style Selector="^:pointerover">
+            <Style Selector="^ /template/ Button#PART_CloseButton">
+                <Setter Property="Opacity" Value="1" />
+            </Style>
+        </Style>
+        <Style Selector="^ /template/ Button#PART_CloseButton:pointerover">
+            <Setter Property="Opacity" Value="0.75" />
+        </Style>
+        <Style Selector="^:information">
+            <Style Selector="^ /template/ PathIcon#PART_Icon">
+                <Setter Property="Data" Value="{DynamicResource message_info_icon}" />
+                <Setter Property="Foreground" Value="{DynamicResource MessageInfoColor}" />
+            </Style>
+            <Style Selector="^ /template/ Border#PART_BorderInner">
+                <Setter Property="BorderBrush" Value="{DynamicResource MessageInfoBorderColor}"></Setter>
+            </Style>
+        </Style>
+        <Style Selector="^:success">
+            <Style Selector="^ /template/ PathIcon#PART_Icon">
+                <Setter Property="Data" Value="{DynamicResource message_success_icon}" />
+                <Setter Property="Foreground" Value="{DynamicResource MessageSuccessColor}" />
+            </Style>
+            <Style Selector="^ /template/ Border#PART_BorderInner">
+                <Setter Property="BorderBrush" Value="{DynamicResource MessageSuccessBorderColor}" />
+            </Style>
+        </Style>
+        <Style Selector="^:warning">
+            <Style Selector="^ /template/ PathIcon#PART_Icon">
+                <Setter Property="Data" Value="{DynamicResource message_warning_icon}" />
+                <Setter Property="Foreground" Value="{DynamicResource MessageWarningColor}" />
+            </Style>
+            <Style Selector="^ /template/ Border#PART_BorderInner">
+                <Setter Property="BorderBrush" Value="{DynamicResource MessageWarningBorderColor}" />
+            </Style>
+        </Style>
+        <Style Selector="^:error">
+            <Style Selector="^ /template/ PathIcon#PART_Icon">
+                <Setter Property="Data" Value="{DynamicResource message_error_icon}" />
+                <Setter Property="Foreground" Value="{DynamicResource MessageErrorColor}" />
+            </Style>
+            <Style Selector="^ /template/ Border#PART_BorderInner">
+                <Setter Property="BorderBrush" Value="{DynamicResource MessageErrorBorderColor}" />
+            </Style>
+        </Style>
+    </ControlTheme>
+
+    <ControlTheme
+        BasedOn="{StaticResource NotificationTheme}"
+        TargetType="ui:MessageItem"
+        x:Key="{x:Type ui:MessageItem}" />
+</ResourceDictionary>

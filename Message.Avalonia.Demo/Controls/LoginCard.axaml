@@ -1,0 +1,17 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Message.Avalonia.Demo.Controls.LoginCard">
+    <StackPanel Spacing="10">
+        <TextBlock TextAlignment="Center" FontWeight="Bold" FontSize="20">Avalonia Message</TextBlock>
+        <TextBox Watermark="Username" Name="UsernameBox" />
+        <TextBox Watermark="Password" Name="PasswordBox" PasswordChar="*" />
+        <CheckBox Name="RememberBox">Remember me</CheckBox>
+        <Grid ColumnDefinitions="* *">
+            <Button Margin="0 0 16 0" HorizontalAlignment="Stretch" Name="LoginButton">Login</Button>
+            <Button Grid.Column="1" HorizontalAlignment="Stretch" Name="CancelButton">Cancel</Button>
+        </Grid>
+    </StackPanel>
+</UserControl>
