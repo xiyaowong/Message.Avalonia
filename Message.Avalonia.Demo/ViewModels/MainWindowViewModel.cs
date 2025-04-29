@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Reactive;
 using System.Reflection;
-using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Media;
 using Avalonia.Media.Imaging;

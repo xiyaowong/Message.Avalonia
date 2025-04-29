@@ -1,8 +1,7 @@
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
-using System.Threading.Tasks;
+using System.Timers;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
@@ -18,8 +17,8 @@ public class MessageHost : ItemsControl
 
     private static readonly List<WeakReference<MessageHost>> HostList = [];
 
-    private readonly DispatcherTimer _durationTimer =
-        new() { Interval = TimeSpan.FromMilliseconds(300), IsEnabled = true };
+    // Have no idea why the DispatcherTimer always automatically stops, so use a System.Timers.Timer instead.
+    private readonly Timer _durationTimer = new() { Interval = 300, AutoReset = true };
 
     #region Properties
 
@@ -43,7 +42,7 @@ public class MessageHost : ItemsControl
     >(nameof(Position));
 
     /// <summary>
-    ///     Gets or sets the position of the toast host.
+    ///     Gets or sets the position of the message host.
     /// </summary>
     public MessagePosition Position
     {
@@ -57,53 +56,42 @@ public class MessageHost : ItemsControl
 
     public MessageHost()
     {
-        _durationTimer.Tick += delegate
+        _durationTimer.Elapsed += (_, _) =>
         {
-            foreach (var msg in MessageItems)
-                msg.OnDurationTimerTick();
-        };
-
-        Items.CollectionChanged += delegate
-        {
-            foreach (var msg in MessageItems)
+            Dispatcher.UIThread.Invoke(() =>
             {
-                msg.Completed -= OnNotificationDismissed;
-                msg.Completed += OnNotificationDismissed;
-            }
-
-            if (Items.Count > 0)
-                _durationTimer.Start();
-            else
-                _durationTimer.Stop();
+                foreach (var msg in MessageItems)
+                {
+                    msg.OnDurationTimerTick();
+                }
+            });
         };
+        Items.CollectionChanged += (_, _) => _durationTimer.Enabled = MessageItems.Any();
     }
 
-    private void OnNotificationDismissed(object? sender, MessageAction? e)
+    internal void AddMessage(MessageItem msg)
     {
-        if (sender is MessageItem msg)
+        msg.MessageClosed += (s, _) =>
         {
-            msg.Completed -= OnNotificationDismissed;
-            Task.Delay(500).ContinueWith(_ => Items.Remove(msg), TaskScheduler.FromCurrentSynchronizationContext());
-        }
+            if (s is MessageItem)
+            {
+                Items.Remove(s);
+            }
+        };
+        msg.UpdatePosition(Position);
+        Items.Add(msg);
     }
 
-    /// <summary>
-    ///     Called when the template is applied.
-    /// </summary>
-    /// <param name="e"></param>
+    // <inheritdoc />
     protected override void OnApplyTemplate(TemplateAppliedEventArgs e)
     {
         base.OnApplyTemplate(e);
 
         HostList.Insert(0, new WeakReference<MessageHost>(this));
-        Debug.WriteLine($"Insert host {HostId} to list. Count: {HostList.Count}");
         OnPositionChanged(Position);
     }
 
-    /// <summary>
-    ///     Called when a property is changed.
-    /// </summary>
-    /// <param name="change"></param>
+    // <inheritdoc />
     protected override void OnPropertyChanged(AvaloniaPropertyChangedEventArgs change)
     {
         base.OnPropertyChanged(change);
@@ -135,6 +123,10 @@ public class MessageHost : ItemsControl
             MessagePosition.CenterCenter => VerticalAlignment.Center,
             _ => throw new ArgumentOutOfRangeException(),
         };
+        foreach (var messageItem in MessageItems)
+        {
+            messageItem.UpdatePosition(position);
+        }
     }
 
     internal static MessageHost GetHostById(string id = DEFAULT_HOST_ID)

@@ -110,10 +110,15 @@ public class MessageBuilder
 
     private void Show()
     {
+        if (_messageItem != null)
+        {
+            throw new InvalidOperationException("Message is already shown. Cannot show again.");
+        }
+
         Dispatcher.UIThread.Invoke(
             delegate
             {
-                _messageItem ??= new MessageItem();
+                _messageItem = new MessageItem();
 
                 if (!string.IsNullOrEmpty(_title))
                     _messageItem.Title = _title;
@@ -139,21 +144,19 @@ public class MessageBuilder
                 if (_hideIcon == true)
                     _messageItem.ShowIcon = false;
 
-                _messageItem.Completed -= MessageItemOnCompleted;
-                _messageItem.Completed += MessageItemOnCompleted;
+                _messageItem.Completed -= OnMessageItemCompleted;
+                _messageItem.Completed += OnMessageItemCompleted;
 
-                var host = MessageHost.GetHostById(_hostId);
-                host.Items.Add(_messageItem);
-                _messageItem.Show();
+                MessageHost.GetHostById(_hostId).AddMessage(_messageItem);
             }
         );
     }
 
-    private void MessageItemOnCompleted(object? sender, MessageAction? e)
+    private void OnMessageItemCompleted(object? sender, MessageAction? e)
     {
         _callback?.Invoke(e);
         if (_messageItem != null)
-            _messageItem.Completed -= MessageItemOnCompleted;
+            _messageItem.Completed -= OnMessageItemCompleted;
     }
 
     #region Show

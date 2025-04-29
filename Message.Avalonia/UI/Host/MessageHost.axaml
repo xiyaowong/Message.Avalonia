@@ -7,7 +7,7 @@
         <msg:MessageHost />
     </Design.PreviewWith>
 
-    <ControlTheme TargetType="msg:MessageHost" x:Key="NotificationHostTheme">
+    <ControlTheme TargetType="msg:MessageHost" x:Key="MessageHostTheme">
         <Setter Property="Padding" Value="5" />
         <Setter Property="ItemsPanel">
             <ItemsPanelTemplate>
@@ -24,7 +24,7 @@
     </ControlTheme>
 
     <ControlTheme
-        BasedOn="{StaticResource NotificationHostTheme}"
+        BasedOn="{StaticResource MessageHostTheme}"
         TargetType="msg:MessageHost"
         x:Key="{x:Type msg:MessageHost}" />
 </ResourceDictionary>

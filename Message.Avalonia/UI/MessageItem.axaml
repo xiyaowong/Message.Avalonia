@@ -9,7 +9,7 @@
             <ui:MessageItem Message="Message" />
             <ui:MessageItem Title="Title" Message="Message" Type="Warning">
                 <ui:MessageItem.Actions>
-                    <model:MessageAction Title="Action"></model:MessageAction>
+                    <model:MessageAction Title="Action" />
                 </ui:MessageItem.Actions>
             </ui:MessageItem>
         </StackPanel>
@@ -56,19 +56,16 @@
                                         <TextBlock Name="PART_Title" Text="{TemplateBinding Title}"
                                                    VerticalAlignment="Top"
                                                    TextWrapping="Wrap"
-                                                   IsVisible="{TemplateBinding Title,Converter={x:Static StringConverters.IsNotNullOrEmpty}}">
-                                        </TextBlock>
+                                                   IsVisible="{TemplateBinding Title,Converter={x:Static StringConverters.IsNotNullOrEmpty}}" />
                                         <TextBlock Name="PART_Message"
                                                    TextWrapping="Wrap"
                                                    Text="{TemplateBinding Message}"
-                                                   IsVisible="{TemplateBinding Message,Converter={x:Static StringConverters.IsNotNullOrEmpty}}">
-                                        </TextBlock>
+                                                   IsVisible="{TemplateBinding Message,Converter={x:Static StringConverters.IsNotNullOrEmpty}}" />
                                     </StackPanel>
                                 </Grid>
                                 <ContentPresenter Name="PART_Content"
                                                   Grid.Row="1"
-                                                  Content="{TemplateBinding Content}">
-                                </ContentPresenter>
+                                                  Content="{TemplateBinding Content}" />
                                 <ItemsControl ItemsSource="{TemplateBinding Actions}" Grid.Row="2"
                                               Name="PART_ActionsPanel">
                                     <ItemsControl.ItemsPanel>
@@ -89,17 +86,14 @@
                                 </ItemsControl>
                             </Grid>
                             <Button
-                                CornerRadius="{DynamicResource FullCornerRadius}"
+                                Name="PART_CloseButton"
+                                CornerRadius="4"
                                 Height="20"
                                 HorizontalAlignment="Right"
-                                HotKey="Escape"
                                 Margin="4"
-                                Name="PART_CloseButton"
                                 Opacity="0"
                                 Background="Transparent"
                                 VerticalAlignment="Top"
-                                HorizontalContentAlignment="Center"
-                                VerticalContentAlignment="Center"
                                 IsVisible="{TemplateBinding ShowClose}"
                                 Width="20">
                                 <Button.Transitions>
@@ -118,6 +112,7 @@
                 </Border>
             </ControlTemplate>
         </Setter>
+
         <Style Selector="^ /template/ TextBlock#PART_Title">
             <Setter Property="FontSize" Value="14" />
             <Setter Property="FontWeight" Value="DemiBold" />
@@ -141,7 +136,7 @@
                 <Setter Property="Foreground" Value="{DynamicResource MessageInfoColor}" />
             </Style>
             <Style Selector="^ /template/ Border#PART_BorderInner">
-                <Setter Property="BorderBrush" Value="{DynamicResource MessageInfoBorderColor}"></Setter>
+                <Setter Property="BorderBrush" Value="{DynamicResource MessageInfoBorderColor}" />
             </Style>
         </Style>
         <Style Selector="^:success">
@@ -170,6 +165,233 @@
             <Style Selector="^ /template/ Border#PART_BorderInner">
                 <Setter Property="BorderBrush" Value="{DynamicResource MessageErrorBorderColor}" />
             </Style>
+        </Style>
+
+
+        <!-- // Animations // -->
+        <Style Selector="^">
+            <Style.Animations>
+                <Animation
+                    Easing="QuadraticEaseIn"
+                    FillMode="Forward"
+                    Duration="0:0:0.4">
+                    <KeyFrame Cue="0%">
+                        <Setter Property="Opacity" Value="0" />
+                    </KeyFrame>
+                    <KeyFrame Cue="100%">
+                        <Setter Property="Opacity" Value="1" />
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+            <Style Selector="^:top-left">
+                <Style.Animations>
+                    <Animation
+                        Easing="QuadraticEaseIn"
+                        FillMode="Forward"
+                        Duration="0:0:0.4">
+                        <KeyFrame KeySpline="0.62,0.63,0,1.12" Cue="0%">
+                            <Setter Property="TranslateTransform.X" Value="-500" />
+                        </KeyFrame>
+                        <KeyFrame KeySpline="0.62,0.63,0,1.12" Cue="100%">
+                            <Setter Property="TranslateTransform.X" Value="0" />
+                        </KeyFrame>
+                    </Animation>
+                </Style.Animations>
+            </Style>
+            <Style Selector="^:top-right">
+                <Style.Animations>
+                    <Animation
+                        Easing="QuadraticEaseIn"
+                        FillMode="Forward"
+                        Duration="0:0:0.4">
+                        <KeyFrame KeySpline="0.62,0.63,0,1.12" Cue="0%">
+                            <Setter Property="TranslateTransform.X" Value="500" />
+                        </KeyFrame>
+                        <KeyFrame KeySpline="0.62,0.63,0,1.12" Cue="100%">
+                            <Setter Property="TranslateTransform.X" Value="0" />
+                        </KeyFrame>
+                    </Animation>
+                </Style.Animations>
+            </Style>
+            <Style Selector="^:bottom-left">
+                <Style.Animations>
+                    <Animation
+                        Easing="QuadraticEaseIn"
+                        FillMode="Forward"
+                        Duration="0:0:0.4">
+                        <KeyFrame KeySpline="0.62,0.63,0,1.12" Cue="0%">
+                            <Setter Property="TranslateTransform.X" Value="-500" />
+                        </KeyFrame>
+                        <KeyFrame KeySpline="0.62,0.63,0,1.12" Cue="100%">
+                            <Setter Property="TranslateTransform.X" Value="0" />
+                        </KeyFrame>
+                    </Animation>
+                </Style.Animations>
+            </Style>
+            <Style Selector="^:bottom-right">
+                <Style.Animations>
+                    <Animation
+                        Easing="QuadraticEaseIn"
+                        FillMode="Forward"
+                        Duration="0:0:0.4">
+                        <KeyFrame KeySpline="0.62,0.63,0,1.12" Cue="0%">
+                            <Setter Property="TranslateTransform.X" Value="500" />
+                        </KeyFrame>
+                        <KeyFrame KeySpline="0.62,0.63,0,1.12" Cue="100%">
+                            <Setter Property="TranslateTransform.X" Value="0" />
+                        </KeyFrame>
+                    </Animation>
+                </Style.Animations>
+            </Style>
+            <Style Selector="^:top-center">
+                <Style.Animations>
+                    <Animation
+                        Easing="QuadraticEaseIn"
+                        FillMode="Forward"
+                        Duration="0:0:0.4">
+                        <KeyFrame KeySpline="0.62,0.63,0,1.12" Cue="0%">
+                            <Setter Property="TranslateTransform.Y" Value="-150" />
+                        </KeyFrame>
+                        <KeyFrame KeySpline="0.62,0.63,0,1.12" Cue="100%">
+                            <Setter Property="TranslateTransform.Y" Value="0" />
+                        </KeyFrame>
+                    </Animation>
+                </Style.Animations>
+            </Style>
+            <Style Selector="^:bottom-center">
+                <Style.Animations>
+                    <Animation
+                        Easing="QuadraticEaseIn"
+                        FillMode="Forward"
+                        Duration="0:0:0.4">
+                        <KeyFrame KeySpline="0.62,0.63,0,1.12" Cue="0%">
+                            <Setter Property="TranslateTransform.Y" Value="150" />
+                        </KeyFrame>
+                        <KeyFrame KeySpline="0.62,0.63,0,1.12" Cue="100%">
+                            <Setter Property="TranslateTransform.Y" Value="0" />
+                        </KeyFrame>
+                    </Animation>
+                </Style.Animations>
+            </Style>
+        </Style>
+
+        <Style Selector="^[IsClosing=true]">
+            <Style.Animations>
+                <Animation
+                    Easing="QuadraticEaseOut"
+                    FillMode="Forward"
+                    Duration="0:0:0.4">
+                    <KeyFrame Cue="0%">
+                        <Setter Property="Opacity" Value="1" />
+                    </KeyFrame>
+                    <KeyFrame Cue="100%">
+                        <Setter Property="Opacity" Value="0" />
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+            <Style Selector="^:top-left">
+                <Style.Animations>
+                    <Animation
+                        Easing="QuadraticEaseOut"
+                        FillMode="Forward"
+                        Duration="0:0:0.4">
+                        <KeyFrame KeySpline="0.62,0.63,0,1.12" Cue="0%">
+                            <Setter Property="TranslateTransform.X" Value="0" />
+                        </KeyFrame>
+                        <KeyFrame KeySpline="0.62,0.63,0,1.12" Cue="100%">
+                            <Setter Property="TranslateTransform.X" Value="-500" />
+                        </KeyFrame>
+                    </Animation>
+                </Style.Animations>
+            </Style>
+            <Style Selector="^:top-right">
+                <Style.Animations>
+                    <Animation
+                        Easing="QuadraticEaseOut"
+                        FillMode="Forward"
+                        Duration="0:0:0.4">
+                        <KeyFrame KeySpline="0.62,0.63,0,1.12" Cue="0%">
+                            <Setter Property="TranslateTransform.X" Value="0" />
+                        </KeyFrame>
+                        <KeyFrame KeySpline="0.62,0.63,0,1.12" Cue="100%">
+                            <Setter Property="TranslateTransform.X" Value="500" />
+                        </KeyFrame>
+                    </Animation>
+                </Style.Animations>
+            </Style>
+            <Style Selector="^:bottom-left">
+                <Style.Animations>
+                    <Animation
+                        Easing="QuadraticEaseOut"
+                        FillMode="Forward"
+                        Duration="0:0:0.4">
+                        <KeyFrame KeySpline="0.62,0.63,0,1.12" Cue="0%">
+                            <Setter Property="TranslateTransform.X" Value="0" />
+                        </KeyFrame>
+                        <KeyFrame KeySpline="0.62,0.63,0,1.12" Cue="100%">
+                            <Setter Property="TranslateTransform.X" Value="-500" />
+                        </KeyFrame>
+                    </Animation>
+                </Style.Animations>
+            </Style>
+            <Style Selector="^:bottom-right">
+                <Style.Animations>
+                    <Animation
+                        Easing="QuadraticEaseOut"
+                        FillMode="Forward"
+                        Duration="0:0:0.4">
+                        <KeyFrame KeySpline="0.62,0.63,0,1.12" Cue="0%">
+                            <Setter Property="TranslateTransform.X" Value="0" />
+                        </KeyFrame>
+                        <KeyFrame KeySpline="0.62,0.63,0,1.12" Cue="100%">
+                            <Setter Property="TranslateTransform.X" Value="500" />
+                        </KeyFrame>
+                    </Animation>
+                </Style.Animations>
+            </Style>
+            <Style Selector="^:top-center">
+                <Style.Animations>
+                    <Animation
+                        Easing="QuadraticEaseOut"
+                        FillMode="Forward"
+                        Duration="0:0:0.4">
+                        <KeyFrame KeySpline="0.62,0.63,0,1.12" Cue="0%">
+                            <Setter Property="TranslateTransform.Y" Value="0" />
+                        </KeyFrame>
+                        <KeyFrame KeySpline="0.62,0.63,0,1.12" Cue="100%">
+                            <Setter Property="TranslateTransform.Y" Value="-150" />
+                        </KeyFrame>
+                    </Animation>
+                </Style.Animations>
+            </Style>
+            <Style Selector="^:bottom-center">
+                <Style.Animations>
+                    <Animation
+                        Easing="QuadraticEaseOut"
+                        FillMode="Forward"
+                        Duration="0:0:0.4">
+                        <KeyFrame KeySpline="0.62,0.63,0,1.12" Cue="0%">
+                            <Setter Property="TranslateTransform.Y" Value="0" />
+                        </KeyFrame>
+                        <KeyFrame KeySpline="0.62,0.63,0,1.12" Cue="100%">
+                            <Setter Property="TranslateTransform.Y" Value="150" />
+                        </KeyFrame>
+                    </Animation>
+                </Style.Animations>
+            </Style>
+        </Style>
+
+        <Style Selector="^[IsClosing=true]">
+            <Style.Animations>
+                <Animation
+                    Easing="QuadraticEaseOut"
+                    FillMode="Forward"
+                    Duration="0:0:0.4">
+                    <KeyFrame Cue="100%">
+                        <Setter Property="IsClosed" Value="True" />
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
         </Style>
     </ControlTheme>
 

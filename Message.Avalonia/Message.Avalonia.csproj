@@ -14,10 +14,10 @@
         <IsPackable>true</IsPackable>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <PackageReadmeFile>README.md</PackageReadmeFile>
-        <PackageDescription>Avalonia-based Notification Library</PackageDescription>
-        <PackageTags>avalonia;avaloniaui;ui;theme;notification</PackageTags>
-        <PackageProjectUrl>https://github.com/xiyaowong/AvaloniaNotification.git</PackageProjectUrl>
-        <RepositoryUrl>https://github.com/xiyaowong/AvaloniaNotification.git</RepositoryUrl>
+        <PackageDescription>A Message/Notification/Toast Library For Avalonia</PackageDescription>
+        <PackageTags>avalonia;avaloniaui;ui;theme;message;notification;toast</PackageTags>
+        <PackageProjectUrl>https://github.com/xiyaowong/Message.Avalonia.git</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/xiyaowong/Message.Avalonia.git</RepositoryUrl>
 <!--        <PackageIcon>icon.png</PackageIcon>-->
         <Authors>xiyaowong</Authors>
     </PropertyGroup>
