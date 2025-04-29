@@ -18,20 +18,21 @@
     <x:Double x:Key="MessageIconSize">18</x:Double>
     <x:Double x:Key="MessageActionButtonSpacing">10</x:Double>
     <Thickness x:Key="MessageRootPadding">12,0,12,12</Thickness>
+    <x:Double x:Key="MessageMinWidth">350</x:Double>
     <x:Double x:Key="MessageMaxWidth">500</x:Double>
     <Thickness x:Key="MessageIconMargin">0,2,8,0</Thickness>
+    <Thickness x:Key="MessageBorderThickness">1</Thickness>
+    <BoxShadows x:Key="MessageBoxShadows">inset 0 0 0 1 #1AFFFFFF, 0 4 14 0 #40000000</BoxShadows>
 
     <ControlTheme TargetType="ui:MessageItem" x:Key="NotificationTheme">
         <Setter Property="Template">
             <ControlTemplate>
-                <Border
-                    Name="PART_BorderRoot"
-                    Padding="{StaticResource MessageRootPadding}"
-                    BoxShadow="0 0 10 4 #00000070">
-                    <Border Name="PART_BorderInner" MinWidth="350"
+                <Border Padding="{StaticResource MessageRootPadding}">
+                    <Border Name="PART_RootBorder" MinWidth="{StaticResource MessageMinWidth}"
                             MaxWidth="{StaticResource MessageMaxWidth}"
                             Background="{DynamicResource MenuFlyoutPresenterBackground}"
-                            BorderThickness="1"
+                            BoxShadow="{StaticResource MessageBoxShadows}"
+                            BorderThickness="{StaticResource MessageBorderThickness}"
                             ClipToBounds="True"
                             CornerRadius="{DynamicResource ControlCornerRadius}">
                         <Panel>
@@ -102,10 +103,10 @@
                                     </Transitions>
                                 </Button.Transitions>
                                 <PathIcon
-                                    Data="{DynamicResource Message_close_icon}"
-                                    Height="8"
                                     Name="PART_CloseButtonIcon"
-                                    Width="8" />
+                                    Data="{DynamicResource Message_close_icon}"
+                                    Width="8"
+                                    Height="8" />
                             </Button>
                         </Panel>
                     </Border>
@@ -135,7 +136,7 @@
                 <Setter Property="Data" Value="{DynamicResource message_info_icon}" />
                 <Setter Property="Foreground" Value="{DynamicResource MessageInfoColor}" />
             </Style>
-            <Style Selector="^ /template/ Border#PART_BorderInner">
+            <Style Selector="^ /template/ Border#PART_RootBorder">
                 <Setter Property="BorderBrush" Value="{DynamicResource MessageInfoBorderColor}" />
             </Style>
         </Style>
@@ -144,7 +145,7 @@
                 <Setter Property="Data" Value="{DynamicResource message_success_icon}" />
                 <Setter Property="Foreground" Value="{DynamicResource MessageSuccessColor}" />
             </Style>
-            <Style Selector="^ /template/ Border#PART_BorderInner">
+            <Style Selector="^ /template/ Border#PART_RootBorder">
                 <Setter Property="BorderBrush" Value="{DynamicResource MessageSuccessBorderColor}" />
             </Style>
         </Style>
@@ -153,7 +154,7 @@
                 <Setter Property="Data" Value="{DynamicResource message_warning_icon}" />
                 <Setter Property="Foreground" Value="{DynamicResource MessageWarningColor}" />
             </Style>
-            <Style Selector="^ /template/ Border#PART_BorderInner">
+            <Style Selector="^ /template/ Border#PART_RootBorder">
                 <Setter Property="BorderBrush" Value="{DynamicResource MessageWarningBorderColor}" />
             </Style>
         </Style>
@@ -162,7 +163,7 @@
                 <Setter Property="Data" Value="{DynamicResource message_error_icon}" />
                 <Setter Property="Foreground" Value="{DynamicResource MessageErrorColor}" />
             </Style>
-            <Style Selector="^ /template/ Border#PART_BorderInner">
+            <Style Selector="^ /template/ Border#PART_RootBorder">
                 <Setter Property="BorderBrush" Value="{DynamicResource MessageErrorBorderColor}" />
             </Style>
         </Style>

@@ -7,7 +7,7 @@
         x:Class="Message.Avalonia.Demo.Views.MainWindow"
         Width="1200"
         xmlns:msg="https://github.com/xiyaowong/Message.Avalonia"
-        xmlns:msgModels="clr-namespace:Message.Avalonia.Models;assembly=Message.Avalonia"
+        xmlns:model="clr-namespace:Message.Avalonia.Models;assembly=Message.Avalonia"
         xmlns:AvaloniaEdit="clr-namespace:AvaloniaEdit;assembly=AvaloniaEdit"
         Height="900"
         CanResize="False"
@@ -22,18 +22,21 @@
     </Design.DataContext>
 
     <Panel>
-        <Border Padding="8 8 8 24">
+        <Border Padding="8">
             <Grid RowDefinitions="Auto *">
                 <StackPanel Spacing="4">
-                    <ComboBox PlaceholderText="Select Message Position" Width="200" Name="PositionBox">
-                        <ComboBoxItem Content="{x:Static msgModels:MessagePosition.BottomRight}" />
-                        <ComboBoxItem Content="{x:Static msgModels:MessagePosition.BottomCenter}" />
-                        <ComboBoxItem Content="{x:Static msgModels:MessagePosition.BottomLeft}" />
-                        <ComboBoxItem Content="{x:Static msgModels:MessagePosition.TopRight}" />
-                        <ComboBoxItem Content="{x:Static msgModels:MessagePosition.TopCenter}" />
-                        <ComboBoxItem Content="{x:Static msgModels:MessagePosition.TopLeft}" />
-                        <ComboBoxItem Content="{x:Static msgModels:MessagePosition.CenterCenter}" />
-                    </ComboBox>
+                    <Panel>
+                        <ComboBox Name="PositionBox" PlaceholderText="Select Message Position" Width="200">
+                            <ComboBoxItem Content="{x:Static model:MessagePosition.BottomRight}" />
+                            <ComboBoxItem Content="{x:Static model:MessagePosition.BottomCenter}" />
+                            <ComboBoxItem Content="{x:Static model:MessagePosition.BottomLeft}" />
+                            <ComboBoxItem Content="{x:Static model:MessagePosition.TopRight}" />
+                            <ComboBoxItem Content="{x:Static model:MessagePosition.TopCenter}" />
+                            <ComboBoxItem Content="{x:Static model:MessagePosition.TopLeft}" />
+                            <ComboBoxItem Content="{x:Static model:MessagePosition.CenterCenter}" />
+                        </ComboBox>
+                        <Button Name="ToggleThemeButton" HorizontalAlignment="Right" Content="Toggle Theme" />
+                    </Panel>
                     <Grid ColumnDefinitions="* 4 *">
                         <Expander Header="Message Builder" IsExpanded="True" Grid.Column="0">
                             <StackPanel Orientation="Horizontal" Spacing="20">
@@ -103,15 +106,12 @@
                     <AvaloniaEdit:TextEditor.ContextFlyout>
                         <MenuFlyout>
                             <MenuItem Header="Copy" InputGesture="ctrl+C" Command="{Binding CopyCodeCommand}"
-                                      CommandParameter="{Binding #Editor.TextArea}">
-                            </MenuItem>
+                                      CommandParameter="{Binding #Editor.TextArea}" />
                         </MenuFlyout>
                     </AvaloniaEdit:TextEditor.ContextFlyout>
                 </AvaloniaEdit:TextEditor>
             </Grid>
         </Border>
-
-        <Button Name="ToggleThemeButton" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="12 0  0 12">Toggle Theme</Button>
 
         <msg:MessageHost Name="DefaultHost" />
         <msg:MessageHost Name="AnotherHost" Position="BottomCenter" HostId="Another" />
