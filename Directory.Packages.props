@@ -1,0 +1,19 @@
+<Project>
+    <!-- https://learn.microsoft.com/en-us/nuget/consume-packages/central-package-management -->
+    <PropertyGroup>
+        <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageVersion Include="Avalonia" Version="11.2.8" />
+        <PackageVersion Include="Avalonia.Themes.Fluent" Version="11.2.8" />
+        <PackageVersion Include="Avalonia.Fonts.Inter" Version="11.2.8" />
+        <PackageVersion Include="Avalonia.Diagnostics" Version="11.2.8" />
+        <PackageVersion Include="Avalonia.Desktop" Version="11.2.8" />
+        <PackageVersion Include="Avalonia.Browser" Version="11.2.8" />
+        <PackageVersion Include="Avalonia.AvaloniaEdit" Version="11.2.0"/>
+        <PackageVersion Include="Avalonia.ReactiveUI" Version="11.2.8"/>
+        <PackageVersion Include="AvaloniaEdit.TextMate" Version="11.2.0"/>
+        <PackageVersion Include="FluentAvaloniaUI" Version="2.3.0"/>
+        <PackageVersion Include="TextMateSharp.Grammars" Version="1.0.66"/>
+    </ItemGroup>
+</Project>

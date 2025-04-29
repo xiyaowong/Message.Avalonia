@@ -1,24 +1,19 @@
-<Window xmlns="https://github.com/avaloniaui"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:vm="using:Message.Avalonia.Demo.ViewModels"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="1200" d:DesignHeight="900"
-        x:Class="Message.Avalonia.Demo.Views.MainWindow"
-        Width="1200"
-        xmlns:msg="https://github.com/xiyaowong/Message.Avalonia"
-        xmlns:model="clr-namespace:Message.Avalonia.Models;assembly=Message.Avalonia"
-        xmlns:AvaloniaEdit="clr-namespace:AvaloniaEdit;assembly=AvaloniaEdit"
-        Height="900"
-        CanResize="False"
-        x:DataType="vm:MainWindowViewModel"
-        WindowStartupLocation="CenterScreen"
-        Title="Message.Avalonia.Demo">
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:Message.Avalonia.Demo.ViewModels"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="1200" d:DesignHeight="900"
+             x:Class="Message.Avalonia.Demo.Views.MainView"
+             xmlns:msg="https://github.com/xiyaowong/Message.Avalonia"
+             xmlns:model="clr-namespace:Message.Avalonia.Models;assembly=Message.Avalonia"
+             xmlns:AvaloniaEdit="clr-namespace:AvaloniaEdit;assembly=AvaloniaEdit"
+             x:DataType="vm:MainViewModel">
 
     <Design.DataContext>
         <!-- This only sets the DataContext for the previewer in an IDE,
              to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
-        <vm:MainWindowViewModel />
+        <vm:MainViewModel />
     </Design.DataContext>
 
     <Panel>
@@ -117,4 +112,4 @@
         <msg:MessageHost Name="AnotherHost" Position="BottomCenter" HostId="Another" />
     </Panel>
 
-</Window>
+</UserControl>

@@ -7,9 +7,9 @@ using TextMateSharp.Grammars;
 
 namespace Message.Avalonia.Demo.Views;
 
-public partial class MainWindow : Window
+public partial class MainView : UserControl
 {
-    public MainWindow()
+    public MainView()
     {
         InitializeComponent();
 
@@ -30,7 +30,8 @@ public partial class MainWindow : Window
         };
         ToggleThemeButton.Click += delegate
         {
-            RequestedThemeVariant = ActualThemeVariant == ThemeVariant.Dark ? ThemeVariant.Light : ThemeVariant.Dark;
+            // RequestedThemeVariant =
+            //     ActualThemeVariant == ThemeVariant.Dark ? ThemeVariant.Light : ThemeVariant.Dark;
         };
     }
 }

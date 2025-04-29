@@ -14,7 +14,7 @@ using ReactiveUI;
 
 namespace Message.Avalonia.Demo.ViewModels;
 
-public class MainWindowViewModel : ViewModelBase
+public class MainViewModel : ViewModelBase
 {
     private readonly MessageManager messageManager = new() { Duration = TimeSpan.FromSeconds(3) };
     private readonly MessageManager anotherManager = new() { Duration = TimeSpan.FromSeconds(3), HostId = "Another" };
@@ -37,7 +37,7 @@ public class MainWindowViewModel : ViewModelBase
     public ReactiveCommand<Unit, Unit> BuilderImageCommand { get; }
     public ReactiveCommand<Unit, Unit> ExitApplicationCommand { get; }
 
-    public MainWindowViewModel()
+    public MainViewModel()
     {
         TestTypeCommand = ReactiveCommand.Create<string>(TestType);
         CopyCodeCommand = ReactiveCommand.Create<TextArea>(area => ApplicationCommands.Copy.Execute(null, area));
