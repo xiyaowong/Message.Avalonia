@@ -16,8 +16,9 @@
     </Design.PreviewWith>
 
     <x:Double x:Key="MessageIconSize">18</x:Double>
-    <x:Double x:Key="MessageActionButtonSpacing">10</x:Double>
-    <Thickness x:Key="MessageRootPadding">12,0,12,12</Thickness>
+    <x:Double x:Key="MessageActionButtonSpacing">12</x:Double>
+    <!-- <Thickness x:Key="MessageRootPadding">12,0,12,12</Thickness> -->
+    <Thickness x:Key="MessageRootPadding">0</Thickness>
     <x:Double x:Key="MessageMinWidth">350</x:Double>
     <x:Double x:Key="MessageMaxWidth">500</x:Double>
     <Thickness x:Key="MessageIconMargin">0,2,8,0</Thickness>
@@ -175,7 +176,7 @@
                 <Animation
                     Easing="QuadraticEaseIn"
                     FillMode="Forward"
-                    Duration="0:0:0.4">
+                    Duration="0:0:0.3">
                     <KeyFrame Cue="0%">
                         <Setter Property="Opacity" Value="0" />
                     </KeyFrame>
@@ -189,7 +190,7 @@
                     <Animation
                         Easing="QuadraticEaseIn"
                         FillMode="Forward"
-                        Duration="0:0:0.4">
+                        Duration="0:0:0.3">
                         <KeyFrame KeySpline="0.62,0.63,0,1.12" Cue="0%">
                             <Setter Property="TranslateTransform.X" Value="-500" />
                         </KeyFrame>
@@ -204,7 +205,7 @@
                     <Animation
                         Easing="QuadraticEaseIn"
                         FillMode="Forward"
-                        Duration="0:0:0.4">
+                        Duration="0:0:0.3">
                         <KeyFrame KeySpline="0.62,0.63,0,1.12" Cue="0%">
                             <Setter Property="TranslateTransform.X" Value="500" />
                         </KeyFrame>
@@ -219,7 +220,7 @@
                     <Animation
                         Easing="QuadraticEaseIn"
                         FillMode="Forward"
-                        Duration="0:0:0.4">
+                        Duration="0:0:0.3">
                         <KeyFrame KeySpline="0.62,0.63,0,1.12" Cue="0%">
                             <Setter Property="TranslateTransform.X" Value="-500" />
                         </KeyFrame>
@@ -234,7 +235,7 @@
                     <Animation
                         Easing="QuadraticEaseIn"
                         FillMode="Forward"
-                        Duration="0:0:0.4">
+                        Duration="0:0:0.3">
                         <KeyFrame KeySpline="0.62,0.63,0,1.12" Cue="0%">
                             <Setter Property="TranslateTransform.X" Value="500" />
                         </KeyFrame>
@@ -249,7 +250,7 @@
                     <Animation
                         Easing="QuadraticEaseIn"
                         FillMode="Forward"
-                        Duration="0:0:0.4">
+                        Duration="0:0:0.3">
                         <KeyFrame KeySpline="0.62,0.63,0,1.12" Cue="0%">
                             <Setter Property="TranslateTransform.Y" Value="-150" />
                         </KeyFrame>
@@ -264,7 +265,7 @@
                     <Animation
                         Easing="QuadraticEaseIn"
                         FillMode="Forward"
-                        Duration="0:0:0.4">
+                        Duration="0:0:0.3">
                         <KeyFrame KeySpline="0.62,0.63,0,1.12" Cue="0%">
                             <Setter Property="TranslateTransform.Y" Value="150" />
                         </KeyFrame>
@@ -281,7 +282,7 @@
                 <Animation
                     Easing="QuadraticEaseOut"
                     FillMode="Forward"
-                    Duration="0:0:0.4">
+                    Duration="0:0:0.3">
                     <KeyFrame Cue="0%">
                         <Setter Property="Opacity" Value="1" />
                     </KeyFrame>
@@ -295,7 +296,7 @@
                     <Animation
                         Easing="QuadraticEaseOut"
                         FillMode="Forward"
-                        Duration="0:0:0.4">
+                        Duration="0:0:0.3">
                         <KeyFrame KeySpline="0.62,0.63,0,1.12" Cue="0%">
                             <Setter Property="TranslateTransform.X" Value="0" />
                         </KeyFrame>
@@ -310,7 +311,7 @@
                     <Animation
                         Easing="QuadraticEaseOut"
                         FillMode="Forward"
-                        Duration="0:0:0.4">
+                        Duration="0:0:0.3">
                         <KeyFrame KeySpline="0.62,0.63,0,1.12" Cue="0%">
                             <Setter Property="TranslateTransform.X" Value="0" />
                         </KeyFrame>
@@ -325,7 +326,7 @@
                     <Animation
                         Easing="QuadraticEaseOut"
                         FillMode="Forward"
-                        Duration="0:0:0.4">
+                        Duration="0:0:0.3">
                         <KeyFrame KeySpline="0.62,0.63,0,1.12" Cue="0%">
                             <Setter Property="TranslateTransform.X" Value="0" />
                         </KeyFrame>
@@ -340,7 +341,7 @@
                     <Animation
                         Easing="QuadraticEaseOut"
                         FillMode="Forward"
-                        Duration="0:0:0.4">
+                        Duration="0:0:0.3">
                         <KeyFrame KeySpline="0.62,0.63,0,1.12" Cue="0%">
                             <Setter Property="TranslateTransform.X" Value="0" />
                         </KeyFrame>
@@ -355,7 +356,7 @@
                     <Animation
                         Easing="QuadraticEaseOut"
                         FillMode="Forward"
-                        Duration="0:0:0.4">
+                        Duration="0:0:0.3">
                         <KeyFrame KeySpline="0.62,0.63,0,1.12" Cue="0%">
                             <Setter Property="TranslateTransform.Y" Value="0" />
                         </KeyFrame>
@@ -370,7 +371,7 @@
                     <Animation
                         Easing="QuadraticEaseOut"
                         FillMode="Forward"
-                        Duration="0:0:0.4">
+                        Duration="0:0:0.3">
                         <KeyFrame KeySpline="0.62,0.63,0,1.12" Cue="0%">
                             <Setter Property="TranslateTransform.Y" Value="0" />
                         </KeyFrame>
@@ -387,7 +388,7 @@
                 <Animation
                     Easing="QuadraticEaseOut"
                     FillMode="Forward"
-                    Duration="0:0:0.4">
+                    Duration="0:0:0.3">
                     <KeyFrame Cue="100%">
                         <Setter Property="IsClosed" Value="True" />
                     </KeyFrame>

@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Timers;
@@ -11,7 +12,7 @@ using Message.Avalonia.Models;
 
 namespace Message.Avalonia.UI.Host;
 
-public class MessageHost : ItemsControl
+public class MessageHost : TemplatedControl
 {
     public const string DEFAULT_HOST_ID = "__DefaultHostId__";
 
@@ -52,7 +53,10 @@ public class MessageHost : ItemsControl
 
     #endregion
 
-    private IEnumerable<MessageItem> MessageItems => Items.OfType<MessageItem>();
+    private Panel? _itemsPanel;
+    private IList? Items => _itemsPanel?.Children;
+
+    private IEnumerable<MessageItem> MessageItems => Items != null ? Items.OfType<MessageItem>() : [];
 
     public MessageHost()
     {
@@ -66,20 +70,23 @@ public class MessageHost : ItemsControl
                 }
             });
         };
-        Items.CollectionChanged += (_, _) => _durationTimer.Enabled = MessageItems.Any();
     }
 
     internal void AddMessage(MessageItem msg)
     {
+        if (Items == null) return;
+
         msg.MessageClosed += (s, _) =>
         {
             if (s is MessageItem)
             {
                 Items.Remove(s);
+                _durationTimer.Enabled = MessageItems.Any();
             }
         };
         msg.UpdatePosition(Position);
         Items.Add(msg);
+        _durationTimer.Enabled = MessageItems.Any();
     }
 
     // <inheritdoc />
@@ -88,6 +95,9 @@ public class MessageHost : ItemsControl
         base.OnApplyTemplate(e);
 
         HostList.Insert(0, new WeakReference<MessageHost>(this));
+
+        _itemsPanel = e.NameScope.Find<Panel>("PART_Items");
+
         OnPositionChanged(Position);
     }
 
@@ -123,6 +133,12 @@ public class MessageHost : ItemsControl
             MessagePosition.CenterCenter => VerticalAlignment.Center,
             _ => throw new ArgumentOutOfRangeException(),
         };
+
+        if (_itemsPanel is ReversibleStackPanel panel)
+        {
+            panel.ReverseOrder = VerticalAlignment is VerticalAlignment.Top or VerticalAlignment.Center;
+        }
+
         foreach (var messageItem in MessageItems)
         {
             messageItem.UpdatePosition(position);

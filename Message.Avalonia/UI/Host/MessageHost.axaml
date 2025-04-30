@@ -2,29 +2,24 @@
     x:ClassModifier="internal"
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:msg="https://github.com/xiyaowong/Message.Avalonia">
+    xmlns:msgHost="clr-namespace:Message.Avalonia.UI.Host">
     <Design.PreviewWith>
-        <msg:MessageHost />
+        <msgHost:MessageHost />
     </Design.PreviewWith>
 
-    <ControlTheme TargetType="msg:MessageHost" x:Key="MessageHostTheme">
-        <Setter Property="Padding" Value="5" />
-        <Setter Property="ItemsPanel">
-            <ItemsPanelTemplate>
-                <DockPanel LastChildFill="True" />
-            </ItemsPanelTemplate>
-        </Setter>
+    <x:Double x:Key="MessagePanelSpacing">10</x:Double>
+
+    <ControlTheme TargetType="msgHost:MessageHost" x:Key="MessageHostTheme">
+        <Setter Property="Margin" Value="12" />
         <Setter Property="Template">
             <ControlTemplate>
-                <ScrollViewer VerticalScrollBarVisibility="Auto">
-                    <ItemsPresenter />
-                </ScrollViewer>
+                <ReversibleStackPanel Name="PART_Items" Spacing="{StaticResource MessagePanelSpacing}" />
             </ControlTemplate>
         </Setter>
     </ControlTheme>
 
     <ControlTheme
         BasedOn="{StaticResource MessageHostTheme}"
-        TargetType="msg:MessageHost"
-        x:Key="{x:Type msg:MessageHost}" />
+        TargetType="msgHost:MessageHost"
+        x:Key="{x:Type msgHost:MessageHost}" />
 </ResourceDictionary>
