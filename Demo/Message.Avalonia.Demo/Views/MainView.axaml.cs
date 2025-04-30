@@ -1,3 +1,4 @@
+using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Styling;
 using AvaloniaEdit;
@@ -30,8 +31,8 @@ public partial class MainView : UserControl
         };
         ToggleThemeButton.Click += delegate
         {
-            // RequestedThemeVariant =
-            //     ActualThemeVariant == ThemeVariant.Dark ? ThemeVariant.Light : ThemeVariant.Dark;
+            Application.Current!.RequestedThemeVariant =
+                Application.Current.ActualThemeVariant == ThemeVariant.Dark ? ThemeVariant.Light : ThemeVariant.Dark;
         };
     }
 }
