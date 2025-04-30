@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 env:
   PROJECT_PATH: Demo/Message.Avalonia.Demo.Web/Message.Avalonia.Demo.Web.csproj
-  OUTPUT_PATH: Demo/Message.Avalonia.Demo.Web/bin/Release/net9.0-browser/publish/wwwroot
+  OUTPUT_PATH: Demo/Message.Avalonia.Demo.Web/bin/Release/net8.0-browser/publish/wwwroot
 on:
   workflow_dispatch:
 

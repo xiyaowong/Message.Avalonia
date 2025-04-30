@@ -1,0 +1,6 @@
+<linker>
+  <assembly fullname="Message.Avalonia.Demo" preserve="All" />
+  <assembly fullname="FluentAvalonia" preserve="All" />
+  <assembly fullname="ReactiveUI" preserve="All" />
+</linker>
+

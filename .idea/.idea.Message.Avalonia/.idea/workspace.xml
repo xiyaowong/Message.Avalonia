@@ -9,8 +9,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="116b2919-11cd-4b6f-828e-2e21b3a036ac" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Demo/Message.Avalonia.Demo.Web/TrimmerRoots.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Demo/Message.Avalonia.Demo/TrimmerRoots.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.github/workflows/deploy.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/deploy.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Message.Avalonia.sln" beforeDir="false" afterPath="$PROJECT_DIR$/Message.Avalonia.sln" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Message.Avalonia/.idea/avalonia.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Message.Avalonia/.idea/avalonia.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Message.Avalonia/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Message.Avalonia/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/Message.Avalonia.Demo.Desktop/Message.Avalonia.Demo.Desktop.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/Message.Avalonia.Demo.Desktop/Message.Avalonia.Demo.Desktop.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/Message.Avalonia.Demo.Desktop/app.manifest" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/Message.Avalonia.Demo.Desktop/app.manifest" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/Message.Avalonia.Demo.Web/Message.Avalonia.Demo.Web.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/Message.Avalonia.Demo.Web/Message.Avalonia.Demo.Web.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/Message.Avalonia.Demo.Web/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/Message.Avalonia.Demo.Web/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/Message.Avalonia.Demo/Controls/LoginCard.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/Message.Avalonia.Demo/Controls/LoginCard.axaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/Message.Avalonia.Demo/Message.Avalonia.Demo.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/Message.Avalonia.Demo/Message.Avalonia.Demo.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/Message.Avalonia.Demo/ViewModels/MainViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/Message.Avalonia.Demo/ViewModels/MainViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/Message.Avalonia.Demo/Views/MainWindow.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/Message.Avalonia.Demo/Views/MainWindow.axaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/Message.Avalonia.Demo/app.manifest" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Message.Avalonia/Message.Avalonia.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Message.Avalonia/Message.Avalonia.csproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,11 +33,28 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/9b99b33b61e064a95d985c50edb17a9ee889e36b9ae2381866346ee68ced8bd9/ItemsControl.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/wongxy/code/Message.Avalonia/Demo/Message.Avalonia.Demo.Web/Program.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/wongxy/code/Message.Avalonia/Demo/Message.Avalonia.Demo/Controls/LoginCard.axaml.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/wongxy/code/Message.Avalonia/Demo/Message.Avalonia.Demo/Controls/LoginCard.axaml.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/wongxy/code/Message.Avalonia/Demo/Message.Avalonia.Demo/ViewModels/MainViewModel.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/wongxy/code/Message.Avalonia/Demo/Message.Avalonia.Demo/ViewModels/MainViewModel.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/wongxy/code/Message.Avalonia/Demo/Message.Avalonia.Demo/ViewModels/MainViewModel.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/wongxy/code/Message.Avalonia/Demo/Message.Avalonia.Demo/Views/MainView.axaml.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/wongxy/code/Message.Avalonia/Demo/Message.Avalonia.Demo/Views/MainView.axaml.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/wongxy/code/Message.Avalonia/Demo/Message.Avalonia.Demo/Views/MainView.axaml.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/wongxy/code/Message.Avalonia/Demo/Message.Avalonia.Demo/Views/MainWindow.axaml.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/wongxy/code/Message.Avalonia/Demo/Message.Avalonia.Demo/Views/MainWindow.axaml.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/wongxy/code/Message.Avalonia/Message.Avalonia/UI/Host/MessageHost.axaml" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/wongxy/code/Message.Avalonia/Message.Avalonia/UI/Host/MessageHost.axaml.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/wongxy/code/Message.Avalonia/Message.Avalonia/UI/MessageItem.axaml" root0="SKIP_HIGHLIGHTING" />
+  </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 7
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 7
+}</component>
   <component name="ProjectId" id="2wOyzfhqBwWXKUH6UmnmiOaTbaN" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -43,11 +73,11 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "settings.editor.selected.configurable": "com.intellij.csharpier.CSharpierSettingsComponent",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected=".NET Launch Settings Profile.Message.Avalonia.Demo.Web: Message.Avalonia.Demo.Web.Browser">
+  <component name="RunManager" selected=".NET Project.Message.Avalonia.Demo.Desktop">
     <configuration name="Message.Avalonia.Demo.Desktop" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
       <option name="PROGRAM_PARAMETERS" value="" />
@@ -94,7 +124,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1745927181579</updated>
-      <workItem from="1745927188296" duration="2495000" />
+      <workItem from="1745927188296" duration="2824000" />
+      <workItem from="1745976038543" duration="10680000" />
     </task>
     <task id="LOCAL-00001" summary="Deploy Web">
       <option name="closed" value="true" />
@@ -104,7 +135,31 @@
       <option name="project" value="LOCAL" />
       <updated>1745929522075</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Deploy Web">
+      <option name="closed" value="true" />
+      <created>1745929738567</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1745929738567</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Use `ReversibleStackPanel` for the host">
+      <option name="closed" value="true" />
+      <created>1746001031856</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1746001031856</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Rework theme toggle functionality">
+      <option name="closed" value="true" />
+      <created>1746001973632</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1746001973632</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -115,7 +170,9 @@
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="Deploy Web" />
-    <option name="LAST_COMMIT_MESSAGE" value="Deploy Web" />
+    <MESSAGE value="Use `ReversibleStackPanel` for the host" />
+    <MESSAGE value="Rework theme toggle functionality" />
+    <option name="LAST_COMMIT_MESSAGE" value="Rework theme toggle functionality" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

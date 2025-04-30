@@ -1,5 +1,4 @@
-﻿using System;
-using System.Reactive;
+﻿using System.Reactive;
 using System.Reflection;
 using Avalonia.Controls;
 using Avalonia.Media;
