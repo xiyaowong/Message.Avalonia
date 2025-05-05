@@ -170,14 +170,19 @@ public class MessageItem : ContentControl
 
     public void ExecuteAction(object obj)
     {
-        if (obj is MessageAction action && !_isCompleted)
+        try
         {
-            _isCompleted = true;
-            action.Callback?.Invoke();
-            Completed?.Invoke(this, action);
+            if (obj is MessageAction action && !_isCompleted)
+            {
+                _isCompleted = true;
+                action.Callback?.Invoke();
+                Completed?.Invoke(this, action);
+            }
         }
-
-        Close();
+        finally
+        {
+            Close();
+        }
     }
 
     /// <inheritdoc />

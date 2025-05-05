@@ -10,7 +10,7 @@
   <component name="ChangeListManager">
     <list default="true" id="116b2919-11cd-4b6f-828e-2e21b3a036ac" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Message.Avalonia/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Message.Avalonia/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Message.Avalonia/UI/MessageItem.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/Message.Avalonia/UI/MessageItem.axaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Message.Avalonia/UI/MessageItem.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Message.Avalonia/UI/MessageItem.axaml.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,7 +101,7 @@
       <updated>1745927181579</updated>
       <workItem from="1745927188296" duration="2824000" />
       <workItem from="1745976038543" duration="10680000" />
-      <workItem from="1746456685237" duration="2749000" />
+      <workItem from="1746456685237" duration="2858000" />
     </task>
     <task id="LOCAL-00001" summary="Deploy Web">
       <option name="closed" value="true" />
@@ -135,7 +135,15 @@
       <option name="project" value="LOCAL" />
       <updated>1746001973632</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="tweak closing animation">
+      <option name="closed" value="true" />
+      <created>1746459509619</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1746459509619</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -148,7 +156,8 @@
     <MESSAGE value="Deploy Web" />
     <MESSAGE value="Use `ReversibleStackPanel` for the host" />
     <MESSAGE value="Rework theme toggle functionality" />
-    <option name="LAST_COMMIT_MESSAGE" value="Rework theme toggle functionality" />
+    <MESSAGE value="tweak closing animation" />
+    <option name="LAST_COMMIT_MESSAGE" value="tweak closing animation" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
