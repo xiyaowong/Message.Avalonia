@@ -9,7 +9,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="116b2919-11cd-4b6f-828e-2e21b3a036ac" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Message.Avalonia/Models/MessageProgress.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Message.Avalonia/ProgressMessageBuilder.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Message.Avalonia/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Message.Avalonia/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/Message.Avalonia.Demo/ViewModels/MainViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/Message.Avalonia.Demo/ViewModels/MainViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/Message.Avalonia.Demo/Views/MainView.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/Message.Avalonia.Demo/Views/MainView.axaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Message.Avalonia/Helpers/ControlAnimationHelper.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Message.Avalonia/MessageManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Message.Avalonia/MessageManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Message.Avalonia/UI/Host/MessageHost.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Message.Avalonia/UI/Host/MessageHost.axaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Message.Avalonia/UI/MessageItem.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/Message.Avalonia/UI/MessageItem.axaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Message.Avalonia/UI/MessageItem.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Message.Avalonia/UI/MessageItem.axaml.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -18,14 +26,54 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitToolBoxStore">
+    <option name="recentBranches">
+      <RecentBranches>
+        <option name="branchesForRepo">
+          <list>
+            <RecentBranchesForRepo>
+              <option name="branches">
+                <list>
+                  <RecentBranch>
+                    <option name="branchName" value="withProgress" />
+                    <option name="lastUsedInstant" value="1746502519" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="main" />
+                    <option name="lastUsedInstant" value="1746502518" />
+                  </RecentBranch>
+                </list>
+              </option>
+              <option name="repositoryRootUrl" value="file://$PROJECT_DIR$" />
+            </RecentBranchesForRepo>
+          </list>
+        </option>
+      </RecentBranches>
+    </option>
+  </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="mock://C:/Users/wongxy/code/Message.Avalonia/Demo/Message.Avalonia.Demo/ViewModels/MainViewModel.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/wongxy/code/Message.Avalonia/Demo/Message.Avalonia.Demo/Views/MainView.axaml" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/wongxy/code/Message.Avalonia/Demo/Message.Avalonia.Demo/Views/MainView.axaml" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/wongxy/code/Message.Avalonia/Demo/Message.Avalonia.Demo/Views/MainView.axaml" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/wongxy/code/Message.Avalonia/Message.Avalonia/MessageBuilder.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/wongxy/code/Message.Avalonia/Message.Avalonia/MessageManager.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/wongxy/code/Message.Avalonia/Message.Avalonia/MessageManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/wongxy/code/Message.Avalonia/Message.Avalonia/UI/Host/MessageHost.axaml" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/wongxy/code/Message.Avalonia/Message.Avalonia/UI/Host/MessageHost.axaml.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/wongxy/code/Message.Avalonia/Message.Avalonia/UI/Host/MessageHost.axaml.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/wongxy/code/Message.Avalonia/Message.Avalonia/UI/MessageItem.axaml" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/wongxy/code/Message.Avalonia/Message.Avalonia/UI/MessageItem.axaml" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/wongxy/code/Message.Avalonia/Message.Avalonia/UI/MessageItem.axaml" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/wongxy/code/Message.Avalonia/Message.Avalonia/UI/MessageItem.axaml.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/wongxy/code/Message.Avalonia/Message.Avalonia/UI/MessageItem.axaml.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
@@ -37,23 +85,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;.NET Launch Settings Profile.Message.Avalonia.Demo.Web: Message.Avalonia.Demo.Web.Browser.executor&quot;: &quot;Run&quot;,
-    &quot;.NET Project.Message.Avalonia.Demo.Desktop.executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    ".NET Launch Settings Profile.Message.Avalonia.Demo.Web: Message.Avalonia.Demo.Web.Browser.executor": "Run",
+    ".NET Project.Message.Avalonia.Demo.Desktop.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "withProgress",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected=".NET Project.Message.Avalonia.Demo.Desktop">
     <configuration name="Message.Avalonia.Demo.Desktop" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
@@ -105,7 +153,7 @@
       <workItem from="1745976038543" duration="10680000" />
       <workItem from="1746456685237" duration="2858000" />
       <workItem from="1746494519838" duration="836000" />
-      <workItem from="1746495571698" duration="3815000" />
+      <workItem from="1746495571698" duration="13316000" />
     </task>
     <task id="LOCAL-00001" summary="Deploy Web">
       <option name="closed" value="true" />
@@ -171,7 +219,15 @@
       <option name="project" value="LOCAL" />
       <updated>1746499213969</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Use `UIThread.Post` to Close the message before invoking actions">
+      <option name="closed" value="true" />
+      <created>1746499500046</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1746499500046</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -179,6 +235,17 @@
   </component>
   <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="Deploy Web" />
@@ -187,7 +254,8 @@
     <MESSAGE value="tweak closing animation" />
     <MESSAGE value="feat: support automatically create and install the default host from the application toplevel&#10;&#10;Resolve #4" />
     <MESSAGE value="Optimize the list movement animation when a new message is added" />
-    <option name="LAST_COMMIT_MESSAGE" value="Optimize the list movement animation when a new message is added" />
+    <MESSAGE value="Use `UIThread.Post` to Close the message before invoking actions" />
+    <option name="LAST_COMMIT_MESSAGE" value="Use `UIThread.Post` to Close the message before invoking actions" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">

@@ -11,4 +11,6 @@ public partial class MessageManager
     public static MessageManager Default { get; } = new();
 
     public MessageBuilder CreateMessage() => new MessageBuilder().WithHost(HostId).WithDuration(Duration);
+
+    public ProgressMessageBuilder CreateProgress() => new ProgressMessageBuilder().WithHost(HostId);
 }

@@ -35,6 +35,8 @@ public class MainViewModel : ViewModelBase
     public ReactiveCommand<Unit, Unit> BuilderHelloCommand { get; }
     public ReactiveCommand<Unit, Unit> BuilderImageCommand { get; }
     public ReactiveCommand<Unit, Unit> ExitApplicationCommand { get; }
+    public ReactiveCommand<Unit, Unit> DownloadProgressCommand { get; }
+    public ReactiveCommand<Unit, Unit> CancelableProgressCommand { get; }
 
     public MainViewModel()
     {
@@ -48,6 +50,8 @@ public class MainViewModel : ViewModelBase
         BuilderHelloCommand = ReactiveCommand.Create(BuilderHello);
         BuilderImageCommand = ReactiveCommand.Create(BuilderImage);
         ExitApplicationCommand = ReactiveCommand.Create(ExitApplication);
+        DownloadProgressCommand = ReactiveCommand.Create(DownloadProgress);
+        CancelableProgressCommand = ReactiveCommand.Create(CancelableProgress);
     }
 
     private void BuilderDefaultManager()
@@ -369,5 +373,84 @@ public class MainViewModel : ViewModelBase
             msg.HideIcon().HideClose().WithContent(card).ShowInfo();
 
             """";
+    }
+
+    private void DownloadProgress()
+    {
+        messageManager
+            .CreateProgress()
+            .WithTitle("Download dependencies")
+            .WithProgress(async progress =>
+            {
+                progress.Report(0);
+
+                await Task.Delay(500);
+
+                var random = new Random();
+                for (var i = 0; i < 100; i++)
+                {
+                    await Task.Delay(random.Next(2, 50));
+                    progress.Report($"Downloading {i} %", i);
+                }
+
+                progress.Report("Download complete ✅", 100);
+                await Task.Delay(800);
+            })
+            .ShowInfo();
+    }
+
+    private void CancelableProgress()
+    {
+        messageManager
+            .CreateProgress()
+            .WithProgress(
+                async (progress, token) =>
+                {
+                    try
+                    {
+                        if (!token.IsCancellationRequested)
+                        {
+                            progress.Report("🚀 Initializing build environment...");
+                            await Task.Delay(1000, token);
+                        }
+
+                        if (!token.IsCancellationRequested)
+                        {
+                            progress.Report("📦 Installing dependencies...");
+                            await Task.Delay(1500, token);
+                        }
+
+                        if (!token.IsCancellationRequested)
+                        {
+                            progress.Report("🔧 Running build scripts...");
+                            await Task.Delay(1200, token);
+                        }
+
+                        if (!token.IsCancellationRequested)
+                        {
+                            progress.Report("✅ Build completed, generating artifacts...");
+                            await Task.Delay(1000, token);
+                        }
+
+                        if (!token.IsCancellationRequested)
+                        {
+                            progress.Report("📤 Uploading artifacts...");
+                            await Task.Delay(1500, token);
+                        }
+                    }
+                    catch (TaskCanceledException) { }
+
+                    progress.Report(
+                        token.IsCancellationRequested
+                            ? "❌ Operation canceled."
+                            : "🎉 Operation completed successfully.",
+                        token.IsCancellationRequested ? 0 : 100
+                    );
+
+                    await Task.Delay(1000, CancellationToken.None);
+                }
+            )
+            .HideIcon()
+            .ShowInfo();
     }
 }
