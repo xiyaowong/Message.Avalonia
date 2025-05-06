@@ -397,6 +397,28 @@ public class MainViewModel : ViewModelBase
                 await Task.Delay(800);
             })
             .ShowInfo();
+        Code = """
+            messageManager
+                .CreateProgress()
+                .WithTitle("Download dependencies")
+                .WithProgress(async progress =>
+                {
+                    progress.Report(0);
+
+                    await Task.Delay(500);
+
+                    var random = new Random();
+                    for (var i = 0; i < 100; i++)
+                    {
+                        await Task.Delay(random.Next(2, 50));
+                        progress.Report($"Downloading {i} %", i);
+                    }
+
+                    progress.Report("Download complete ✅", 100);
+                    await Task.Delay(800);
+                })
+                .ShowInfo();
+            """;
     }
 
     private void CancelableProgress()
@@ -452,5 +474,59 @@ public class MainViewModel : ViewModelBase
             )
             .HideIcon()
             .ShowInfo();
+
+        Code = """
+            messageManager
+              .CreateProgress()
+              .WithProgress(
+                  async (progress, token) =>
+                  {
+                      try
+                      {
+                          if (!token.IsCancellationRequested)
+                          {
+                              progress.Report("🚀 Initializing build environment...");
+                              await Task.Delay(1000, token);
+                          }
+
+                          if (!token.IsCancellationRequested)
+                          {
+                              progress.Report("📦 Installing dependencies...");
+                              await Task.Delay(1500, token);
+                          }
+
+                          if (!token.IsCancellationRequested)
+                          {
+                              progress.Report("🔧 Running build scripts...");
+                              await Task.Delay(1200, token);
+                          }
+
+                          if (!token.IsCancellationRequested)
+                          {
+                              progress.Report("✅ Build completed, generating artifacts...");
+                              await Task.Delay(1000, token);
+                          }
+
+                          if (!token.IsCancellationRequested)
+                          {
+                              progress.Report("📤 Uploading artifacts...");
+                              await Task.Delay(1500, token);
+                          }
+                      }
+                      catch (TaskCanceledException) { }
+
+                      progress.Report(
+                          token.IsCancellationRequested
+                              ? "❌ Operation canceled."
+                              : "🎉 Operation completed successfully.",
+                          token.IsCancellationRequested ? 0 : 100
+                      );
+
+                      await Task.Delay(1000, CancellationToken.None);
+                  }
+              )
+              .HideIcon()
+              .ShowInfo();
+            """;
     }
 }
