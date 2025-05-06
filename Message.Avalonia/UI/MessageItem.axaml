@@ -41,7 +41,7 @@
                             ClipToBounds="True"
                             CornerRadius="{DynamicResource ControlCornerRadius}">
                         <Panel>
-                            <Grid Margin="16" RowDefinitions="Auto * Auto">
+                            <Grid Margin="16" RowDefinitions="Auto * Auto Auto">
                                 <Grid ColumnDefinitions="Auto *">
                                     <PathIcon Name="PART_Icon"
                                               Width="{StaticResource MessageIconSize}"
@@ -92,6 +92,36 @@
                                         </DataTemplate>
                                     </ItemsControl.ItemTemplate>
                                 </ItemsControl>
+                                <Panel Grid.Row="3"
+                                       Margin="0,12,0,0"
+                                       IsVisible="{TemplateBinding IsProgress}">
+                                    <ProgressBar Name="PART_ProgressBar"
+                                                 Margin="0,0,24,0"
+                                                 VerticalAlignment="Center"
+                                                 IsIndeterminate="{TemplateBinding ProgressValue,
+                                                                                   Converter={x:Static ObjectConverters.IsNull}}"
+                                                 Maximum="100"
+                                                 Minimum="0"
+                                                 Orientation="Horizontal"
+                                                 Value="{TemplateBinding ProgressValue}" />
+                                    <Button Name="PART_ProgressCancelButton"
+                                            Width="20"
+                                            Height="20"
+                                            HorizontalAlignment="Right"
+                                            VerticalAlignment="Center"
+                                            Background="Transparent"
+                                            BorderThickness="0"
+                                            CornerRadius="10"
+                                            IsVisible="{TemplateBinding ProgressTokenSource,
+                                                                        Converter={x:Static ObjectConverters.IsNotNull}}"
+                                            ToolTip.Tip="Cancel">
+                                        <PathIcon Width="8"
+                                                  Height="8"
+                                                  HorizontalAlignment="Center"
+                                                  VerticalAlignment="Center"
+                                                  Data="{DynamicResource Message_close_icon}" />
+                                    </Button>
+                                </Panel>
                             </Grid>
                             <Button Name="PART_CloseButton"
                                     Width="20"

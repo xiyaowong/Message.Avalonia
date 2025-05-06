@@ -1,6 +1,7 @@
 using System;
 using System.Diagnostics;
 using System.Linq;
+using System.Threading;
 using Avalonia;
 using Avalonia.Collections;
 using Avalonia.Controls;
@@ -43,8 +44,10 @@ public class MessageItem : ContentControl
 
     private const string PART_CloseButton = "PART_CloseButton";
     private const string PART_ActionsPanel = "PART_ActionsPanel";
+    private const string PART_ProgressCancelButton = "PART_ProgressCancelButton";
 
     private Button? _closeButton;
+    private Button? _progressCancelButton;
     private ItemsControl? _actionsPanel;
 
     internal event EventHandler<MessageAction?>? Completed;
@@ -166,6 +169,42 @@ public class MessageItem : ContentControl
         set => SetValue(IsClosedProperty, value);
     }
 
+    public static readonly StyledProperty<bool> IsProgressProperty = AvaloniaProperty.Register<MessageItem, bool>(
+        nameof(IsProgress)
+    );
+
+    public bool IsProgress
+    {
+        get => GetValue(IsProgressProperty);
+        set => SetValue(IsProgressProperty, value);
+    }
+
+    private CancellationTokenSource? _progressTokenSource;
+
+    public static readonly DirectProperty<MessageItem, CancellationTokenSource?> ProgressTokenSourceProperty =
+        AvaloniaProperty.RegisterDirect<MessageItem, CancellationTokenSource?>(
+            nameof(ProgressTokenSource),
+            o => o.ProgressTokenSource,
+            (o, v) => o.ProgressTokenSource = v
+        );
+
+    public CancellationTokenSource? ProgressTokenSource
+    {
+        get => _progressTokenSource;
+        set => SetAndRaise(ProgressTokenSourceProperty, ref _progressTokenSource, value);
+    }
+
+    public static readonly StyledProperty<double?> ProgressValueProperty = AvaloniaProperty.Register<
+        MessageItem,
+        double?
+    >(nameof(ProgressValue));
+
+    public double? ProgressValue
+    {
+        get => GetValue(ProgressValueProperty);
+        set => SetValue(ProgressValueProperty, value);
+    }
+
     #endregion
 
 
@@ -192,12 +231,13 @@ public class MessageItem : ContentControl
 
         _closeButton = e.NameScope.Find<Button>(PART_CloseButton);
         _actionsPanel = e.NameScope.Find<ItemsControl>(PART_ActionsPanel);
+        _progressCancelButton = e.NameScope.Find<Button>(PART_ProgressCancelButton);
 
         if (_closeButton != null)
         {
-            _closeButton.Click += (_, s) =>
+            _closeButton.Click += (_, ee) =>
             {
-                e.Handled = true;
+                ee.Handled = true;
                 Close();
             };
         }
@@ -207,9 +247,26 @@ public class MessageItem : ContentControl
             _actionsPanel.Loaded += (_, _) => UpdateActionClasses();
         }
 
+        if (_progressCancelButton != null)
+        {
+            _progressCancelButton.Click += (_, ee) =>
+            {
+                ee.Handled = true;
+                ProgressCancelButton_Click();
+            };
+        }
+
         UpdateMessageType();
 
         _durationStopwatch.Start();
+    }
+
+    private void ProgressCancelButton_Click()
+    {
+        // Notify the user to cancel the operation,
+        // and the message will be closed like a non-cancelable message,
+        // waiting for the user task to complete
+        _progressTokenSource?.Cancel();
     }
 
     private void UpdateActionClasses()
