@@ -8,6 +8,7 @@ using Avalonia.Controls.Metadata;
 using Avalonia.Controls.Primitives;
 using Avalonia.Input;
 using Avalonia.LogicalTree;
+using Avalonia.Threading;
 using Message.Avalonia.Models;
 
 namespace Message.Avalonia.UI;
@@ -170,16 +171,15 @@ public class MessageItem : ContentControl
 
     public void ExecuteAction(object obj)
     {
-        try
+        if (obj is MessageAction action && !_isCompleted)
         {
-            if (obj is MessageAction action && !_isCompleted)
-            {
-                _isCompleted = true;
-                action.Callback?.Invoke();
-                Completed?.Invoke(this, action);
-            }
+            _isCompleted = true;
+            Dispatcher.UIThread.Post(Close);
+
+            action.Callback?.Invoke();
+            Completed?.Invoke(this, action);
         }
-        finally
+        else
         {
             Close();
         }
