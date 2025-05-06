@@ -2,12 +2,15 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Timers;
 using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Controls.Primitives;
 using Avalonia.Layout;
 using Avalonia.Threading;
+using Avalonia.VisualTree;
 using Message.Avalonia.Models;
 
 namespace Message.Avalonia.UI.Host;
@@ -53,10 +56,12 @@ public class MessageHost : TemplatedControl
 
     #endregion
 
-    private Panel? _itemsPanel;
-    private IList? Items => _itemsPanel?.Children;
+    private readonly IList<MessageItem> _pendingItems = [];
 
-    private IEnumerable<MessageItem> MessageItems => Items != null ? Items.OfType<MessageItem>() : [];
+    private Panel? _itemsPanel;
+    private IList? _items => _itemsPanel?.Children;
+
+    private IEnumerable<MessageItem> MessageItems => _items != null ? _items.OfType<MessageItem>() : [];
 
     public MessageHost()
     {
@@ -74,18 +79,22 @@ public class MessageHost : TemplatedControl
 
     internal void AddMessage(MessageItem msg)
     {
-        if (Items == null) return;
-
-        msg.MessageClosed += (s, _) =>
+        if (_items == null)
         {
-            if (s is MessageItem)
-            {
-                Items.Remove(s);
-                _durationTimer.Enabled = MessageItems.Any();
-            }
+            _pendingItems.Add(msg);
+            return;
+        }
+
+        _pendingItems.Remove(msg);
+
+        msg.MessageClosed += (sender, _) =>
+        {
+            var item = (MessageItem)sender!;
+            _items.Remove(item);
+            _durationTimer.Enabled = MessageItems.Any();
         };
         msg.UpdatePosition(Position);
-        Items.Add(msg);
+        _items.Add(msg);
         _durationTimer.Enabled = MessageItems.Any();
     }
 
@@ -97,6 +106,8 @@ public class MessageHost : TemplatedControl
         HostList.Insert(0, new WeakReference<MessageHost>(this));
 
         _itemsPanel = e.NameScope.Find<Panel>("PART_Items");
+
+        _pendingItems.ToList().ForEach(AddMessage);
 
         OnPositionChanged(Position);
     }
@@ -111,7 +122,10 @@ public class MessageHost : TemplatedControl
 
     private void OnPositionChanged(MessagePosition position)
     {
-        HorizontalAlignment = position switch
+        if (_itemsPanel == null)
+            return;
+
+        _itemsPanel.HorizontalAlignment = position switch
         {
             MessagePosition.BottomRight => HorizontalAlignment.Right,
             MessagePosition.BottomCenter => HorizontalAlignment.Center,
@@ -122,7 +136,7 @@ public class MessageHost : TemplatedControl
             MessagePosition.CenterCenter => HorizontalAlignment.Center,
             _ => throw new ArgumentOutOfRangeException(),
         };
-        VerticalAlignment = position switch
+        _itemsPanel.VerticalAlignment = position switch
         {
             MessagePosition.BottomRight => VerticalAlignment.Bottom,
             MessagePosition.BottomCenter => VerticalAlignment.Bottom,
@@ -154,6 +168,52 @@ public class MessageHost : TemplatedControl
                 return host;
         }
 
+        if (id == DEFAULT_HOST_ID)
+        {
+            var host = Dispatcher.UIThread.Invoke(() =>
+            {
+                var defaultHost = new MessageHost();
+                defaultHost.InstallDefaultHostFromTopLevel();
+                return defaultHost;
+            });
+            return host;
+        }
+
         throw new InvalidOperationException($"Host with id '{id}' not found.");
+    }
+
+    private void InstallDefaultHostFromTopLevel()
+    {
+        var topLevel = Application.Current?.ApplicationLifetime switch
+        {
+            IClassicDesktopStyleApplicationLifetime desktop => TopLevel.GetTopLevel(desktop.MainWindow),
+            ISingleViewApplicationLifetime singleView => TopLevel.GetTopLevel(singleView.MainView),
+            _ => null,
+        };
+
+        if (topLevel == null)
+            return;
+
+        topLevel.TemplateApplied -= TopLevelOnTemplateApplied;
+        topLevel.TemplateApplied += TopLevelOnTemplateApplied;
+        var adorner = topLevel.FindDescendantOfType<VisualLayerManager>()?.AdornerLayer;
+        if (adorner is not null)
+        {
+            adorner.Children.Add(this);
+            AdornerLayer.SetAdornedElement(this, adorner);
+        }
+    }
+
+    private void TopLevelOnTemplateApplied(object? sender, TemplateAppliedEventArgs e)
+    {
+        if (Parent is AdornerLayer adornerLayer)
+        {
+            adornerLayer.Children.Remove(this);
+            AdornerLayer.SetAdornedElement(this, null);
+        }
+
+        var topLevel = (TopLevel)sender!;
+        topLevel.TemplateApplied -= TopLevelOnTemplateApplied;
+        InstallDefaultHostFromTopLevel();
     }
 }
