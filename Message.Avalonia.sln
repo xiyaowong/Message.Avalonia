@@ -1,23 +1,25 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Message.Avalonia", "Message.Avalonia\Message.Avalonia.csproj", "{02528608-1427-4CDD-B938-F9FD794B6D3C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Message.Avalonia", "src\Message.Avalonia\Message.Avalonia.csproj", "{02528608-1427-4CDD-B938-F9FD794B6D3C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Message.Avalonia.Demo", "Demo\Message.Avalonia.Demo\Message.Avalonia.Demo.csproj", "{06CEDA82-2E05-4903-A2F0-43F5C7E0EDF1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Message.Avalonia.Demo", "demo\Message.Avalonia.Demo\Message.Avalonia.Demo.csproj", "{06CEDA82-2E05-4903-A2F0-43F5C7E0EDF1}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{0E2C8D18-1E47-4659-ADD5-823E7E6B4CAC}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
 		Settings.XamlStyler = Settings.XamlStyler
 		.gitignore = .gitignore
-		Directory.Packages.props = Directory.Packages.props
+		Directory.Packages.Props = Directory.Packages.Props
 		.github\workflows\deploy.yml = .github\workflows\deploy.yml
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Demo", "Demo", "{9662F0D0-7A4A-4848-A2F7-D2E4785B0006}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "demo", "demo", "{9662F0D0-7A4A-4848-A2F7-D2E4785B0006}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Message.Avalonia.Demo.Desktop", "Demo\Message.Avalonia.Demo.Desktop\Message.Avalonia.Demo.Desktop.csproj", "{9D6B951C-861B-4657-8DD8-9CF1654E4610}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Message.Avalonia.Demo.Desktop", "demo\Message.Avalonia.Demo.Desktop\Message.Avalonia.Demo.Desktop.csproj", "{9D6B951C-861B-4657-8DD8-9CF1654E4610}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Message.Avalonia.Demo.Browser", "Demo\Message.Avalonia.Demo.Browser\Message.Avalonia.Demo.Browser.csproj", "{6ED153DB-1DF0-4505-9957-095C4250D36B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Message.Avalonia.Demo.Browser", "demo\Message.Avalonia.Demo.Browser\Message.Avalonia.Demo.Browser.csproj", "{6ED153DB-1DF0-4505-9957-095C4250D36B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{2E2B3D51-163A-4A54-A746-FC327735C564}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -46,5 +48,6 @@ Global
 		{06CEDA82-2E05-4903-A2F0-43F5C7E0EDF1} = {9662F0D0-7A4A-4848-A2F7-D2E4785B0006}
 		{9D6B951C-861B-4657-8DD8-9CF1654E4610} = {9662F0D0-7A4A-4848-A2F7-D2E4785B0006}
 		{6ED153DB-1DF0-4505-9957-095C4250D36B} = {9662F0D0-7A4A-4848-A2F7-D2E4785B0006}
+		{02528608-1427-4CDD-B938-F9FD794B6D3C} = {2E2B3D51-163A-4A54-A746-FC327735C564}
 	EndGlobalSection
 EndGlobal

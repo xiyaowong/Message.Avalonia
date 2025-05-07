@@ -31,7 +31,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\Message.Avalonia\Message.Avalonia.csproj"/>
+        <ProjectReference Include="..\..\src\Message.Avalonia\Message.Avalonia.csproj"/>
     </ItemGroup>
 
 </Project>
