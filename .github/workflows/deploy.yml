@@ -1,8 +1,8 @@
 name: Deploy to GitHub Pages
 
 env:
-  PROJECT_PATH: Demo/Message.Avalonia.Demo.Web/Message.Avalonia.Demo.Web.csproj
-  OUTPUT_PATH: Demo/Message.Avalonia.Demo.Web/bin/Release/net8.0-browser/publish/wwwroot
+  PROJECT_PATH: Demo/Message.Avalonia.Demo.Browser/Message.Avalonia.Demo.Browser.csproj
+  OUTPUT_PATH: Demo/Message.Avalonia.Demo.Browser/bin/Release/net9.0-browser/publish/wwwroot
 on:
   workflow_dispatch:
 
@@ -13,7 +13,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4.1.1
 
-      - name: Setup .NET 9
+      - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 9.0.x
@@ -36,7 +36,6 @@ jobs:
       - name: Commit wwwroot to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4.5.0
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: gh-pages
           folder: ${{ env.OUTPUT_PATH }}
           single-commit: true

@@ -1,9 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFrameworks>netstandard2.1;net8.0</TargetFrameworks>
+        <TargetFrameworks>netstandard2.1;net9.0</TargetFrameworks>
         <Nullable>enable</Nullable>
-        <AvaloniaVersion>11.2.8</AvaloniaVersion>
         <Version>$(AvaloniaVersion)</Version>
         <FileVersion>$(AvaloniaVersion)</FileVersion>
         <AssemblyVersion>$(AvaloniaVersion)</AssemblyVersion>
@@ -24,7 +23,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Avalonia"/>
+        <PackageReference Include="Avalonia" />
     </ItemGroup>
 
     <ItemGroup>

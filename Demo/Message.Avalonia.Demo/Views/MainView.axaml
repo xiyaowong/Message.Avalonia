@@ -124,6 +124,7 @@
                                          FontFamily="Cascadia Code,Consolas,Menlo,Monospace"
                                          IsReadOnly="True"
                                          ShowLineNumbers="True">
+
                     <AvaloniaEdit:TextEditor.ContextFlyout>
                         <MenuFlyout>
                             <MenuItem Command="{Binding CopyCodeCommand}"

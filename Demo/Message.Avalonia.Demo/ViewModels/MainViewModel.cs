@@ -1,5 +1,7 @@
-﻿using System.Reactive;
+﻿using System;
 using System.Reflection;
+using System.Threading;
+using System.Threading.Tasks;
 using Avalonia.Controls;
 using Avalonia.Media;
 using Avalonia.Media.Imaging;
@@ -7,53 +9,30 @@ using Avalonia.Platform;
 using AvaloniaEdit;
 using AvaloniaEdit.Document;
 using AvaloniaEdit.Editing;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using Message.Avalonia.Demo.Controls;
 using Message.Avalonia.Models;
-using ReactiveUI;
 
 namespace Message.Avalonia.Demo.ViewModels;
 
-public class MainViewModel : ViewModelBase
+public partial class MainViewModel : ViewModelBase
 {
     private readonly MessageManager messageManager = new() { Duration = TimeSpan.FromSeconds(3) };
     private readonly MessageManager anotherManager = new() { Duration = TimeSpan.FromSeconds(3), HostId = "Another" };
 
-    private TextDocument SourceDocument { get; } = new();
+    [ObservableProperty]
+    private TextDocument _sourceDocument = new();
 
     public string Code
     {
         set => SourceDocument.Text = value;
     }
 
-    public ReactiveCommand<TextArea, Unit> CopyCodeCommand { get; }
-    public ReactiveCommand<string, Unit> TestTypeCommand { get; }
-    public ReactiveCommand<Unit, Unit> YesOrNoCommand { get; }
-    public ReactiveCommand<Unit, Unit> CustomActionStyleCommand { get; }
-    public ReactiveCommand<Unit, Unit> ChooseColorCommand { get; }
-    public ReactiveCommand<Unit, Unit> ShowLoginCardCommand { get; }
-    public ReactiveCommand<Unit, Unit> BuilderDefaultManagerCommand { get; }
-    public ReactiveCommand<Unit, Unit> BuilderHelloCommand { get; }
-    public ReactiveCommand<Unit, Unit> BuilderImageCommand { get; }
-    public ReactiveCommand<Unit, Unit> ExitApplicationCommand { get; }
-    public ReactiveCommand<Unit, Unit> DownloadProgressCommand { get; }
-    public ReactiveCommand<Unit, Unit> CancelableProgressCommand { get; }
+    [RelayCommand]
+    private static void CopyCode(TextArea textArea) => ApplicationCommands.Copy.Execute(null, textArea);
 
-    public MainViewModel()
-    {
-        TestTypeCommand = ReactiveCommand.Create<string>(TestType);
-        CopyCodeCommand = ReactiveCommand.Create<TextArea>(area => ApplicationCommands.Copy.Execute(null, area));
-        YesOrNoCommand = ReactiveCommand.Create(YesOrNo);
-        ShowLoginCardCommand = ReactiveCommand.Create(ShowLoginCard);
-        CustomActionStyleCommand = ReactiveCommand.Create(CustomActionStyle);
-        ChooseColorCommand = ReactiveCommand.Create(ChooseColor);
-        BuilderDefaultManagerCommand = ReactiveCommand.Create(BuilderDefaultManager);
-        BuilderHelloCommand = ReactiveCommand.Create(BuilderHello);
-        BuilderImageCommand = ReactiveCommand.Create(BuilderImage);
-        ExitApplicationCommand = ReactiveCommand.Create(ExitApplication);
-        DownloadProgressCommand = ReactiveCommand.Create(DownloadProgress);
-        CancelableProgressCommand = ReactiveCommand.Create(CancelableProgress);
-    }
-
+    [RelayCommand]
     private void BuilderDefaultManager()
     {
         MessageManager.Default.CreateMessage().WithDuration(3).WithMessage("Hello").ShowInfo();
@@ -64,6 +43,7 @@ public class MainViewModel : ViewModelBase
             """;
     }
 
+    [RelayCommand]
     private void BuilderHello()
     {
         messageManager.CreateMessage().WithMessage("Hello").ShowInfo();
@@ -72,6 +52,7 @@ public class MainViewModel : ViewModelBase
             """;
     }
 
+    [RelayCommand]
     private void BuilderImage()
     {
         messageManager
@@ -110,8 +91,28 @@ public class MainViewModel : ViewModelBase
             """;
     }
 
-    private async void ChooseColor()
+    [RelayCommand]
+    private async Task ChooseColor()
     {
+        Code = """
+            // These classes are defined in App.axaml
+            var action = await messageManager.ShowInformationMessage(
+                "Please choose a color:",
+                new MessageAction("Red", ["red"]),
+                new MessageAction("Green", ["green"]),
+                new MessageAction("Blue", ["blue"])
+            );
+            var color = action?.Title;
+            if (color == null)
+                return;
+
+            anotherManager
+                .CreateMessage()
+                .HideIcon()
+                .WithContent(new TextBlock { Text = $"OK, {color}.", Foreground = new SolidColorBrush(Color.Parse(color)) })
+                .ShowInfo();
+            """;
+
         // These classes are defined in App.axaml
         var action = await messageManager.ShowInformationMessage(
             "Please choose a color:",
@@ -130,6 +131,7 @@ public class MainViewModel : ViewModelBase
             .ShowInfo();
     }
 
+    [RelayCommand]
     private void YesOrNo()
     {
         messageManager
@@ -160,6 +162,7 @@ public class MainViewModel : ViewModelBase
             """;
     }
 
+    [RelayCommand]
     private void CustomActionStyle()
     {
         // The default one doesn't have duration and auto close
@@ -206,6 +209,7 @@ public class MainViewModel : ViewModelBase
             """;
     }
 
+    [RelayCommand]
     private void ExitApplication()
     {
         messageManager.ShowWarningMessage(
@@ -222,6 +226,7 @@ public class MainViewModel : ViewModelBase
             """;
     }
 
+    [RelayCommand]
     private void TestType(string type)
     {
         switch (type)
@@ -311,6 +316,7 @@ public class MainViewModel : ViewModelBase
         }
     }
 
+    [RelayCommand]
     private void ShowLoginCard()
     {
         var msg = MessageManager.Default.CreateMessage();
@@ -375,6 +381,7 @@ public class MainViewModel : ViewModelBase
             """";
     }
 
+    [RelayCommand]
     private void DownloadProgress()
     {
         messageManager
@@ -421,6 +428,7 @@ public class MainViewModel : ViewModelBase
             """;
     }
 
+    [RelayCommand]
     private void CancelableProgress()
     {
         messageManager
