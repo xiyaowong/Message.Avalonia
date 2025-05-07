@@ -1,14 +1,16 @@
-<Window xmlns="https://github.com/avaloniaui"
+﻿<Window x:Class="Message.Avalonia.Demo.Views.MainWindow"
+        xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="1200" d:DesignHeight="900"
-        x:Class="Message.Avalonia.Demo.Views.MainWindow"
+        xmlns:views="clr-namespace:Message.Avalonia.Demo.Views"
+        Title="Message.Avalonia.Demo"
         Width="1200"
         Height="900"
+        d:DesignHeight="900"
+        d:DesignWidth="1200"
         CanResize="False"
         WindowStartupLocation="CenterScreen"
-        xmlns:views="clr-namespace:Message.Avalonia.Demo.Views"
-        Title="Message.Avalonia.Demo">
+        mc:Ignorable="d">
     <views:MainView />
 </Window>

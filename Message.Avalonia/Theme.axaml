@@ -1,5 +1,5 @@
-<Styles xmlns="https://github.com/avaloniaui"
-        x:Class="Message.Avalonia.Theme"
+﻿<Styles x:Class="Message.Avalonia.Theme"
+        xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Styles.Resources>
         <ResourceDictionary>
