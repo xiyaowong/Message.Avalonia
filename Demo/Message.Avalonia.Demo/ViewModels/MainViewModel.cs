@@ -63,7 +63,9 @@ public partial class MainViewModel : ViewModelBase
                 {
                     Source = new Bitmap(
                         AssetLoader.Open(
-                            new Uri($"avares://{Assembly.GetExecutingAssembly().FullName}/Assets/avalonia-logo.ico")
+                            new Uri(
+                                $"avares://{Assembly.GetExecutingAssembly().GetName().Name}/Assets/avalonia-logo.ico"
+                            )
                         )
                     ),
                     Width = 128,
@@ -80,7 +82,9 @@ public partial class MainViewModel : ViewModelBase
                     {
                         Source = new Bitmap(
                             AssetLoader.Open(
-                                new Uri($"avares://{Assembly.GetExecutingAssembly().FullName}/Assets/avalonia-logo.ico")
+                                new Uri(
+                                    $"avares://{Assembly.GetExecutingAssembly().GetName().Name}/Assets/avalonia-logo.ico"
+                                )
                             )
                         ),
                         Width = 128,

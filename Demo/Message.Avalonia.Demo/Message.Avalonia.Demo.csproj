@@ -11,10 +11,6 @@
     </ItemGroup>
 
     <ItemGroup>
-        <TrimmerRootDescriptor Include="TrimmerRoots.xml"/>
-    </ItemGroup>
-
-    <ItemGroup>
         <PackageReference Include="Avalonia"/>
         <PackageReference Include="Avalonia.AvaloniaEdit"/>
         <PackageReference Include="Avalonia.Themes.Fluent"/>

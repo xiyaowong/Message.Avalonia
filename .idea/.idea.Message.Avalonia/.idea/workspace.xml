@@ -11,37 +11,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="116b2919-11cd-4b6f-828e-2e21b3a036ac" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Directory.Packages.Props" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/nuget.config" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.github/workflows/deploy.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/deploy.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Message.Avalonia/.idea/avalonia.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Message.Avalonia/.idea/avalonia.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Message.Avalonia/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Message.Avalonia/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Demo/Message.Avalonia.Demo/Message.Avalonia.Demo.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/Message.Avalonia.Demo/Message.Avalonia.Demo.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Directory.Packages.props" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Message.Avalonia.sln" beforeDir="false" afterPath="$PROJECT_DIR$/Message.Avalonia.sln" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Message.Avalonia/Message.Avalonia.csproj" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Message.Avalonia/MessageBuilder.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Message.Avalonia/MessageManager.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Message.Avalonia/MessageManager.error.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Message.Avalonia/MessageManager.information.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Message.Avalonia/MessageManager.success.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Message.Avalonia/MessageManager.warning.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Message.Avalonia/Models/MessageAction.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Message.Avalonia/Models/MessageOptions.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Message.Avalonia/Models/MessagePosition.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Message.Avalonia/Models/MessageProgress.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Message.Avalonia/Models/MessageType.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Message.Avalonia/ProgressMessageBuilder.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Message.Avalonia/Properties/AssemblyInfo.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Message.Avalonia/Theme.axaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Message.Avalonia/Theme.axaml.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Message.Avalonia/UI/Host/MessageHost.axaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Message.Avalonia/UI/Host/MessageHost.axaml.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Message.Avalonia/UI/MessageItem.axaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Message.Avalonia/UI/MessageItem.axaml.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-    </list>
+    <list default="true" id="116b2919-11cd-4b6f-828e-2e21b3a036ac" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -119,6 +89,7 @@
     &quot;.NET Launch Settings Profile.Message.Avalonia.Demo.Web: Message.Avalonia.Demo.Web.Browser.executor&quot;: &quot;Run&quot;,
     &quot;.NET Project.Message.Avalonia.Demo.Desktop.executor&quot;: &quot;Run&quot;,
     &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Publish to folder.Publish Message.Avalonia.Demo.Desktop to folder.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
@@ -131,7 +102,11 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected=".NET Project.Message.Avalonia.Demo.Desktop">
+  <component name="RunManager" selected="Publish to folder.Publish Message.Avalonia.Demo.Desktop to folder">
+    <configuration name="Publish Message.Avalonia.Demo.Desktop to folder" type="DotNetFolderPublish" factoryName="Publish to folder">
+      <riderPublish configuration="Release" delete_existing_files="true" platform="Any CPU" ready_to_run="true" runtime="win-x64" target_folder="$PROJECT_DIR$/demo/Message.Avalonia.Demo.Desktop/bin/Release/net9.0/win-x64/publish" target_framework="net9.0" uuid_high="-7103420037505268137" uuid_low="-8225652158791530992" />
+      <method v="2" />
+    </configuration>
     <configuration name="Message.Avalonia.Demo.Browser" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
       <option name="PROGRAM_PARAMETERS" value="" />
@@ -156,7 +131,7 @@
       </method>
     </configuration>
     <configuration name="Message.Avalonia.Demo.Desktop" type="DotNetProject" factoryName=".NET Project">
-      <option name="EXE_PATH" value="$PROJECT_DIR$/demo/Message.Avalonia.Demo.Desktop/bin/Debug/net9.0/Message.Avalonia.Demo.Desktop.dll" />
+      <option name="EXE_PATH" value="$PROJECT_DIR$/demo/Message.Avalonia.Demo.Desktop/bin/Debug/net9.0/Message.Avalonia.Demo.Desktop.exe" />
       <option name="PROGRAM_PARAMETERS" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/demo/Message.Avalonia.Demo.Desktop/bin/Debug/net9.0" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -172,7 +147,7 @@
       <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
       <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
       <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
-      <option name="PROJECT_KIND" value="StaticMethod" />
+      <option name="PROJECT_KIND" value="DotNetCore" />
       <option name="PROJECT_TFM" value="net9.0" />
       <method v="2">
         <option name="Build" />
@@ -223,6 +198,14 @@
         <option name="Build" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue=".NET Launch Settings Profile.Message.Avalonia.Demo.Browser" />
+      <item itemvalue=".NET Launch Settings Profile.Message.Avalonia.Demo.Web: BrowserTest.Browser" />
+      <item itemvalue=".NET Launch Settings Profile.Message.Avalonia.Demo.Web: Message.Avalonia.Demo.Web.Browser" />
+      <item itemvalue=".NET Project.Message.Avalonia.Demo.Browser" />
+      <item itemvalue=".NET Project.Message.Avalonia.Demo.Desktop" />
+      <item itemvalue="Publish to folder.Publish Message.Avalonia.Demo.Desktop to folder" />
+    </list>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -239,7 +222,8 @@
       <workItem from="1746589915195" duration="226000" />
       <workItem from="1746596177212" duration="2666000" />
       <workItem from="1746599349944" duration="632000" />
-      <workItem from="1746615984688" duration="3555000" />
+      <workItem from="1746615984688" duration="3824000" />
+      <workItem from="1746670943890" duration="4525000" />
     </task>
     <task id="LOCAL-00001" summary="Deploy Web">
       <option name="closed" value="true" />
@@ -313,7 +297,15 @@
       <option name="project" value="LOCAL" />
       <updated>1746499500046</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="prepare for publishing">
+      <option name="closed" value="true" />
+      <created>1746619626738</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1746619626738</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -341,7 +333,8 @@
     <MESSAGE value="feat: support automatically create and install the default host from the application toplevel&#10;&#10;Resolve #4" />
     <MESSAGE value="Optimize the list movement animation when a new message is added" />
     <MESSAGE value="Use `UIThread.Post` to Close the message before invoking actions" />
-    <option name="LAST_COMMIT_MESSAGE" value="Use `UIThread.Post` to Close the message before invoking actions" />
+    <MESSAGE value="prepare for publishing" />
+    <option name="LAST_COMMIT_MESSAGE" value="prepare for publishing" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">

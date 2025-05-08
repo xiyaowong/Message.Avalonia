@@ -1,4 +1,5 @@
 <linker>
   <assembly fullname="Message.Avalonia.Demo" preserve="All" />
+  <assembly fullname="Message.Avalonia.Demo.Desktop" preserve="All" />
 </linker>
 

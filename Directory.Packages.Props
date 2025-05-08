@@ -21,5 +21,7 @@
         <PackageVersion Include="TextMateSharp.Grammars" Version="1.0.66"/>
 
         <PackageVersion Include="FluentAvaloniaUI" Version="2.3.0"/>
+
+        <PackageVersion Include="PublishAotCompressed" Version="1.0.5"/>
     </ItemGroup>
 </Project>
