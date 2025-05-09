@@ -93,6 +93,9 @@ public class MessageHost : TemplatedControl
             _durationTimer.Enabled = MessageItems.Any();
         };
         msg.UpdatePosition(Position);
+        // Cancel the expand animation when there is no previous message
+        msg.Expanded = _items.Count == 0;
+
         _items.Add(msg);
         _durationTimer.Enabled = MessageItems.Any();
     }

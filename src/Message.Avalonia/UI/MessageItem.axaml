@@ -205,8 +205,9 @@
 
 
         <!--  // Animations //  -->
-        <Style Selector="^">
-            <Setter Property="Opacity" Value="0" />
+        <Setter Property="Opacity" Value="0" />
+
+        <Style Selector="^[Expanded=False]">
             <Style.Animations>
                 <Animation Easing="QuadraticEaseIn"
                            FillMode="Forward"
@@ -216,10 +217,15 @@
                     </KeyFrame>
                     <KeyFrame Cue="100%">
                         <Setter Property="MaxHeight" Value="{StaticResource MessageMaxHeight}" />
+                        <Setter Property="Expanded" Value="True" />
                     </KeyFrame>
                 </Animation>
-                <Animation Delay="0:0:0.2"
-                           Easing="QuadraticEaseIn"
+            </Style.Animations>
+        </Style>
+
+        <Style Selector="^[Expanded=True]">
+            <Style.Animations>
+                <Animation Easing="QuadraticEaseIn"
                            FillMode="Forward"
                            Duration="0:0:0.3">
                     <KeyFrame Cue="0%">
@@ -232,8 +238,7 @@
             </Style.Animations>
             <Style Selector="^:top-left">
                 <Style.Animations>
-                    <Animation Delay="0:0:0.2"
-                               Easing="QuadraticEaseIn"
+                    <Animation Easing="QuadraticEaseIn"
                                FillMode="Forward"
                                Duration="0:0:0.3">
                         <KeyFrame Cue="0%" KeySpline="0.62,0.63,0,1.12">
@@ -247,8 +252,7 @@
             </Style>
             <Style Selector="^:top-right">
                 <Style.Animations>
-                    <Animation Delay="0:0:0.2"
-                               Easing="QuadraticEaseIn"
+                    <Animation Easing="QuadraticEaseIn"
                                FillMode="Forward"
                                Duration="0:0:0.3">
                         <KeyFrame Cue="0%" KeySpline="0.62,0.63,0,1.12">
@@ -262,8 +266,7 @@
             </Style>
             <Style Selector="^:bottom-left">
                 <Style.Animations>
-                    <Animation Delay="0:0:0.2"
-                               Easing="QuadraticEaseIn"
+                    <Animation Easing="QuadraticEaseIn"
                                FillMode="Forward"
                                Duration="0:0:0.3">
                         <KeyFrame Cue="0%" KeySpline="0.62,0.63,0,1.12">
@@ -277,8 +280,7 @@
             </Style>
             <Style Selector="^:bottom-right">
                 <Style.Animations>
-                    <Animation Delay="0:0:0.2"
-                               Easing="QuadraticEaseIn"
+                    <Animation Easing="QuadraticEaseIn"
                                FillMode="Forward"
                                Duration="0:0:0.3">
                         <KeyFrame Cue="0%" KeySpline="0.62,0.63,0,1.12">
@@ -292,8 +294,7 @@
             </Style>
             <Style Selector="^:top-center">
                 <Style.Animations>
-                    <Animation Delay="0:0:0.2"
-                               Easing="QuadraticEaseIn"
+                    <Animation Easing="QuadraticEaseIn"
                                FillMode="Forward"
                                Duration="0:0:0.3">
                         <KeyFrame Cue="0%" KeySpline="0.62,0.63,0,1.12">
@@ -307,8 +308,7 @@
             </Style>
             <Style Selector="^:bottom-center">
                 <Style.Animations>
-                    <Animation Delay="0:0:0.2"
-                               Easing="QuadraticEaseIn"
+                    <Animation Easing="QuadraticEaseIn"
                                FillMode="Forward"
                                Duration="0:0:0.3">
                         <KeyFrame Cue="0%" KeySpline="0.62,0.63,0,1.12">
@@ -334,6 +334,17 @@
                         <Setter Property="Opacity" Value="0" />
                     </KeyFrame>
                 </Animation>
+                <Animation Delay="0:0:0.3"
+                           Easing="QuadraticEaseOut"
+                           FillMode="Forward"
+                           Duration="0:0:0.2">
+                    <KeyFrame Cue="0%">
+                        <Setter Property="MaxHeight" Value="{StaticResource MessageMaxHeight}" />
+                    </KeyFrame>
+                    <KeyFrame Cue="100%">
+                        <Setter Property="MaxHeight" Value="0" />
+                    </KeyFrame>
+                </Animation>
             </Style.Animations>
             <Style Selector="^:top-left">
                 <Style.Animations>
@@ -423,17 +434,6 @@
 
         <Style Selector="^[IsClosing=true]">
             <Style.Animations>
-                <Animation Delay="0:0:0.3"
-                           Easing="QuadraticEaseOut"
-                           FillMode="Forward"
-                           Duration="0:0:0.2">
-                    <KeyFrame Cue="0%">
-                        <Setter Property="MaxHeight" Value="{StaticResource MessageMaxHeight}" />
-                    </KeyFrame>
-                    <KeyFrame Cue="100%">
-                        <Setter Property="MaxHeight" Value="0" />
-                    </KeyFrame>
-                </Animation>
                 <Animation Easing="QuadraticEaseOut"
                            FillMode="Forward"
                            Duration="0:0:0.5">

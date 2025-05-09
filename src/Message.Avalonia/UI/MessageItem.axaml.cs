@@ -205,6 +205,15 @@ public class MessageItem : ContentControl
         set => SetValue(ProgressValueProperty, value);
     }
 
+    public static readonly StyledProperty<bool> ExpandedProperty = AvaloniaProperty.Register<MessageItem, bool>(
+        nameof(Expanded));
+
+    public bool Expanded
+    {
+        get => GetValue(ExpandedProperty);
+        set => SetValue(ExpandedProperty, value);
+    }
+
     #endregion
 
 

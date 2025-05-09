@@ -11,7 +11,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="116b2919-11cd-4b6f-828e-2e21b3a036ac" name="Changes" comment="" />
+    <list default="true" id="116b2919-11cd-4b6f-828e-2e21b3a036ac" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/src/Message.Avalonia/UI/Host/MessageHost.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Message.Avalonia/UI/Host/MessageHost.axaml.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -70,9 +72,9 @@
     </option>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock://C:/Users/wongxy/code/Message.Avalonia/Demo/Message.Avalonia.Demo.Web/Properties/launchSettings.json" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/wongxy/code/Message.Avalonia/Demo/Message.Avalonia.Demo.Web/Properties/launchSettings.json" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/wongxy/code/Message.Avalonia/Demo/Message.Avalonia.Demo/Controls/LoginCard.axaml.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/wongxy/code/Message.Avalonia/src/Message.Avalonia/UI/Host/MessageHost.axaml.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/wongxy/code/Message.Avalonia/src/Message.Avalonia/UI/MessageItem.axaml" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/wongxy/code/Message.Avalonia/src/Message.Avalonia/UI/MessageItem.axaml.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
@@ -84,25 +86,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;.NET Launch Settings Profile.Message.Avalonia.Demo.Web: Message.Avalonia.Demo.Web.Browser.executor&quot;: &quot;Run&quot;,
-    &quot;.NET Project.Message.Avalonia.Demo.Desktop.executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;Publish to folder.Publish Message.Avalonia.Demo.Desktop to folder.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    ".NET Launch Settings Profile.Message.Avalonia.Demo.Web: Message.Avalonia.Demo.Web.Browser.executor": "Run",
+    ".NET Project.Message.Avalonia.Demo.Desktop.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Publish to folder.Publish Message.Avalonia.Demo.Desktop to folder.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "wrap.settings",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
-  <component name="RunManager" selected="Publish to folder.Publish Message.Avalonia.Demo.Desktop to folder">
+}]]></component>
+  <component name="RunManager" selected=".NET Project.Message.Avalonia.Demo.Desktop">
     <configuration name="Publish Message.Avalonia.Demo.Desktop to folder" type="DotNetFolderPublish" factoryName="Publish to folder">
       <riderPublish configuration="Release" delete_existing_files="true" platform="Any CPU" ready_to_run="true" runtime="win-x64" target_folder="$PROJECT_DIR$/demo/Message.Avalonia.Demo.Desktop/bin/Release/net9.0/win-x64/publish" target_framework="net9.0" uuid_high="-7103420037505268137" uuid_low="-8225652158791530992" />
       <method v="2" />
@@ -224,6 +226,10 @@
       <workItem from="1746599349944" duration="632000" />
       <workItem from="1746615984688" duration="3824000" />
       <workItem from="1746670943890" duration="4525000" />
+      <workItem from="1746760699923" duration="152000" />
+      <workItem from="1746771413189" duration="330000" />
+      <workItem from="1746772002070" duration="2258000" />
+      <workItem from="1746774337471" duration="712000" />
     </task>
     <task id="LOCAL-00001" summary="Deploy Web">
       <option name="closed" value="true" />
@@ -305,7 +311,15 @@
       <option name="project" value="LOCAL" />
       <updated>1746619626738</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="feat: cancel expand animation when no previous message">
+      <option name="closed" value="true" />
+      <created>1746775001836</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1746775001836</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -334,7 +348,8 @@
     <MESSAGE value="Optimize the list movement animation when a new message is added" />
     <MESSAGE value="Use `UIThread.Post` to Close the message before invoking actions" />
     <MESSAGE value="prepare for publishing" />
-    <option name="LAST_COMMIT_MESSAGE" value="prepare for publishing" />
+    <MESSAGE value="feat: cancel expand animation when no previous message" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: cancel expand animation when no previous message" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -354,5 +369,9 @@
         </breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
