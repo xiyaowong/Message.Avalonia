@@ -119,7 +119,7 @@
                                                   Height="8"
                                                   HorizontalAlignment="Center"
                                                   VerticalAlignment="Center"
-                                                  Data="{DynamicResource Message_close_icon}" />
+                                                  Data="{DynamicResource message_close_icon}" />
                                     </Button>
                                 </Panel>
                             </Grid>
@@ -141,7 +141,7 @@
                                 <PathIcon Name="PART_CloseButtonIcon"
                                           Width="8"
                                           Height="8"
-                                          Data="{DynamicResource Message_close_icon}" />
+                                          Data="{DynamicResource message_close_icon}" />
                             </Button>
                         </Panel>
                     </Border>

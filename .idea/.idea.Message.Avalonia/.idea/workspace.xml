@@ -12,9 +12,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="116b2919-11cd-4b6f-828e-2e21b3a036ac" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Message.Avalonia/.idea/avalonia.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Message.Avalonia/.idea/avalonia.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Message.Avalonia/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Message.Avalonia/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Message.Avalonia.sln" beforeDir="false" afterPath="$PROJECT_DIR$/Message.Avalonia.sln" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Directory.Build.props" beforeDir="false" afterPath="$PROJECT_DIR$/src/Directory.Build.props" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -236,7 +235,7 @@
       <workItem from="1746760699923" duration="152000" />
       <workItem from="1746771413189" duration="330000" />
       <workItem from="1746772002070" duration="2258000" />
-      <workItem from="1746774337471" duration="2937000" />
+      <workItem from="1746774337471" duration="3186000" />
     </task>
     <task id="LOCAL-00001" summary="Deploy Web">
       <option name="closed" value="true" />
@@ -342,7 +341,15 @@
       <option name="project" value="LOCAL" />
       <updated>1746776121281</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="build: update project metadata">
+      <option name="closed" value="true" />
+      <created>1746777319634</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1746777319634</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -374,7 +381,8 @@
     <MESSAGE value="feat: cancel expand animation when no previous message" />
     <MESSAGE value="feat: cancel the expand animation when there is no previous message" />
     <MESSAGE value="feat: Add ScrollViewer as the container" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: Add ScrollViewer as the container" />
+    <MESSAGE value="build: update project metadata" />
+    <option name="LAST_COMMIT_MESSAGE" value="build: update project metadata" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
