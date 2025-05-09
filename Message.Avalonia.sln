@@ -21,6 +21,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Message.Avalonia.Demo.Browser", "demo\Message.Avalonia.Demo.Browser\Message.Avalonia.Demo.Browser.csproj", "{6ED153DB-1DF0-4505-9957-095C4250D36B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{2E2B3D51-163A-4A54-A746-FC327735C564}"
+	ProjectSection(SolutionItems) = preProject
+		src\Directory.Build.props = src\Directory.Build.props
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
