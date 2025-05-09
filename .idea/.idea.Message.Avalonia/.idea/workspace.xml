@@ -12,8 +12,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="116b2919-11cd-4b6f-828e-2e21b3a036ac" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Demo/Message.Avalonia.Demo.Desktop/native/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Demo/Message.Avalonia.Demo.Desktop/native/readme.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Message.Avalonia/.idea/avalonia.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Message.Avalonia/.idea/avalonia.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Message.Avalonia/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Message.Avalonia/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/Message.Avalonia.Demo.Desktop/Message.Avalonia.Demo.Desktop.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/Message.Avalonia.Demo.Desktop/Message.Avalonia.Demo.Desktop.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/Message.Avalonia.Demo.Desktop/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/Message.Avalonia.Demo.Desktop/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/publish-win.ps1" beforeDir="false" afterPath="$PROJECT_DIR$/publish-win.ps1" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,11 +81,7 @@
     </option>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock://C:/Users/wongxy/code/Message.Avalonia/src/Message.Avalonia/UI/Host/MessageHost.axaml" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/wongxy/code/Message.Avalonia/src/Message.Avalonia/UI/Host/MessageHost.axaml.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/wongxy/code/Message.Avalonia/src/Message.Avalonia/UI/Host/MessageHost.axaml.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/wongxy/code/Message.Avalonia/src/Message.Avalonia/UI/MessageItem.axaml" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/wongxy/code/Message.Avalonia/src/Message.Avalonia/UI/MessageItem.axaml.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/wongxy/code/Message.Avalonia/Demo/Message.Avalonia.Demo.Desktop/Program.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
@@ -95,12 +96,12 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     ".NET Launch Settings Profile.Message.Avalonia.Demo.Web: Message.Avalonia.Demo.Web.Browser.executor": "Run",
-    ".NET Project.Message.Avalonia.Demo.Desktop.executor": "Run",
+    ".NET Project.Message.Avalonia.Demo.Desktop.executor": "Debug",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "Publish to folder.Publish Message.Avalonia.Demo.Desktop to folder.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "aot-static-link",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -235,7 +236,8 @@
       <workItem from="1746760699923" duration="152000" />
       <workItem from="1746771413189" duration="330000" />
       <workItem from="1746772002070" duration="2258000" />
-      <workItem from="1746774337471" duration="3186000" />
+      <workItem from="1746774337471" duration="8211000" />
+      <workItem from="1746789760557" duration="2632000" />
     </task>
     <task id="LOCAL-00001" summary="Deploy Web">
       <option name="closed" value="true" />
@@ -349,7 +351,15 @@
       <option name="project" value="LOCAL" />
       <updated>1746777319634</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="chore: Message_close_icon -&gt; message_close_icon">
+      <option name="closed" value="true" />
+      <created>1746777635807</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1746777635807</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -382,7 +392,8 @@
     <MESSAGE value="feat: cancel the expand animation when there is no previous message" />
     <MESSAGE value="feat: Add ScrollViewer as the container" />
     <MESSAGE value="build: update project metadata" />
-    <option name="LAST_COMMIT_MESSAGE" value="build: update project metadata" />
+    <MESSAGE value="chore: Message_close_icon -&gt; message_close_icon" />
+    <option name="LAST_COMMIT_MESSAGE" value="chore: Message_close_icon -&gt; message_close_icon" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">

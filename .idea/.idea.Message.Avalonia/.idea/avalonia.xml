@@ -3,10 +3,10 @@
   <component name="AvaloniaProject">
     <option name="projectPerEditor">
       <map>
-        <entry key="Demo/Message.Avalonia.Demo/App.axaml" value="Demo/Message.Avalonia.Demo.Desktop/Message.Avalonia.Demo.Desktop.csproj" />
+        <entry key="Demo/Message.Avalonia.Demo/App.axaml" value="demo/Message.Avalonia.Demo.Desktop/Message.Avalonia.Demo.Desktop.csproj" />
         <entry key="Demo/Message.Avalonia.Demo/Controls/LoginCard.axaml" value="Demo/Message.Avalonia.Demo.Desktop/Message.Avalonia.Demo.Desktop.csproj" />
-        <entry key="Demo/Message.Avalonia.Demo/Views/MainView.axaml" value="Demo/Message.Avalonia.Demo.Desktop/Message.Avalonia.Demo.Desktop.csproj" />
-        <entry key="Demo/Message.Avalonia.Demo/Views/MainWindow.axaml" value="Demo/Message.Avalonia.Demo.Desktop/Message.Avalonia.Demo.Desktop.csproj" />
+        <entry key="Demo/Message.Avalonia.Demo/Views/MainView.axaml" value="demo/Message.Avalonia.Demo.Desktop/Message.Avalonia.Demo.Desktop.csproj" />
+        <entry key="Demo/Message.Avalonia.Demo/Views/MainWindow.axaml" value="demo/Message.Avalonia.Demo.Desktop/Message.Avalonia.Demo.Desktop.csproj" />
         <entry key="Message.Avalonia/UI/Host/MessageHost.axaml" value="Demo/Message.Avalonia.Demo.Desktop/Message.Avalonia.Demo.Desktop.csproj" />
         <entry key="Message.Avalonia/UI/MessageItem.axaml" value="Demo/Message.Avalonia.Demo.Desktop/Message.Avalonia.Demo.Desktop.csproj" />
         <entry key="demo/Message.Avalonia.Demo/App.axaml" value="demo/Message.Avalonia.Demo.Browser/Message.Avalonia.Demo.Browser.csproj" />

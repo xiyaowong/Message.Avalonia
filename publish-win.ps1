@@ -11,3 +11,8 @@ dotnet publish $project -r win-x64 -c Release
 
 Write-Host "3. Remove debug files"
 Remove-Item (Join-Path $folderPath "*.pdb") -Force -ErrorAction SilentlyContinue
+
+Write-Host "4. Remove unused DLLs"
+Remove-Item (Join-Path $folderPath "libHarfBuzzSharp.dll") -Force -ErrorAction SilentlyContinue
+Remove-Item (Join-Path $folderPath "libSkiaSharp.dll") -Force -ErrorAction SilentlyContinue
+Remove-Item (Join-Path $folderPath "av_libglesv2.dll") -Force -ErrorAction SilentlyContinue
