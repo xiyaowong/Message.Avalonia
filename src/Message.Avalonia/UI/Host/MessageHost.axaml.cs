@@ -55,10 +55,11 @@ public class MessageHost : TemplatedControl
 
     #endregion
 
-    private readonly IList<MessageItem> _pendingItems = [];
+    private ReversibleStackPanel? _itemsPanel;
+    private ScrollViewer? _container;
 
-    private Panel? _itemsPanel;
     private IList? _items => _itemsPanel?.Children;
+    private readonly IList<MessageItem> _pendingItems = [];
 
     private IEnumerable<MessageItem> MessageItems => _items != null ? _items.OfType<MessageItem>() : [];
 
@@ -107,7 +108,8 @@ public class MessageHost : TemplatedControl
 
         HostList.Insert(0, new WeakReference<MessageHost>(this));
 
-        _itemsPanel = e.NameScope.Find<Panel>("PART_Items");
+        _itemsPanel = e.NameScope.Find<ReversibleStackPanel>("PART_Items");
+        _container = e.NameScope.Find<ScrollViewer>("PART_Container");
 
         _pendingItems.ToList().ForEach(AddMessage);
 
@@ -124,35 +126,40 @@ public class MessageHost : TemplatedControl
 
     private void OnPositionChanged(MessagePosition position)
     {
-        if (_itemsPanel == null)
-            return;
+        if (_container != null)
+        {
+            _container.HorizontalAlignment = position switch
+            {
+                MessagePosition.BottomRight => HorizontalAlignment.Right,
+                MessagePosition.BottomCenter => HorizontalAlignment.Center,
+                MessagePosition.BottomLeft => HorizontalAlignment.Left,
+                MessagePosition.TopRight => HorizontalAlignment.Right,
+                MessagePosition.TopCenter => HorizontalAlignment.Center,
+                MessagePosition.TopLeft => HorizontalAlignment.Left,
+                MessagePosition.CenterCenter => HorizontalAlignment.Center,
+                _ => throw new ArgumentOutOfRangeException(nameof(position)),
+            };
+            _container.VerticalAlignment = position switch
+            {
+                MessagePosition.BottomRight => VerticalAlignment.Bottom,
+                MessagePosition.BottomCenter => VerticalAlignment.Bottom,
+                MessagePosition.BottomLeft => VerticalAlignment.Bottom,
+                MessagePosition.TopRight => VerticalAlignment.Top,
+                MessagePosition.TopCenter => VerticalAlignment.Top,
+                MessagePosition.TopLeft => VerticalAlignment.Top,
+                MessagePosition.CenterCenter => VerticalAlignment.Center,
+                _ => throw new ArgumentOutOfRangeException(nameof(position)),
+            };
+        }
 
-        _itemsPanel.HorizontalAlignment = position switch
+        if (_itemsPanel != null)
         {
-            MessagePosition.BottomRight => HorizontalAlignment.Right,
-            MessagePosition.BottomCenter => HorizontalAlignment.Center,
-            MessagePosition.BottomLeft => HorizontalAlignment.Left,
-            MessagePosition.TopRight => HorizontalAlignment.Right,
-            MessagePosition.TopCenter => HorizontalAlignment.Center,
-            MessagePosition.TopLeft => HorizontalAlignment.Left,
-            MessagePosition.CenterCenter => HorizontalAlignment.Center,
-            _ => throw new ArgumentOutOfRangeException(),
-        };
-        _itemsPanel.VerticalAlignment = position switch
-        {
-            MessagePosition.BottomRight => VerticalAlignment.Bottom,
-            MessagePosition.BottomCenter => VerticalAlignment.Bottom,
-            MessagePosition.BottomLeft => VerticalAlignment.Bottom,
-            MessagePosition.TopRight => VerticalAlignment.Top,
-            MessagePosition.TopCenter => VerticalAlignment.Top,
-            MessagePosition.TopLeft => VerticalAlignment.Top,
-            MessagePosition.CenterCenter => VerticalAlignment.Center,
-            _ => throw new ArgumentOutOfRangeException(),
-        };
-
-        if (_itemsPanel is ReversibleStackPanel panel)
-        {
-            panel.ReverseOrder = VerticalAlignment is VerticalAlignment.Top or VerticalAlignment.Center;
+            _itemsPanel.ReverseOrder =
+                position
+                    is MessagePosition.TopLeft
+                        or MessagePosition.TopCenter
+                        or MessagePosition.TopRight
+                        or MessagePosition.CenterCenter;
         }
 
         foreach (var messageItem in MessageItems)
