@@ -1,18 +1,18 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="clr-namespace:Message.Avalonia.Controls"
                     xmlns:model="clr-namespace:Message.Avalonia.Models"
-                    xmlns:ui="clr-namespace:Message.Avalonia.UI"
                     x:ClassModifier="internal">
     <Design.PreviewWith>
         <StackPanel>
-            <ui:MessageItem Message="Message" />
-            <ui:MessageItem Title="Title"
-                            Message="Message"
-                            Type="Warning">
-                <ui:MessageItem.Actions>
+            <controls:MessageItem Message="Message" />
+            <controls:MessageItem Title="Title"
+                                  Message="Message"
+                                  Type="Warning">
+                <controls:MessageItem.Actions>
                     <model:MessageAction Title="Action" />
-                </ui:MessageItem.Actions>
-            </ui:MessageItem>
+                </controls:MessageItem.Actions>
+            </controls:MessageItem>
         </StackPanel>
     </Design.PreviewWith>
 
@@ -28,7 +28,7 @@
     <Thickness x:Key="MessageBorderThickness">1</Thickness>
     <BoxShadows x:Key="MessageBoxShadows">inset 0 0 0 1 #1AFFFFFF, 0 4 14 0 #40000000</BoxShadows>
 
-    <ControlTheme x:Key="NotificationTheme" TargetType="ui:MessageItem">
+    <ControlTheme x:Key="NotificationTheme" TargetType="controls:MessageItem">
         <Setter Property="Template">
             <ControlTemplate>
                 <Border Padding="{StaticResource MessageRootPadding}">
@@ -85,7 +85,7 @@
                                     <ItemsControl.ItemTemplate>
                                         <DataTemplate x:DataType="model:MessageAction">
                                             <Button Margin="0,12,0,0"
-                                                    Command="{Binding $parent[ui:MessageItem].ExecuteAction}"
+                                                    Command="{Binding $parent[controls:MessageItem].ExecuteAction}"
                                                     CommandParameter="{Binding}"
                                                     Content="{Binding Title}"
                                                     Tag="{Binding Title}" />
@@ -445,7 +445,7 @@
         </Style>
     </ControlTheme>
 
-    <ControlTheme x:Key="{x:Type ui:MessageItem}"
+    <ControlTheme x:Key="{x:Type controls:MessageItem}"
                   BasedOn="{StaticResource NotificationTheme}"
-                  TargetType="ui:MessageItem" />
+                  TargetType="controls:MessageItem" />
 </ResourceDictionary>

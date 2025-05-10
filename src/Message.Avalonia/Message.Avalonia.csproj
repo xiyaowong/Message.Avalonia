@@ -17,4 +17,22 @@
         <None Include="..\..\README.md" Pack="true" PackagePath="\"/>
     </ItemGroup>
 
+    <ItemGroup>
+      <Compile Update="Controls\MessageItem.cs">
+        <DependentUpon>MessageItem.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="Controls\MessageItem.Properties.cs">
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="Controls\Host\MessageHost.cs">
+        <DependentUpon>MessageHost.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+    </ItemGroup>
+
+    <ItemGroup>
+      <AdditionalFiles Include="Styles\Host\MessageHost.axaml" />
+    </ItemGroup>
+
 </Project>

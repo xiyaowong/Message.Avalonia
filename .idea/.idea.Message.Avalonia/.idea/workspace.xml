@@ -12,8 +12,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="116b2919-11cd-4b6f-828e-2e21b3a036ac" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Message.Avalonia/Controls/MessageItem.Properties.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Message.Avalonia/.idea/avalonia.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Message.Avalonia/.idea/avalonia.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Message.Avalonia/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Message.Avalonia/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Message.Avalonia/Message.Avalonia.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/Message.Avalonia/Message.Avalonia.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Message.Avalonia/MessageBuilder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Message.Avalonia/MessageBuilder.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Message.Avalonia/MessageManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Message.Avalonia/MessageManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Message.Avalonia/MessageManager.error.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Message.Avalonia/MessageManager.error.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Message.Avalonia/MessageManager.information.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Message.Avalonia/MessageManager.information.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Message.Avalonia/MessageManager.success.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Message.Avalonia/MessageManager.success.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Message.Avalonia/MessageManager.warning.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Message.Avalonia/MessageManager.warning.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Message.Avalonia/Models/MessageAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Message.Avalonia/Models/MessageAction.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Message.Avalonia/Models/MessageOptions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Message.Avalonia/Models/MessageOptions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Message.Avalonia/Models/MessageProgress.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Message.Avalonia/Models/MessageProgress.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Message.Avalonia/ProgressMessageBuilder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Message.Avalonia/ProgressMessageBuilder.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Message.Avalonia/Properties/AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Message.Avalonia/Properties/AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Message.Avalonia/Theme.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Message.Avalonia/Theme.axaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Message.Avalonia/UI/Host/MessageHost.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Message.Avalonia/Styles/Host/MessageHost.axaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Message.Avalonia/UI/Host/MessageHost.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Message.Avalonia/Controls/Host/MessageHost.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Message.Avalonia/UI/MessageItem.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Message.Avalonia/Styles/MessageItem.axaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Message.Avalonia/UI/MessageItem.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Message.Avalonia/Controls/MessageItem.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,24 +110,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    ".NET Launch Settings Profile.Message.Avalonia.Demo.Web: Message.Avalonia.Demo.Web.Browser.executor": "Run",
-    ".NET Project.Message.Avalonia.Demo.Desktop.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Publish to folder.Publish Message.Avalonia.Demo.Desktop to folder.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "wrap.settings",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;.NET Launch Settings Profile.Message.Avalonia.Demo.Web: Message.Avalonia.Demo.Web.Browser.executor&quot;: &quot;Run&quot;,
+    &quot;.NET Project.Message.Avalonia.Demo.Desktop.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Publish to folder.Publish Message.Avalonia.Demo.Desktop to folder.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;wrap.settings&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected=".NET Project.Message.Avalonia.Demo.Desktop">
     <configuration name="Publish Message.Avalonia.Demo.Desktop to folder" type="DotNetFolderPublish" factoryName="Publish to folder">
       <riderPublish configuration="Release" delete_existing_files="true" platform="Any CPU" ready_to_run="true" runtime="win-x64" target_folder="$PROJECT_DIR$/demo/Message.Avalonia.Demo.Desktop/bin/Release/net9.0/win-x64/publish" target_framework="net9.0" uuid_high="-7103420037505268137" uuid_low="-8225652158791530992" />
@@ -236,6 +254,8 @@
       <workItem from="1746771413189" duration="330000" />
       <workItem from="1746772002070" duration="2258000" />
       <workItem from="1746774337471" duration="3186000" />
+      <workItem from="1746878376313" duration="8403000" />
+      <workItem from="1746894034089" duration="906000" />
     </task>
     <task id="LOCAL-00001" summary="Deploy Web">
       <option name="closed" value="true" />

@@ -3,16 +3,15 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Avalonia.Threading;
+using Message.Avalonia.Controls;
+using Message.Avalonia.Controls.Host;
 using Message.Avalonia.Models;
-using Message.Avalonia.UI;
-using Message.Avalonia.UI.Host;
 
 namespace Message.Avalonia;
 
 public class ProgressMessageBuilder
 {
     private MessageItem? _messageItem;
-
     private MessageType? _type;
 
     // configurable
@@ -23,24 +22,39 @@ public class ProgressMessageBuilder
     private Func<MessageProgress, CancellationToken, Task>? _cancelableProgressTask;
     private CancellationTokenSource? _progressTokenSource;
 
+    /// <summary>
+    /// Sets the host ID for the message.
+    /// </summary>
+    /// <param name="hostId">The ID of the host where the message will be displayed.</param>
     public ProgressMessageBuilder WithHost(string hostId)
     {
         _hostId = hostId;
         return this;
     }
 
+    /// <summary>
+    /// Sets the title of the progress message.
+    /// </summary>
+    /// <param name="title">The title text to display.</param>
     public ProgressMessageBuilder WithTitle(string title)
     {
         _title = title;
         return this;
     }
 
+    /// <summary>
+    /// Configures the message to hide its icon.
+    /// </summary>
     public ProgressMessageBuilder HideIcon()
     {
         _hideIcon = true;
         return this;
     }
 
+    /// <summary>
+    /// Sets the progress task to be executed.
+    /// </summary>
+    /// <param name="taskAction">The task action that receives a MessageProgress instance.</param>
     public ProgressMessageBuilder WithProgress(Func<MessageProgress, Task> taskAction)
     {
         _progressTask = taskAction;
@@ -50,6 +64,10 @@ public class ProgressMessageBuilder
         return this;
     }
 
+    /// <summary>
+    /// Sets a cancellable progress task to be executed.
+    /// </summary>
+    /// <param name="taskAction">The task action that receives a MessageProgress instance and a CancellationToken.</param>
     public ProgressMessageBuilder WithProgress(Func<MessageProgress, CancellationToken, Task> taskAction)
     {
         _progressTask = null;
@@ -118,24 +136,36 @@ public class ProgressMessageBuilder
 
     #region Show
 
+    /// <summary>
+    /// Shows an information progress message.
+    /// </summary>
     public void ShowInfo()
     {
         _type = MessageType.Information;
         Show();
     }
 
+    /// <summary>
+    /// Shows a warning progress message.
+    /// </summary>
     public void ShowWarning()
     {
         _type = MessageType.Warning;
         Show();
     }
 
+    /// <summary>
+    /// Shows a success progress message.
+    /// </summary>
     public void ShowSuccess()
     {
         _type = MessageType.Success;
         Show();
     }
 
+    /// <summary>
+    /// Shows an error progress message.
+    /// </summary>
     public void ShowError()
     {
         _type = MessageType.Error;

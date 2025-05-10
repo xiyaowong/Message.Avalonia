@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using Avalonia.Collections;
 using Avalonia.Threading;
+using Message.Avalonia.Controls;
+using Message.Avalonia.Controls.Host;
 using Message.Avalonia.Models;
-using Message.Avalonia.UI;
-using Message.Avalonia.UI.Host;
 
 namespace Message.Avalonia;
 
@@ -46,36 +46,67 @@ public class MessageBuilder
         return this;
     }
 
+    /// <summary>
+    /// Set the host id for the message.
+    /// </summary>
+    /// <param name="hostId"></param>
+    /// <returns></returns>
     public MessageBuilder WithHost(string hostId)
     {
         _hostId = hostId;
         return this;
     }
 
+    /// <summary>
+    /// Set the title for the message.
+    /// </summary>
+    /// <param name="title"></param>
+    /// <returns></returns>
     public MessageBuilder WithTitle(string title)
     {
         _title = title;
         return this;
     }
 
+    /// <summary>
+    /// Set the message for the message.
+    /// </summary>
+    /// <param name="message"></param>
+    /// <returns></returns>
     public MessageBuilder WithMessage(string message)
     {
         _message = message;
         return this;
     }
 
+    /// <summary>
+    /// Set the duration for the message.
+    /// </summary>
+    /// <param name="duration"></param>
+    /// <returns></returns>
     public MessageBuilder WithDuration(TimeSpan duration)
     {
         _duration = duration;
         return this;
     }
 
+    /// <summary>
+    /// Set the duration for the message in seconds.
+    /// </summary>
+    /// <param name="durationInSeconds"></param>
+    /// <returns></returns>
     public MessageBuilder WithDuration(uint durationInSeconds)
     {
         _duration = TimeSpan.FromSeconds(durationInSeconds);
         return this;
     }
 
+    /// <summary>
+    /// Set the actions for the message.
+    /// </summary>
+    /// <param name="actions"></param>
+    /// <param name="callback"></param>
+    /// <returns></returns>
     public MessageBuilder WithActions(List<MessageAction> actions, Action<MessageAction?> callback)
     {
         _actions = actions;
@@ -83,6 +114,12 @@ public class MessageBuilder
         return this;
     }
 
+    /// <summary>
+    /// Set the actions for the message.
+    /// </summary>
+    /// <param name="actions"></param>
+    /// <param name="callback"></param>
+    /// <returns></returns>
     public MessageBuilder WithActions(List<string> actions, Action<string?> callback)
     {
         var messageActions = actions.Select(a => new MessageAction { Title = a }).ToList();
@@ -90,24 +127,41 @@ public class MessageBuilder
         return WithActions(messageActions, messageActionCallback);
     }
 
+    /// <summary>
+    /// Set the custom content for the message.
+    /// </summary>
+    /// <param name="content"></param>
+    /// <returns></returns>
     public MessageBuilder WithContent(object content)
     {
         _content = content;
         return this;
     }
 
+    /// <summary>
+    /// Hide the icon of the message.
+    /// </summary>
+    /// <returns></returns>
     public MessageBuilder HideIcon()
     {
         _hideIcon = true;
         return this;
     }
 
+    /// <summary>
+    /// Hide the close button of the message.
+    /// </summary>
+    /// <returns></returns>
     public MessageBuilder HideClose()
     {
         _hideClose = true;
         return this;
     }
 
+    /// <summary>
+    /// Show the message.
+    /// </summary>
+    /// <exception cref="InvalidOperationException"></exception>
     private void Show()
     {
         if (_messageItem != null)
@@ -161,30 +215,45 @@ public class MessageBuilder
 
     #region Show
 
+    /// <summary>
+    /// Show the message as an information message.
+    /// </summary>
     public void ShowInfo()
     {
         _type = MessageType.Information;
         Show();
     }
 
+    /// <summary>
+    /// Show the message as a warning message.
+    /// </summary>
     public void ShowWarning()
     {
         _type = MessageType.Warning;
         Show();
     }
 
+    /// <summary>
+    /// Show the message as a success message.
+    /// </summary>
     public void ShowSuccess()
     {
         _type = MessageType.Success;
         Show();
     }
 
+    /// <summary>
+    /// Show the message as an error message.
+    /// </summary>
     public void ShowError()
     {
         _type = MessageType.Error;
         Show();
     }
 
+    /// <summary>
+    /// Close the message.
+    /// </summary>
     public void Dismiss()
     {
         Dispatcher.UIThread.Invoke(() => _messageItem?.Close());

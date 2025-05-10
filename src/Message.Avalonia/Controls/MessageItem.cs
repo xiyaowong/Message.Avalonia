@@ -1,9 +1,7 @@
 using System;
 using System.Diagnostics;
 using System.Linq;
-using System.Threading;
 using Avalonia;
-using Avalonia.Collections;
 using Avalonia.Controls;
 using Avalonia.Controls.Metadata;
 using Avalonia.Controls.Primitives;
@@ -12,7 +10,7 @@ using Avalonia.LogicalTree;
 using Avalonia.Threading;
 using Message.Avalonia.Models;
 
-namespace Message.Avalonia.UI;
+namespace Message.Avalonia.Controls;
 
 [PseudoClasses(
     PC_Information,
@@ -27,7 +25,7 @@ namespace Message.Avalonia.UI;
     PC_TopCenter,
     PC_CenterCenter
 )]
-public class MessageItem : ContentControl
+public partial class MessageItem : ContentControl
 {
     private const string PC_Information = ":information";
     private const string PC_Success = ":success";
@@ -55,167 +53,6 @@ public class MessageItem : ContentControl
 
     private bool _isCompleted;
     private readonly Stopwatch _durationStopwatch = new();
-
-    #region Properties
-
-    public static readonly StyledProperty<string> TitleProperty = AvaloniaProperty.Register<MessageItem, string>(
-        nameof(Title)
-    );
-
-    public string Title
-    {
-        get => GetValue(TitleProperty);
-        set => SetValue(TitleProperty, value);
-    }
-
-    public static readonly StyledProperty<string> MessageProperty = AvaloniaProperty.Register<MessageItem, string>(
-        nameof(Message)
-    );
-
-    public string Message
-    {
-        get => GetValue(MessageProperty);
-        set => SetValue(MessageProperty, value);
-    }
-
-    private bool _isOnlyTitle;
-
-    public static readonly DirectProperty<MessageItem, bool> IsOnlyTitleProperty = AvaloniaProperty.RegisterDirect<
-        MessageItem,
-        bool
-    >(nameof(IsOnlyTitle), o => o.IsOnlyTitle);
-
-    public bool IsOnlyTitle
-    {
-        get => _isOnlyTitle;
-        set => SetAndRaise(IsOnlyTitleProperty, ref _isOnlyTitle, value);
-    }
-
-    public static readonly StyledProperty<AvaloniaList<MessageAction>> ActionsProperty = AvaloniaProperty.Register<
-        MessageItem,
-        AvaloniaList<MessageAction>
-    >(nameof(Actions));
-
-    public AvaloniaList<MessageAction> Actions
-    {
-        get => GetValue(ActionsProperty);
-        set => SetValue(ActionsProperty, value);
-    }
-
-    public static readonly StyledProperty<MessageType> TypeProperty = AvaloniaProperty.Register<
-        MessageItem,
-        MessageType
-    >(nameof(Type));
-
-    public MessageType Type
-    {
-        get => GetValue(TypeProperty);
-        set => SetValue(TypeProperty, value);
-    }
-
-    public static readonly StyledProperty<TimeSpan> DurationProperty = AvaloniaProperty.Register<MessageItem, TimeSpan>(
-        nameof(Duration),
-        TimeSpan.MaxValue
-    );
-
-    public TimeSpan Duration
-    {
-        get => GetValue(DurationProperty);
-        set => SetValue(DurationProperty, value);
-    }
-
-    public static readonly StyledProperty<bool> ShowCloseProperty = AvaloniaProperty.Register<MessageItem, bool>(
-        nameof(ShowClose),
-        true
-    );
-
-    public bool ShowClose
-    {
-        get => GetValue(ShowCloseProperty);
-        set => SetValue(ShowCloseProperty, value);
-    }
-
-    public static readonly StyledProperty<bool> ShowIconProperty = AvaloniaProperty.Register<MessageItem, bool>(
-        nameof(ShowIcon),
-        true
-    );
-
-    public bool ShowIcon
-    {
-        get => GetValue(ShowIconProperty);
-        set => SetValue(ShowIconProperty, value);
-    }
-
-    private bool _isClosing;
-
-    public static readonly DirectProperty<MessageItem, bool> IsClosingProperty = AvaloniaProperty.RegisterDirect<
-        MessageItem,
-        bool
-    >(nameof(IsClosing), o => o.IsClosing);
-
-    public bool IsClosing
-    {
-        get => _isClosing;
-        set => SetAndRaise(IsClosingProperty, ref _isClosing, value);
-    }
-
-    public static readonly StyledProperty<bool> IsClosedProperty = AvaloniaProperty.Register<MessageItem, bool>(
-        nameof(IsClosed)
-    );
-
-    public bool IsClosed
-    {
-        get => GetValue(IsClosedProperty);
-        set => SetValue(IsClosedProperty, value);
-    }
-
-    public static readonly StyledProperty<bool> IsProgressProperty = AvaloniaProperty.Register<MessageItem, bool>(
-        nameof(IsProgress)
-    );
-
-    public bool IsProgress
-    {
-        get => GetValue(IsProgressProperty);
-        set => SetValue(IsProgressProperty, value);
-    }
-
-    private CancellationTokenSource? _progressTokenSource;
-
-    public static readonly DirectProperty<MessageItem, CancellationTokenSource?> ProgressTokenSourceProperty =
-        AvaloniaProperty.RegisterDirect<MessageItem, CancellationTokenSource?>(
-            nameof(ProgressTokenSource),
-            o => o.ProgressTokenSource,
-            (o, v) => o.ProgressTokenSource = v
-        );
-
-    public CancellationTokenSource? ProgressTokenSource
-    {
-        get => _progressTokenSource;
-        set => SetAndRaise(ProgressTokenSourceProperty, ref _progressTokenSource, value);
-    }
-
-    public static readonly StyledProperty<double?> ProgressValueProperty = AvaloniaProperty.Register<
-        MessageItem,
-        double?
-    >(nameof(ProgressValue));
-
-    public double? ProgressValue
-    {
-        get => GetValue(ProgressValueProperty);
-        set => SetValue(ProgressValueProperty, value);
-    }
-
-    public static readonly StyledProperty<bool> ExpandedProperty = AvaloniaProperty.Register<MessageItem, bool>(
-        nameof(Expanded));
-
-    public bool Expanded
-    {
-        get => GetValue(ExpandedProperty);
-        set => SetValue(ExpandedProperty, value);
-    }
-
-    #endregion
-
 
     public void ExecuteAction(object obj)
     {
@@ -275,7 +112,7 @@ public class MessageItem : ContentControl
         // Notify the user to cancel the operation,
         // and the message will be closed like a non-cancelable message,
         // waiting for the user task to complete
-        _progressTokenSource?.Cancel();
+        ProgressTokenSource?.Cancel();
     }
 
     private void UpdateActionClasses()

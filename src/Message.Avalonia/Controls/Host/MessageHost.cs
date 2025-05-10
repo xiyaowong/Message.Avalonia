@@ -12,7 +12,7 @@ using Avalonia.Threading;
 using Avalonia.VisualTree;
 using Message.Avalonia.Models;
 
-namespace Message.Avalonia.UI.Host;
+namespace Message.Avalonia.Controls.Host;
 
 public class MessageHost : TemplatedControl
 {
@@ -23,21 +23,26 @@ public class MessageHost : TemplatedControl
     // Have no idea why the DispatcherTimer always automatically stops, so use a System.Timers.Timer instead.
     private readonly Timer _durationTimer = new() { Interval = 300, AutoReset = true };
 
+    private ReversibleStackPanel? _itemsPanel;
+    private ScrollViewer? _container;
+
+    private IList? _items => _itemsPanel?.Children;
+    private readonly IList<MessageItem> _pendingItems = [];
+
+    private IEnumerable<MessageItem> MessageItems => _items != null ? _items.OfType<MessageItem>() : [];
+
     #region Properties
 
+    /// <summary>
+    /// Defines the <see cref="HostId"/> property
+    /// </summary>
     public static readonly StyledProperty<string> HostIdProperty = AvaloniaProperty.Register<MessageHost, string>(
         nameof(HostId),
         DEFAULT_HOST_ID
     );
 
-    public string HostId
-    {
-        get => GetValue(HostIdProperty);
-        set => SetValue(HostIdProperty, value);
-    }
-
     /// <summary>
-    ///     Defines the position of the toast host relative to its parent.
+    /// Defines the <see cref="Position"/> property
     /// </summary>
     public static readonly StyledProperty<MessagePosition> PositionProperty = AvaloniaProperty.Register<
         MessageHost,
@@ -45,7 +50,16 @@ public class MessageHost : TemplatedControl
     >(nameof(Position));
 
     /// <summary>
-    ///     Gets or sets the position of the message host.
+    /// The id of the host. This is used to identify the host when there are multiple hosts in the application.
+    /// </summary>
+    public string HostId
+    {
+        get => GetValue(HostIdProperty);
+        set => SetValue(HostIdProperty, value);
+    }
+
+    /// <summary>
+    /// The position of the host. This is used to determine where the messages will be displayed.
     /// </summary>
     public MessagePosition Position
     {
@@ -55,19 +69,11 @@ public class MessageHost : TemplatedControl
 
     #endregion
 
-    private ReversibleStackPanel? _itemsPanel;
-    private ScrollViewer? _container;
-
-    private IList? _items => _itemsPanel?.Children;
-    private readonly IList<MessageItem> _pendingItems = [];
-
-    private IEnumerable<MessageItem> MessageItems => _items != null ? _items.OfType<MessageItem>() : [];
-
     public MessageHost()
     {
         _durationTimer.Elapsed += (_, _) =>
         {
-            Dispatcher.UIThread.Invoke(() =>
+            Dispatcher.UIThread.Post(() =>
             {
                 foreach (var msg in MessageItems)
                 {
@@ -94,7 +100,7 @@ public class MessageHost : TemplatedControl
             _durationTimer.Enabled = MessageItems.Any();
         };
         msg.UpdatePosition(Position);
-        // Cancel the expand animation when there is no previous message
+        // Cancel the expanding animation when there is no previous message
         msg.Expanded = _items.Count == 0;
 
         _items.Add(msg);
