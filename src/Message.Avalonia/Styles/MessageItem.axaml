@@ -28,7 +28,7 @@
     <Thickness x:Key="MessageBorderThickness">1</Thickness>
     <BoxShadows x:Key="MessageBoxShadows">inset 0 0 0 1 #1AFFFFFF, 0 4 14 0 #40000000</BoxShadows>
 
-    <ControlTheme x:Key="NotificationTheme" TargetType="controls:MessageItem">
+    <ControlTheme x:Key="MessageItemTheme" TargetType="controls:MessageItem">
         <Setter Property="Template">
             <ControlTemplate>
                 <Border Padding="{StaticResource MessageRootPadding}">
@@ -446,6 +446,6 @@
     </ControlTheme>
 
     <ControlTheme x:Key="{x:Type controls:MessageItem}"
-                  BasedOn="{StaticResource NotificationTheme}"
+                  BasedOn="{StaticResource MessageItemTheme}"
                   TargetType="controls:MessageItem" />
 </ResourceDictionary>

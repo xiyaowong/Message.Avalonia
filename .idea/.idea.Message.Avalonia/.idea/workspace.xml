@@ -12,26 +12,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="116b2919-11cd-4b6f-828e-2e21b3a036ac" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Message.Avalonia/Controls/MessageItem.Properties.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Message.Avalonia/.idea/avalonia.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Message.Avalonia/.idea/avalonia.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Message.Avalonia/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Message.Avalonia/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Message.Avalonia/Message.Avalonia.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/Message.Avalonia/Message.Avalonia.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Message.Avalonia/MessageBuilder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Message.Avalonia/MessageBuilder.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Message.Avalonia/MessageManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Message.Avalonia/MessageManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Message.Avalonia/MessageManager.error.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Message.Avalonia/MessageManager.error.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Message.Avalonia/MessageManager.information.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Message.Avalonia/MessageManager.information.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Message.Avalonia/MessageManager.success.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Message.Avalonia/MessageManager.success.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Message.Avalonia/MessageManager.warning.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Message.Avalonia/MessageManager.warning.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Message.Avalonia/Models/MessageAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Message.Avalonia/Models/MessageAction.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Message.Avalonia/Models/MessageOptions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Message.Avalonia/Models/MessageOptions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Message.Avalonia/Models/MessageProgress.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Message.Avalonia/Models/MessageProgress.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Message.Avalonia/ProgressMessageBuilder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Message.Avalonia/ProgressMessageBuilder.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Message.Avalonia/Properties/AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Message.Avalonia/Properties/AssemblyInfo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Message.Avalonia/Theme.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Message.Avalonia/Theme.axaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Message.Avalonia/UI/Host/MessageHost.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Message.Avalonia/Styles/Host/MessageHost.axaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Message.Avalonia/UI/Host/MessageHost.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Message.Avalonia/Controls/Host/MessageHost.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Message.Avalonia/UI/MessageItem.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Message.Avalonia/Styles/MessageItem.axaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Message.Avalonia/UI/MessageItem.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Message.Avalonia/Controls/MessageItem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Message.Avalonia/Styles/MessageItem.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Message.Avalonia/Styles/MessageItem.axaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,6 +30,12 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "xiyaowong"
+  }
+}]]></component>
   <component name="GitToolBoxStore">
     <option name="branchesCleanupHistory">
       <BranchesCleanupHistory>
@@ -93,6 +80,12 @@
       </RecentBranches>
     </option>
   </component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "git@github.com:xiyaowong/Message.Avalonia.git",
+    "accountId": "e8d014b5-de2a-45f4-a376-9293635c1703"
+  }
+}]]></component>
   <component name="HighlightingSettingsPerFile">
     <setting file="mock://C:/Users/wongxy/code/Message.Avalonia/src/Message.Avalonia/UI/Host/MessageHost.axaml" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/wongxy/code/Message.Avalonia/src/Message.Avalonia/UI/Host/MessageHost.axaml.cs" root0="SKIP_HIGHLIGHTING" />
@@ -256,6 +249,7 @@
       <workItem from="1746774337471" duration="3186000" />
       <workItem from="1746878376313" duration="8403000" />
       <workItem from="1746894034089" duration="906000" />
+      <workItem from="1746946459449" duration="107000" />
     </task>
     <task id="LOCAL-00001" summary="Deploy Web">
       <option name="closed" value="true" />
