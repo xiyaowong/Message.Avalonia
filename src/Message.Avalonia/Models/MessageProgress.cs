@@ -24,13 +24,10 @@ public class MessageProgress(MessageItem messageItem)
     public void Report(double? value)
     {
         var progressValue =
-            value == null
-                ? null
-                : value < 0
-                    ? 0
-                    : value > 100
-                        ? 100
-                        : value;
+            value == null ? null
+            : value < 0 ? 0
+            : value > 100 ? 100
+            : value;
 
         Dispatcher.UIThread.Post(() =>
         {
@@ -46,13 +43,10 @@ public class MessageProgress(MessageItem messageItem)
     public void Report(string message, double? value)
     {
         var progressValue =
-            value == null
-                ? null
-                : value < 0
-                    ? 0
-                    : value > 100
-                        ? 100
-                        : value;
+            value == null ? null
+            : value < 0 ? 0
+            : value > 100 ? 100
+            : value;
         Dispatcher.UIThread.Post(() =>
         {
             messageItem.Message = message;
