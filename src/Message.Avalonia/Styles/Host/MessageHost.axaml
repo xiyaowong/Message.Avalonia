@@ -13,8 +13,8 @@
         <Setter Property="VerticalAlignment" Value="Stretch" />
         <Setter Property="Template">
             <ControlTemplate>
-                <ScrollViewer Name="PART_Container" Padding="12">
-                    <ReversibleStackPanel Name="PART_Items" Spacing="{StaticResource MessagePanelSpacing}" />
+                <ScrollViewer Name="PART_Container" Margin="4">
+                    <ReversibleStackPanel Name="PART_Items" Spacing="{StaticResource MessagePanelSpacing}" Margin="8" />
                 </ScrollViewer>
             </ControlTemplate>
         </Setter>
