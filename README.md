@@ -5,7 +5,7 @@
 
 A lightweight and easy-to-use message/notification/toast library for Avalonia UI.
 
-https://github.com/user-attachments/assets/06678432-2edd-4723-8dc4-cb53aa796711
+https://github.com/user-attachments/assets/64f8d668-5c5d-4a76-873c-854a06691aec
 
 ## Getting Started
 
