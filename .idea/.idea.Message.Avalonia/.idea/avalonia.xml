@@ -11,7 +11,9 @@
         <entry key="Message.Avalonia/UI/MessageItem.axaml" value="Demo/Message.Avalonia.Demo.Desktop/Message.Avalonia.Demo.Desktop.csproj" />
         <entry key="demo/Message.Avalonia.Demo/App.axaml" value="demo/Message.Avalonia.Demo.Browser/Message.Avalonia.Demo.Browser.csproj" />
         <entry key="demo/Message.Avalonia.Demo/Views/MainView.axaml" value="demo/Message.Avalonia.Demo.Browser/Message.Avalonia.Demo.Browser.csproj" />
+        <entry key="demo/Message.Avalonia.Demo/Views/MainWindow.axaml" value="demo/Message.Avalonia.Demo.Browser/Message.Avalonia.Demo.Browser.csproj" />
         <entry key="src/Message.Avalonia/Styles/Host/MessageHost.axaml" value="demo/Message.Avalonia.Demo.Browser/Message.Avalonia.Demo.Browser.csproj" />
+        <entry key="src/Message.Avalonia/Styles/MessageItem.axaml" value="demo/Message.Avalonia.Demo.Browser/Message.Avalonia.Demo.Browser.csproj" />
         <entry key="src/Message.Avalonia/Theme.axaml" value="demo/Message.Avalonia.Demo.Browser/Message.Avalonia.Demo.Browser.csproj" />
         <entry key="src/Message.Avalonia/UI/Host/MessageHost.axaml" value="demo/Message.Avalonia.Demo.Browser/Message.Avalonia.Demo.Browser.csproj" />
         <entry key="src/Message.Avalonia/UI/MessageItem.axaml" value="demo/Message.Avalonia.Demo.Browser/Message.Avalonia.Demo.Browser.csproj" />

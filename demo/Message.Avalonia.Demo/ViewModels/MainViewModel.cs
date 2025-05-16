@@ -485,6 +485,7 @@ public partial class MainViewModel : ViewModelBase
                 }
             )
             .HideIcon()
+            .WithBorder(thickness: "0")
             .ShowInfo();
 
         Code = """

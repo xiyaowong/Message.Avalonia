@@ -12,19 +12,9 @@ using Message.Avalonia.Models;
 
 namespace Message.Avalonia.Controls;
 
-[PseudoClasses(
-    PC_Information,
-    PC_Success,
-    PC_Warning,
-    PC_Error,
-    PC_BottomRight,
-    PC_BottomLeft,
-    PC_BottomCenter,
-    PC_TopRight,
-    PC_TopLeft,
-    PC_TopCenter,
-    PC_CenterCenter
-)]
+[PseudoClasses(PC_Information, PC_Success, PC_Warning, PC_Error)]
+[PseudoClasses(PC_BottomRight, PC_BottomLeft, PC_BottomCenter, PC_TopRight, PC_TopLeft, PC_TopCenter, PC_CenterCenter)]
+[PseudoClasses(PC_HasBorderBrush, PC_HasBorderThickness, PC_HasCornerRadius)]
 public partial class MessageItem : ContentControl
 {
     private const string PC_Information = ":information";
@@ -39,6 +29,10 @@ public partial class MessageItem : ContentControl
     private const string PC_TopLeft = ":top-left";
     private const string PC_TopCenter = ":top-center";
     private const string PC_CenterCenter = ":center-center";
+
+    private const string PC_HasBorderBrush = ":has-border-brush";
+    private const string PC_HasBorderThickness = ":has-border-thickness";
+    private const string PC_HasCornerRadius = ":has-corner-radius";
 
     private const string PART_CloseButton = "PART_CloseButton";
     private const string PART_ActionsPanel = "PART_ActionsPanel";
@@ -152,24 +146,40 @@ public partial class MessageItem : ContentControl
         PseudoClasses.Set(PC_CenterCenter, pos == MessagePosition.CenterCenter);
     }
 
-    /// <inheritdoc />
     protected override void OnPropertyChanged(AvaloniaPropertyChangedEventArgs change)
     {
         base.OnPropertyChanged(change);
 
-        if (
-            change.Property == ContentProperty
-            || change.Property == TitleProperty
-            || change.Property == MessageProperty
-        )
+        var property = change.Property;
+
+        switch (property)
         {
-            IsOnlyTitle = Content == null && string.IsNullOrEmpty(Message);
+            case not null when property == ContentProperty || property == TitleProperty || property == MessageProperty:
+                IsOnlyTitle = Content == null && string.IsNullOrEmpty(Message);
+                break;
+            case not null when property == TypeProperty:
+                UpdateMessageType();
+                break;
+            case not null when property == ActionsProperty:
+                ValidateActions();
+                break;
+            case not null when property == IsClosedProperty && IsClosed:
+                MessageClosed?.Invoke(this, EventArgs.Empty);
+                break;
+            case not null when property == BorderBrushProperty:
+                PseudoClasses.Set(PC_HasBorderBrush, BorderBrush != null);
+                break;
+            case not null when property == BorderThicknessProperty:
+                PseudoClasses.Set(PC_HasBorderThickness, BorderThickness != default);
+                break;
+            case not null when property == CornerRadiusProperty:
+                PseudoClasses.Set(PC_HasCornerRadius, CornerRadius != default);
+                break;
         }
-        else if (change.Property == TypeProperty)
-        {
-            UpdateMessageType();
-        }
-        else if (change.Property == ActionsProperty)
+
+        return;
+
+        void ValidateActions()
         {
             if (Actions.Any(a => (string?)a.Title == null))
             {
@@ -180,13 +190,6 @@ public partial class MessageItem : ContentControl
             if (titles.Distinct().Count() != titles.Count)
             {
                 throw new InvalidOperationException("Actions must have unique titles.");
-            }
-        }
-        else if (change.Property == IsClosedProperty)
-        {
-            if (IsClosed)
-            {
-                MessageClosed?.Invoke(this, EventArgs.Empty);
             }
         }
     }

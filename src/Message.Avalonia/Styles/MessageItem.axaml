@@ -26,7 +26,6 @@
     <x:Double x:Key="MessageMaxWidth">500</x:Double>
     <Thickness x:Key="MessageIconMargin">0,2,8,0</Thickness>
     <Thickness x:Key="MessageBorderThickness">1</Thickness>
-    <BoxShadows x:Key="MessageBoxShadows">inset 0 0 0 1 #1AFFFFFF, 0 4 14 0 #40000000</BoxShadows>
 
     <ControlTheme x:Key="MessageItemTheme" TargetType="controls:MessageItem">
         <Setter Property="Template">
@@ -37,7 +36,6 @@
                             MaxWidth="{StaticResource MessageMaxWidth}"
                             Background="{DynamicResource MenuFlyoutPresenterBackground}"
                             BorderThickness="{StaticResource MessageBorderThickness}"
-                            BoxShadow="{StaticResource MessageBoxShadows}"
                             ClipToBounds="True"
                             CornerRadius="{DynamicResource ControlCornerRadius}">
                         <Panel>
@@ -203,6 +201,16 @@
             </Style>
         </Style>
 
+        <!--  // Border customization  -->
+        <Style Selector="^:has-border-brush /template/ Border#PART_RootBorder">
+            <Setter Property="BorderBrush" Value="{TemplateBinding BorderBrush}" />
+        </Style>
+        <Style Selector="^:has-border-thickness /template/ Border#PART_RootBorder">
+            <Setter Property="BorderThickness" Value="{TemplateBinding BorderThickness}" />
+        </Style>
+        <Style Selector="^:has-corner-radius /template/ Border#PART_RootBorder">
+            <Setter Property="CornerRadius" Value="{TemplateBinding CornerRadius}" />
+        </Style>
 
         <!--  // Animations //  -->
         <Setter Property="Opacity" Value="0" />

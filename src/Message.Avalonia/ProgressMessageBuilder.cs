@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using Avalonia;
+using Avalonia.Media;
 using Avalonia.Threading;
 using Message.Avalonia.Controls;
 using Message.Avalonia.Controls.Host;
@@ -18,6 +20,13 @@ public class ProgressMessageBuilder
     private string _hostId = MessageHost.DEFAULT_HOST_ID;
     private string? _title;
     private bool? _hideIcon;
+
+    // border customization
+    private IBrush? _borderBrush;
+    private Thickness? _borderThickness;
+    private CornerRadius? _cornerRadius;
+
+    // progress related
     private Func<MessageProgress, Task>? _progressTask;
     private Func<MessageProgress, CancellationToken, Task>? _cancelableProgressTask;
     private CancellationTokenSource? _progressTokenSource;
@@ -49,6 +58,47 @@ public class ProgressMessageBuilder
     {
         _hideIcon = true;
         return this;
+    }
+
+    /// <summary>
+    /// Set the border style for the message.
+    /// </summary>
+    /// <param name="brush">The brush to paint the border of the message</param>
+    /// <param name="thickness">The thickness of the border</param>
+    /// <param name="cornerRadius">The corner radius of the border</param>
+    /// <returns></returns>
+    public ProgressMessageBuilder WithBorder(
+        IBrush? brush = null,
+        Thickness? thickness = null,
+        CornerRadius? cornerRadius = null
+    )
+    {
+        _borderBrush = brush;
+        // 0 does not trigger property changed and will not be applied,
+        // so use -1 instead (has the same visual effect as 0)
+        _borderThickness = thickness is { IsUniform: true, Bottom: 0 } ? Thickness.Parse("-1") : thickness;
+        _cornerRadius = cornerRadius is { IsUniform: true, BottomLeft: 0 } ? CornerRadius.Parse("-1") : cornerRadius;
+        return this;
+    }
+
+    /// <summary>
+    /// Set the border style for the message with string parameters.
+    /// </summary>
+    /// <param name="brush">Border color string to parse (e.g. "#FF0000")</param>
+    /// <param name="thickness">Border thickness string to parse (e.g. "1,2,1,2")</param>
+    /// <param name="cornerRadius">Corner radius string to parse (e.g. "5")</param>
+    /// <returns>The MessageBuilder instance</returns>
+    public ProgressMessageBuilder WithBorder(
+        string? brush = null,
+        string? thickness = null,
+        string? cornerRadius = null
+    )
+    {
+        return WithBorder(
+            brush is not null ? SolidColorBrush.Parse(brush) : null,
+            thickness is not null ? Thickness.Parse(thickness) : null,
+            cornerRadius is not null ? CornerRadius.Parse(cornerRadius) : null
+        );
     }
 
     /// <summary>
@@ -103,6 +153,15 @@ public class ProgressMessageBuilder
 
             if (_hideIcon == true)
                 _messageItem.ShowIcon = false;
+
+            if (_borderBrush is { } borderBrush)
+                _messageItem.BorderBrush = borderBrush;
+
+            if (_borderThickness is { } borderThickness)
+                _messageItem.BorderThickness = borderThickness;
+
+            if (_cornerRadius is { } cornerRadius)
+                _messageItem.CornerRadius = cornerRadius;
 
             MessageHost.GetHostById(_hostId).AddMessage(_messageItem);
         });

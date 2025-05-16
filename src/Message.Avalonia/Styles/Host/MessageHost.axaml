@@ -14,7 +14,9 @@
         <Setter Property="Template">
             <ControlTemplate>
                 <ScrollViewer Name="PART_Container" Margin="4">
-                    <ReversibleStackPanel Name="PART_Items" Spacing="{StaticResource MessagePanelSpacing}" Margin="8" />
+                    <ReversibleStackPanel Name="PART_Items"
+                                          Margin="8"
+                                          Spacing="{StaticResource MessagePanelSpacing}" />
                 </ScrollViewer>
             </ControlTemplate>
         </Setter>
