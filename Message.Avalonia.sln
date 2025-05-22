@@ -12,6 +12,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionIt
 		Directory.Packages.Props = Directory.Packages.Props
 		.github\workflows\deploy.yml = .github\workflows\deploy.yml
 		publish-win.ps1 = publish-win.ps1
+		README.md = README.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "demo", "demo", "{9662F0D0-7A4A-4848-A2F7-D2E4785B0006}"
@@ -21,9 +22,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Message.Avalonia.Demo.Browser", "demo\Message.Avalonia.Demo.Browser\Message.Avalonia.Demo.Browser.csproj", "{6ED153DB-1DF0-4505-9957-095C4250D36B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{2E2B3D51-163A-4A54-A746-FC327735C564}"
-	ProjectSection(SolutionItems) = preProject
-		src\Directory.Build.props = src\Directory.Build.props
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

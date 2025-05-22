@@ -10,7 +10,9 @@ https://github.com/user-attachments/assets/64f8d668-5c5d-4a76-873c-854a06691aec
 ## Getting Started
 
 > [!Important]
-> The documentation is minimal, but the demo project showcases all available features. This library is designed to be
+> The documentation is minimal, but
+> the [demo](https://github.com/xiyaowong/Message.Avalonia/tree/main/demo/Message.Avalonia.Demo) project showcases all
+> available features. This library is designed to be
 > very developer-friendly.
 
 ### 1. Install the NuGet package
@@ -51,7 +53,37 @@ Install-Package Message.Avalonia
 MessageManager.Default.ShowInfomationMessage("Hello");
 ```
 
-## Resources
+## Usage
+
+### Override the default styles
+
+Colors:
+
+```xaml
+<!-- Text and icon colors -->
+<Color x:Key="MessageInfoColor">
+<Color x:Key="MessageSuccessColor">
+<Color x:Key="MessageWarningColor">
+<Color x:Key="MessageErrorColor">
+
+<!-- Border colors -->
+<Color x:Key="MessageInfoBorderColor">
+<Color x:Key="MessageSuccessBorderColor">
+<Color x:Key="MessageWarningBorderColor">
+<Color x:Key="MessageErrorBorderColor">
+```
+
+Icons:
+
+```xaml
+<StreamGeometry x:Key="message_info_icon">
+<StreamGeometry x:Key="message_success_icon">
+<StreamGeometry x:Key="message_warning_icon">
+<StreamGeometry x:Key="message_error_icon">
+<StreamGeometry x:Key="message_close_icon">
+```
+
+---
 
 - [Source code on GitHub](https://github.com/xiyaowong/Message.Avalonia)
 
