@@ -5,8 +5,8 @@
         <ResourceDictionary>
 
             <ResourceDictionary.MergedDictionaries>
-                <ResourceInclude Source="avares://Message.Avalonia/Styles/MessageItem.axaml" />
-                <ResourceInclude Source="avares://Message.Avalonia/Styles/Host/MessageHost.axaml" />
+                <ResourceInclude Source="avares://Message.Avalonia/Controls/MessageItem.axaml" />
+                <ResourceInclude Source="avares://Message.Avalonia/Controls/MessageHost.axaml" />
             </ResourceDictionary.MergedDictionaries>
 
             <ResourceDictionary.ThemeDictionaries>

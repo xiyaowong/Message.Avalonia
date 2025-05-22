@@ -6,7 +6,6 @@ using Avalonia.Collections;
 using Avalonia.Media;
 using Avalonia.Threading;
 using Message.Avalonia.Controls;
-using Message.Avalonia.Controls.Host;
 using Message.Avalonia.Models;
 
 namespace Message.Avalonia;

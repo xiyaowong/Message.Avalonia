@@ -12,6 +12,7 @@
         <entry key="demo/Message.Avalonia.Demo/App.axaml" value="demo/Message.Avalonia.Demo.Browser/Message.Avalonia.Demo.Browser.csproj" />
         <entry key="demo/Message.Avalonia.Demo/Views/MainView.axaml" value="demo/Message.Avalonia.Demo.Browser/Message.Avalonia.Demo.Browser.csproj" />
         <entry key="demo/Message.Avalonia.Demo/Views/MainWindow.axaml" value="demo/Message.Avalonia.Demo.Browser/Message.Avalonia.Demo.Browser.csproj" />
+        <entry key="src/Message.Avalonia/Controls/MessageItem.axaml" value="demo/Message.Avalonia.Demo.Browser/Message.Avalonia.Demo.Browser.csproj" />
         <entry key="src/Message.Avalonia/Styles/Host/MessageHost.axaml" value="demo/Message.Avalonia.Demo.Browser/Message.Avalonia.Demo.Browser.csproj" />
         <entry key="src/Message.Avalonia/Styles/MessageItem.axaml" value="demo/Message.Avalonia.Demo.Browser/Message.Avalonia.Demo.Browser.csproj" />
         <entry key="src/Message.Avalonia/Theme.axaml" value="demo/Message.Avalonia.Demo.Browser/Message.Avalonia.Demo.Browser.csproj" />

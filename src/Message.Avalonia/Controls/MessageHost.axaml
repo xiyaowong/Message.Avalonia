@@ -1,14 +1,14 @@
 ﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:host="clr-namespace:Message.Avalonia.Controls.Host"
+                    xmlns:local="clr-namespace:Message.Avalonia.Controls;assembly=Message.Avalonia"
                     x:ClassModifier="internal">
     <Design.PreviewWith>
-        <host:MessageHost />
+        <local:MessageHost />
     </Design.PreviewWith>
 
     <x:Double x:Key="MessagePanelSpacing">10</x:Double>
 
-    <ControlTheme x:Key="MessageHostTheme" TargetType="host:MessageHost">
+    <ControlTheme x:Key="MessageHostTheme" TargetType="local:MessageHost">
         <Setter Property="HorizontalAlignment" Value="Stretch" />
         <Setter Property="VerticalAlignment" Value="Stretch" />
         <Setter Property="Template">
@@ -22,7 +22,7 @@
         </Setter>
     </ControlTheme>
 
-    <ControlTheme x:Key="{x:Type host:MessageHost}"
+    <ControlTheme x:Key="{x:Type local:MessageHost}"
                   BasedOn="{StaticResource MessageHostTheme}"
-                  TargetType="host:MessageHost" />
+                  TargetType="local:MessageHost" />
 </ResourceDictionary>

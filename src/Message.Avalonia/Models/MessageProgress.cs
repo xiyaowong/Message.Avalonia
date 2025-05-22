@@ -3,8 +3,15 @@ using Message.Avalonia.Controls;
 
 namespace Message.Avalonia.Models;
 
-public class MessageProgress(MessageItem messageItem)
+public class MessageProgress
 {
+    private readonly MessageItem _messageItem;
+
+    internal MessageProgress(MessageItem messageItem)
+    {
+        _messageItem = messageItem;
+    }
+
     /// <summary>
     /// Update the message of the progress.
     /// </summary>
@@ -13,7 +20,7 @@ public class MessageProgress(MessageItem messageItem)
     {
         Dispatcher.UIThread.Post(() =>
         {
-            messageItem.Message = message;
+            _messageItem.Message = message;
         });
     }
 
@@ -31,7 +38,7 @@ public class MessageProgress(MessageItem messageItem)
 
         Dispatcher.UIThread.Post(() =>
         {
-            messageItem.ProgressValue = progressValue;
+            _messageItem.ProgressValue = progressValue;
         });
     }
 
@@ -49,8 +56,8 @@ public class MessageProgress(MessageItem messageItem)
             : value;
         Dispatcher.UIThread.Post(() =>
         {
-            messageItem.Message = message;
-            messageItem.ProgressValue = progressValue;
+            _messageItem.Message = message;
+            _messageItem.ProgressValue = progressValue;
         });
     }
 }

@@ -15,7 +15,7 @@ namespace Message.Avalonia.Controls;
 [PseudoClasses(PC_Information, PC_Success, PC_Warning, PC_Error)]
 [PseudoClasses(PC_BottomRight, PC_BottomLeft, PC_BottomCenter, PC_TopRight, PC_TopLeft, PC_TopCenter, PC_CenterCenter)]
 [PseudoClasses(PC_HasBorderBrush, PC_HasBorderThickness, PC_HasCornerRadius)]
-public partial class MessageItem : ContentControl
+internal partial class MessageItem : ContentControl
 {
     private const string PC_Information = ":information";
     private const string PC_Success = ":success";

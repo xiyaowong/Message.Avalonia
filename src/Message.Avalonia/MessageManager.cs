@@ -1,5 +1,5 @@
 using System;
-using Message.Avalonia.Controls.Host;
+using Message.Avalonia.Controls;
 
 namespace Message.Avalonia;
 

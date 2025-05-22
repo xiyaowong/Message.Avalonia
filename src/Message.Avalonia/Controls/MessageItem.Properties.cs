@@ -6,7 +6,7 @@ using Message.Avalonia.Models;
 
 namespace Message.Avalonia.Controls;
 
-public partial class MessageItem
+internal partial class MessageItem
 {
     /// <summary>
     /// Defines the <see cref="Title"/> property

@@ -12,7 +12,7 @@ using Avalonia.Threading;
 using Avalonia.VisualTree;
 using Message.Avalonia.Models;
 
-namespace Message.Avalonia.Controls.Host;
+namespace Message.Avalonia.Controls;
 
 public class MessageHost : TemplatedControl
 {
