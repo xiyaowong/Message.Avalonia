@@ -74,6 +74,8 @@
                                                   Content="{TemplateBinding Content}" />
                                 <ItemsControl Name="PART_ActionsPanel"
                                               Grid.Row="2"
+                                              Margin="0,12,0,0"
+                                              IsVisible="{Binding Actions.Count, RelativeSource={RelativeSource TemplatedParent}}"
                                               ItemsSource="{TemplateBinding Actions}">
                                     <ItemsControl.ItemsPanel>
                                         <ItemsPanelTemplate>
@@ -82,11 +84,7 @@
                                     </ItemsControl.ItemsPanel>
                                     <ItemsControl.ItemTemplate>
                                         <DataTemplate x:DataType="model:MessageAction">
-                                            <Button Margin="0,12,0,0"
-                                                    Command="{Binding $parent[controls:MessageItem].ExecuteAction}"
-                                                    CommandParameter="{Binding}"
-                                                    Content="{Binding Title}"
-                                                    Tag="{Binding Title}" />
+                                            <Button Content="{Binding Title}" Tag="{Binding}" />
                                         </DataTemplate>
                                     </ItemsControl.ItemTemplate>
                                 </ItemsControl>

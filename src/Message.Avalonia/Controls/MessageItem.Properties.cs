@@ -32,10 +32,12 @@ internal partial class MessageItem
     /// <summary>
     /// Defines the <see cref="Actions"/> property
     /// </summary>
-    public static readonly StyledProperty<AvaloniaList<MessageAction>> ActionsProperty = AvaloniaProperty.Register<
-        MessageItem,
-        AvaloniaList<MessageAction>
-    >(nameof(Actions));
+    public static readonly DirectProperty<MessageItem, AvaloniaList<MessageAction>> ActionsProperty =
+        AvaloniaProperty.RegisterDirect<MessageItem, AvaloniaList<MessageAction>>(
+            nameof(Actions),
+            o => o.Actions,
+            (o, v) => o.Actions = v
+        );
 
     /// <summary>
     /// Defines the <see cref="Type"/> property
@@ -143,9 +145,9 @@ internal partial class MessageItem
     /// </summary>
     public AvaloniaList<MessageAction> Actions
     {
-        get => GetValue(ActionsProperty);
-        set => SetValue(ActionsProperty, value);
-    }
+        get;
+        set => SetAndRaise(ActionsProperty, ref field, value);
+    } = [];
 
     /// <summary>
     /// The type of the message.

@@ -6,8 +6,8 @@ using Avalonia.Controls;
 using Avalonia.Controls.Metadata;
 using Avalonia.Controls.Primitives;
 using Avalonia.Input;
+using Avalonia.Interactivity;
 using Avalonia.LogicalTree;
-using Avalonia.Threading;
 using Message.Avalonia.Models;
 
 namespace Message.Avalonia.Controls;
@@ -48,20 +48,31 @@ internal partial class MessageItem : ContentControl
     private bool _isCompleted;
     private readonly Stopwatch _durationStopwatch = new();
 
-    public void ExecuteAction(object obj)
+    static MessageItem()
     {
-        if (obj is MessageAction action && !_isCompleted)
-        {
-            _isCompleted = true;
-            Dispatcher.UIThread.Post(Close);
+        Button.ClickEvent.AddClassHandler<MessageItem>(ButtonClickEventHandler);
+    }
 
-            action.Callback?.Invoke();
-            Completed?.Invoke(this, action);
-        }
-        else
+    private static void ButtonClickEventHandler(MessageItem item, RoutedEventArgs args)
+    {
+        if (args.Source is not Button { Tag: MessageAction action })
         {
-            Close();
+            return;
         }
+
+        args.Handled = true;
+
+        if (item._isCompleted)
+        {
+            item.Close();
+            return;
+        }
+
+        item._isCompleted = true;
+        item.Close();
+
+        action.Callback?.Invoke();
+        item.Completed?.Invoke(item, action);
     }
 
     /// <inheritdoc />
@@ -116,14 +127,10 @@ internal partial class MessageItem : ContentControl
 
         foreach (var button in _actionsPanel.GetLogicalDescendants().OfType<Button>())
         {
-            if (button.Tag is not string title)
-                continue;
-
-            var action = Actions.FirstOrDefault(v => v.Title == title);
-            if (action == null)
-                continue;
-
-            button.Classes.AddRange(action.Classes);
+            if (button.Tag is MessageAction action)
+            {
+                button.Classes.AddRange(action.Classes);
+            }
         }
     }
 
