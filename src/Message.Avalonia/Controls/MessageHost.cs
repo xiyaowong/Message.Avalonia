@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Timers;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
@@ -19,9 +18,6 @@ public class MessageHost : TemplatedControl
     public const string DEFAULT_HOST_ID = "__DefaultHostId__";
 
     private static readonly List<WeakReference<MessageHost>> HostList = [];
-
-    // Have no idea why the DispatcherTimer always automatically stops, so use a System.Timers.Timer instead.
-    private readonly Timer _durationTimer = new() { Interval = 300, AutoReset = true };
 
     private ReversibleStackPanel? _itemsPanel;
     private ScrollViewer? _container;
@@ -69,19 +65,7 @@ public class MessageHost : TemplatedControl
 
     #endregion
 
-    public MessageHost()
-    {
-        _durationTimer.Elapsed += (_, _) =>
-        {
-            Dispatcher.UIThread.Post(() =>
-            {
-                foreach (var msg in MessageItems)
-                {
-                    msg.OnDurationTimerTick();
-                }
-            });
-        };
-    }
+    public MessageHost() { }
 
     internal void AddMessage(MessageItem msg)
     {
@@ -97,14 +81,12 @@ public class MessageHost : TemplatedControl
         {
             var item = (MessageItem)sender!;
             _items.Remove(item);
-            _durationTimer.Enabled = MessageItems.Any();
         };
         msg.UpdatePosition(Position);
         // Cancel the expanding animation when there is no previous message
         msg.Expanded = _items.Count == 0;
 
         _items.Add(msg);
-        _durationTimer.Enabled = MessageItems.Any();
     }
 
     // <inheritdoc />

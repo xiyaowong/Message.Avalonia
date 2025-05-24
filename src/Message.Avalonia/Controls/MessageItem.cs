@@ -1,6 +1,7 @@
 using System;
 using System.Diagnostics;
 using System.Linq;
+using System.Timers;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.Metadata;
@@ -8,6 +9,7 @@ using Avalonia.Controls.Primitives;
 using Avalonia.Input;
 using Avalonia.Interactivity;
 using Avalonia.LogicalTree;
+using Avalonia.Threading;
 using Message.Avalonia.Models;
 
 namespace Message.Avalonia.Controls;
@@ -46,33 +48,19 @@ internal partial class MessageItem : ContentControl
     internal event EventHandler? MessageClosed;
 
     private bool _isCompleted;
+
+    private readonly Timer _durationTimer = new()
+    {
+        Interval = 300,
+        AutoReset = true,
+        Enabled = false,
+    };
+
     private readonly Stopwatch _durationStopwatch = new();
 
     static MessageItem()
     {
         Button.ClickEvent.AddClassHandler<MessageItem>(ButtonClickEventHandler);
-    }
-
-    private static void ButtonClickEventHandler(MessageItem item, RoutedEventArgs args)
-    {
-        if (args.Source is not Button { Tag: MessageAction action })
-        {
-            return;
-        }
-
-        args.Handled = true;
-
-        if (item._isCompleted)
-        {
-            item.Close();
-            return;
-        }
-
-        item._isCompleted = true;
-        item.Close();
-
-        action.Callback?.Invoke();
-        item.Completed?.Invoke(item, action);
     }
 
     /// <inheritdoc />
@@ -109,7 +97,7 @@ internal partial class MessageItem : ContentControl
 
         UpdateMessageType();
 
-        _durationStopwatch.Start();
+        StartDurationTimer();
     }
 
     private void ProgressCancelButton_Click()
@@ -201,28 +189,72 @@ internal partial class MessageItem : ContentControl
         }
     }
 
+    private static void ButtonClickEventHandler(MessageItem item, RoutedEventArgs args)
+    {
+        if (args.Source is not Button { Tag: MessageAction action })
+        {
+            return;
+        }
+
+        args.Handled = true;
+
+        if (item._isCompleted)
+        {
+            item.Close();
+            return;
+        }
+
+        item._isCompleted = true;
+        item.Close();
+
+        action.Callback?.Invoke();
+        item.Completed?.Invoke(item, action);
+    }
+
     #region Duration Logic
+
+    private void StartDurationTimer()
+    {
+        _durationStopwatch.Restart();
+
+        _durationTimer.Elapsed -= DurationTimerOnElapsed;
+        _durationTimer.Elapsed += DurationTimerOnElapsed;
+        _durationTimer.Start();
+    }
+
+    private void StopDurationTimer()
+    {
+        _durationStopwatch.Stop();
+
+        _durationTimer.Elapsed -= DurationTimerOnElapsed;
+        _durationTimer.Stop();
+    }
+
+    private void DurationTimerOnElapsed(object? sender, ElapsedEventArgs e)
+    {
+        Dispatcher.UIThread.Post(() =>
+        {
+            if (IsPointerOver || TimeSpan.FromMilliseconds(_durationStopwatch.ElapsedMilliseconds) < Duration)
+                return;
+
+            _durationTimer.Dispose();
+            _durationStopwatch.Stop();
+            Close();
+        });
+    }
 
     /// <inheritdoc />
     protected override void OnPointerEntered(PointerEventArgs e)
     {
         base.OnPointerEntered(e);
-
-        _durationStopwatch.Stop();
-        _durationStopwatch.Reset();
+        StopDurationTimer();
     }
 
     /// <inheritdoc />
     protected override void OnPointerExited(PointerEventArgs e)
     {
         base.OnPointerExited(e);
-        _durationStopwatch.Restart();
-    }
-
-    internal void OnDurationTimerTick()
-    {
-        if (!IsPointerOver && TimeSpan.FromMilliseconds(_durationStopwatch.ElapsedMilliseconds) >= Duration)
-            Close();
+        StartDurationTimer();
     }
 
     #endregion
@@ -235,10 +267,19 @@ internal partial class MessageItem : ContentControl
 
         IsClosing = true;
 
-        if (_isCompleted)
-            return;
+        StopDurationTimer();
 
-        _isCompleted = true;
-        Completed?.Invoke(this, null);
+        if (!_isCompleted)
+        {
+            _isCompleted = true;
+            Completed?.Invoke(this, null);
+        }
     }
+
+#if DEBUG
+    ~MessageItem()
+    {
+        Console.WriteLine("MessageItem Finalizer");
+    }
+#endif
 }
