@@ -27,4 +27,9 @@ public partial class MainWindow : Window
     {
         GC.Collect();
     }
+
+    private void DismissAll_Click(object? sender, RoutedEventArgs e)
+    {
+        MessageManager.Default.DismissAll();
+    }
 }

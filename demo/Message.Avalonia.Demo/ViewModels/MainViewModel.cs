@@ -542,4 +542,13 @@ public partial class MainViewModel : ViewModelBase
               .ShowInfo();
             """;
     }
+
+    [RelayCommand]
+    private void DismissAll()
+    {
+        messageManager.DismissAll();
+        Code = """
+            messageManager.DismissAll();
+            """;
+    }
 }

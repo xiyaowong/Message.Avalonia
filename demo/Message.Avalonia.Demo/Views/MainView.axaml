@@ -36,9 +36,12 @@
                             <ComboBoxItem Content="{x:Static model:MessagePosition.TopLeft}" />
                             <ComboBoxItem Content="{x:Static model:MessagePosition.CenterCenter}" />
                         </ComboBox>
-                        <Button Name="ToggleThemeButton"
-                                HorizontalAlignment="Right"
-                                Content="Toggle Theme" />
+                        <StackPanel HorizontalAlignment="Right"
+                                    Orientation="Horizontal"
+                                    Spacing="4">
+                            <Button Command="{Binding DismissAllCommand}" Content="Dismiss All Messages" />
+                            <Button Name="ToggleThemeButton" Content="Toggle Theme" />
+                        </StackPanel>
                     </Panel>
                     <Grid ColumnDefinitions="* 4 *">
                         <Expander Grid.Column="0"

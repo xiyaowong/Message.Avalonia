@@ -15,5 +15,6 @@
         <Button Click="Hello_Click" Content="Hello" />
         <Button Click="GC_Collect_Click" Content="GC Collect" />
         <Button Click="NewWindow_Click" Content="New Window" />
+        <Button Click="DismissAll_Click" Content="Dismiss All" />
     </StackPanel>
 </Window>

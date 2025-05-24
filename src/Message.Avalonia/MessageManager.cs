@@ -1,4 +1,5 @@
 using System;
+using Avalonia.Threading;
 using Message.Avalonia.Controls;
 
 namespace Message.Avalonia;
@@ -31,4 +32,25 @@ public partial class MessageManager
     /// </summary>
     /// <returns></returns>
     public ProgressMessageBuilder CreateProgress() => new ProgressMessageBuilder().WithHost(HostId);
+
+    /// <summary>
+    /// Dismiss all messages with the specified host id.
+    /// </summary>
+    public void DismissAll(string? hostId = null)
+    {
+        hostId ??= HostId;
+
+        ArgumentException.ThrowIfNullOrEmpty(hostId);
+
+        Dispatcher.UIThread.Post(() =>
+        {
+            foreach (var host in MessageHost.HostList)
+            {
+                if (host.HostId == hostId)
+                {
+                    host.DismissAll();
+                }
+            }
+        });
+    }
 }
