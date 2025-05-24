@@ -15,7 +15,7 @@ public class MessageHost : TemplatedControl
 {
     public const string DEFAULT_HOST_ID = "__DefaultHostId__";
 
-    private static readonly List<MessageHost> HostList = [];
+    internal static readonly List<MessageHost> HostList = [];
     private readonly ConcurrentQueue<MessageItem> _pendingItemsQueue = [];
     private bool _isAutoCreated;
 
@@ -258,6 +258,17 @@ public class MessageHost : TemplatedControl
         if (_isAutoCreated)
         {
             Uninstall();
+        }
+    }
+
+    internal void DismissAll()
+    {
+        if (_itemsPanel == null)
+            return;
+
+        foreach (var messageItem in _itemsPanel.Children.OfType<MessageItem>())
+        {
+            messageItem.Close();
         }
     }
 
