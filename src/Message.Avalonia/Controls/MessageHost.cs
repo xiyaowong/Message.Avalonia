@@ -1,14 +1,12 @@
 using System;
-using System.Collections;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using Avalonia;
 using Avalonia.Controls;
-using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Controls.Primitives;
 using Avalonia.Layout;
 using Avalonia.Threading;
-using Avalonia.VisualTree;
 using Message.Avalonia.Models;
 
 namespace Message.Avalonia.Controls;
@@ -17,15 +15,12 @@ public class MessageHost : TemplatedControl
 {
     public const string DEFAULT_HOST_ID = "__DefaultHostId__";
 
-    private static readonly List<WeakReference<MessageHost>> HostList = [];
+    private static readonly List<MessageHost> HostList = [];
+    private readonly ConcurrentQueue<MessageItem> _pendingItemsQueue = [];
+    private bool _isAutoCreated;
 
-    private ReversibleStackPanel? _itemsPanel;
     private ScrollViewer? _container;
-
-    private IList? _items => _itemsPanel?.Children;
-    private readonly IList<MessageItem> _pendingItems = [];
-
-    private IEnumerable<MessageItem> MessageItems => _items != null ? _items.OfType<MessageItem>() : [];
+    private ReversibleStackPanel? _itemsPanel;
 
     #region Properties
 
@@ -65,28 +60,28 @@ public class MessageHost : TemplatedControl
 
     #endregion
 
-    public MessageHost() { }
+    public MessageHost()
+    {
+        HostList.Insert(0, this);
+    }
 
     internal void AddMessage(MessageItem msg)
     {
-        if (_items == null)
+        if (_itemsPanel == null)
         {
-            _pendingItems.Add(msg);
+            _pendingItemsQueue.Enqueue(msg);
             return;
         }
 
-        _pendingItems.Remove(msg);
-
         msg.MessageClosed += (sender, _) =>
         {
-            var item = (MessageItem)sender!;
-            _items.Remove(item);
+            _itemsPanel?.Children.Remove((sender as MessageItem)!);
         };
         msg.UpdatePosition(Position);
         // Cancel the expanding animation when there is no previous message
-        msg.Expanded = _items.Count == 0;
+        msg.Expanded = _itemsPanel.Children.Count == 0;
 
-        _items.Add(msg);
+        _itemsPanel.Children.Add(msg);
     }
 
     // <inheritdoc />
@@ -94,12 +89,17 @@ public class MessageHost : TemplatedControl
     {
         base.OnApplyTemplate(e);
 
-        HostList.Insert(0, new WeakReference<MessageHost>(this));
+        // Insert back if the host be replaced
+        if (!HostList.Contains(this))
+        {
+            HostList.Insert(0, this);
+        }
 
         _itemsPanel = e.NameScope.Find<ReversibleStackPanel>("PART_Items");
         _container = e.NameScope.Find<ScrollViewer>("PART_Container");
 
-        _pendingItems.ToList().ForEach(AddMessage);
+        while (_pendingItemsQueue.TryDequeue(out var msg))
+            AddMessage(msg);
 
         OnPositionChanged(Position);
     }
@@ -109,7 +109,9 @@ public class MessageHost : TemplatedControl
     {
         base.OnPropertyChanged(change);
         if (change.Property == PositionProperty && change.NewValue is MessagePosition pos)
+        {
             OnPositionChanged(pos);
+        }
     }
 
     private void OnPositionChanged(MessagePosition position)
@@ -148,52 +150,59 @@ public class MessageHost : TemplatedControl
                         or MessagePosition.TopCenter
                         or MessagePosition.TopRight
                         or MessagePosition.CenterCenter;
-        }
 
-        foreach (var messageItem in MessageItems)
-        {
-            messageItem.UpdatePosition(position);
+            foreach (var msg in _itemsPanel.Children.OfType<MessageItem>())
+            {
+                msg.UpdatePosition(position);
+            }
         }
     }
 
     internal static MessageHost GetHostById(string id = DEFAULT_HOST_ID)
     {
-        HostList.RemoveAll(r => !r.TryGetTarget(out _));
-        foreach (var r in HostList)
-        {
-            if (r.TryGetTarget(out var host) && host.HostId == id)
-                return host;
-        }
-
         if (id == DEFAULT_HOST_ID)
-        {
-            var host = Dispatcher.UIThread.Invoke(() =>
-            {
-                var defaultHost = new MessageHost();
-                defaultHost.InstallDefaultHostFromTopLevel();
-                return defaultHost;
-            });
+            return Dispatcher.UIThread.Invoke(GetDefaultHost);
+
+        var host = HostList.FirstOrDefault(host => host.HostId == id);
+
+        if (host is not null)
             return host;
-        }
 
         throw new InvalidOperationException($"Host with id '{id}' not found.");
     }
 
-    private void InstallDefaultHostFromTopLevel()
+    private static MessageHost GetDefaultHost()
     {
-        var topLevel = Application.Current?.ApplicationLifetime switch
-        {
-            IClassicDesktopStyleApplicationLifetime desktop => TopLevel.GetTopLevel(desktop.MainWindow),
-            ISingleViewApplicationLifetime singleView => TopLevel.GetTopLevel(singleView.MainView),
-            _ => null,
-        };
+        Dispatcher.UIThread.VerifyAccess();
 
-        if (topLevel == null)
-            return;
+        var defaultHosts = HostList.Where(host => host is { HostId: DEFAULT_HOST_ID }).ToList();
 
+        // Return user created host if exists
+        var notAutoCreatedHost = defaultHosts.FirstOrDefault(host => host is { _isAutoCreated: false });
+        if (notAutoCreatedHost is not null)
+            return notAutoCreatedHost;
+
+        // Return the host installed on the current top level
+        var currentTopLevel = TopLevelHelpers.GetCurrentTopLevel();
+        var adornerLayer = currentTopLevel.GetAdornerLayer();
+        var defaultHost = defaultHosts.FirstOrDefault(host =>
+            host is { Parent: AdornerLayer _adornerLayer } && _adornerLayer == adornerLayer
+        );
+        if (defaultHost is not null)
+            return defaultHost;
+
+        // Create a new default host for the current top level
+        var newDefaultHost = new MessageHost { _isAutoCreated = true };
+        newDefaultHost.InstallFromTopLevel(currentTopLevel);
+        return newDefaultHost;
+    }
+
+    private void InstallFromTopLevel(TopLevel topLevel)
+    {
         topLevel.TemplateApplied -= TopLevelOnTemplateApplied;
         topLevel.TemplateApplied += TopLevelOnTemplateApplied;
-        var adorner = topLevel.FindDescendantOfType<VisualLayerManager>()?.AdornerLayer;
+
+        var adorner = topLevel.GetAdornerLayer();
         if (adorner is not null)
         {
             adorner.Children.Add(this);
@@ -210,7 +219,52 @@ public class MessageHost : TemplatedControl
         }
 
         var topLevel = (TopLevel)sender!;
-        topLevel.TemplateApplied -= TopLevelOnTemplateApplied;
-        InstallDefaultHostFromTopLevel();
+        InstallFromTopLevel(topLevel);
     }
+
+    private void Uninstall()
+    {
+        if (TopLevel.GetTopLevel(this) is { } topLevel)
+        {
+            topLevel.TemplateApplied -= TopLevelOnTemplateApplied;
+        }
+
+        if (Parent is AdornerLayer adornerLayer)
+        {
+            adornerLayer.Children.Remove(this);
+            AdornerLayer.SetAdornedElement(this, null);
+        }
+    }
+
+    /// <inheritdoc />
+    protected override void OnDetachedFromVisualTree(VisualTreeAttachmentEventArgs e)
+    {
+        base.OnDetachedFromVisualTree(e);
+
+#if DEBUG
+        Console.WriteLine($"OnDetachedFromVisualTree: {HostId}");
+#endif
+
+        HostList.Remove(this);
+
+        if (_itemsPanel != null)
+        {
+            foreach (var messageItem in _itemsPanel.Children.OfType<MessageItem>())
+            {
+                messageItem.Close();
+            }
+        }
+
+        if (_isAutoCreated)
+        {
+            Uninstall();
+        }
+    }
+
+#if DEBUG
+    ~MessageHost()
+    {
+        Console.WriteLine("MessageHost finalized");
+    }
+#endif
 }
