@@ -49,7 +49,7 @@ internal partial class MessageItem : ContentControl
 
     private bool _isCompleted;
 
-    private readonly Timer _durationTimer = new()
+    private Timer? _durationTimer = new()
     {
         Interval = 300,
         AutoReset = true,
@@ -217,17 +217,29 @@ internal partial class MessageItem : ContentControl
     {
         _durationStopwatch.Restart();
 
+        if (_durationTimer is null)
+            return;
+
         _durationTimer.Elapsed -= DurationTimerOnElapsed;
         _durationTimer.Elapsed += DurationTimerOnElapsed;
         _durationTimer.Start();
     }
 
-    private void StopDurationTimer()
+    private void StopDurationTimer(bool dispose = false)
     {
         _durationStopwatch.Stop();
 
+        if (_durationTimer is null)
+            return;
+
         _durationTimer.Elapsed -= DurationTimerOnElapsed;
         _durationTimer.Stop();
+
+        if (dispose)
+        {
+            _durationTimer.Dispose();
+            _durationTimer = null;
+        }
     }
 
     private void DurationTimerOnElapsed(object? sender, ElapsedEventArgs e)
@@ -237,8 +249,6 @@ internal partial class MessageItem : ContentControl
             if (IsPointerOver || TimeSpan.FromMilliseconds(_durationStopwatch.ElapsedMilliseconds) < Duration)
                 return;
 
-            _durationTimer.Dispose();
-            _durationStopwatch.Stop();
             Close();
         });
     }
@@ -267,7 +277,7 @@ internal partial class MessageItem : ContentControl
 
         IsClosing = true;
 
-        StopDurationTimer();
+        StopDurationTimer(true);
 
         if (!_isCompleted)
         {
