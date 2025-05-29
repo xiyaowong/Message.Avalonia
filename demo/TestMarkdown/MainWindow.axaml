@@ -3,28 +3,34 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:msg="https://github.com/xiyaowong/Message.Avalonia"
         Title="TestMarkdown"
-        d:DesignHeight="450"
-        d:DesignWidth="800"
+        Width="750"
+        Height="800"
+        WindowStartupLocation="CenterScreen"
         mc:Ignorable="d">
-    <Border Padding="20">
-        <Grid RowDefinitions="Auto, 10, *">
-            <StackPanel Grid.Row="0"
-                        Orientation="Horizontal"
-                        Spacing="5">
-                <ToggleSwitch Name="_IconSwitch"
-                              VerticalContentAlignment="Center"
-                              OffContent="Show Icon"
-                              OnContent="Show Icon" />
-                <Button Name="_ShowButton">Show Message</Button>
-                <Button Name="_DismissButton">Dismiss Messages</Button>
-            </StackPanel>
-            <TextBox Name="_MarkdownBox"
-                     Grid.Row="2"
-                     AcceptsReturn="True"
-                     Text="# Hello world"
-                     TextWrapping="Wrap"
-                     Watermark="Markdown text" />
-        </Grid>
-    </Border>
+    <Panel>
+        <Border Padding="20">
+            <Grid RowDefinitions="Auto, 10, *">
+                <StackPanel Grid.Row="0"
+                            Orientation="Horizontal"
+                            Spacing="5">
+                    <ToggleSwitch Name="_IconSwitch"
+                                  VerticalContentAlignment="Center"
+                                  OffContent="Show Icon"
+                                  OnContent="Show Icon" />
+                    <Button Name="_ShowButton">Show Message</Button>
+                    <Button Name="_DismissButton">Dismiss Messages</Button>
+                </StackPanel>
+                <TextBox Name="_MarkdownBox"
+                         Grid.Row="2"
+                         AcceptsReturn="True"
+                         Text="# Hello world"
+                         TextWrapping="Wrap"
+                         Watermark="Markdown text" />
+            </Grid>
+        </Border>
+
+        <msg:MessageHost />
+    </Panel>
 </Window>

@@ -3,8 +3,8 @@
 [![NuGet](https://img.shields.io/nuget/v/Message.Avalonia.svg?label=Nuget%20%7C%20Message.Avalonia)](https://www.nuget.org/packages/Message.Avalonia)  
 [![NuGet](https://img.shields.io/nuget/dt/Message.Avalonia.svg?label=Downloads%20%7C%20Message.Avalonia)](https://www.nuget.org/packages/Message.Avalonia)
 
-[![NuGet](https://img.shields.io/nuget/v/Message.Markdown.Avalonia.svg?label=Nuget%20%7C%20Message.Avalonia)](https://www.nuget.org/packages/Message.Avalonia)  
-[![NuGet](https://img.shields.io/nuget/dt/Message.Markdown.Avalonia.svg?label=Downloads%20%7C%20Message.Avalonia)](https://www.nuget.org/packages/Message.Avalonia)
+[![NuGet](https://img.shields.io/nuget/v/Message.Markdown.Avalonia.svg?label=Nuget%20%7C%20Message.Markdown.Avalonia)](https://www.nuget.org/packages/Message.Avalonia)  
+[![NuGet](https://img.shields.io/nuget/dt/Message.Markdown.Avalonia.svg?label=Downloads%20%7C%20Message.Markdown.Avalonia)](https://www.nuget.org/packages/Message.Avalonia)
 
 A lightweight and easy-to-use message/notification/toast library for Avalonia UI.
 

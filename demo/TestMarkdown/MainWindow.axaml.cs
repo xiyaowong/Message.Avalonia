@@ -14,56 +14,30 @@ public partial class MainWindow : Window
 
         // _manager.Duration = TimeSpan.FromSeconds(3);
 
-        const string sampleMarkdown =
-            @"# Markdown Editor Example
+        const string sampleMarkdown = """
+            ## Headings
+            # Header 1
+            ## Header 2
+            ### Header 3
 
-## Basic Formatting
+            ## Emphasis
+            Use *italics* or _italics_ for emphasizing text.  
+            Use **bold** or __bold__ for stronger emphasis.  
+            You can **_combine both_** for extra emphasis.
 
-This is a **bold** text example, this is *italic* text.
+            ## Lists
+            ### Unordered List
+            - First item
+            - Second item
+            - Sub-item A
+            - Sub-item B
 
-
-### Roadmap
-- [x] Basic Markdown rendering
-- [x] Image handling and caching
-- [x] Link handling
-- [ ] Code syntax highlighting
-- [ ] Dark/Light theme support
-- [ ] Custom styling options
-
-
-### List Example
-
-- Item 1
-- Item 2
-  - Sub-item 2.1
-  - Sub-item 2.2
-- Item 3
-
-### Code Example
-
-```csharp
-public class Example
-{
-    public void HelloWorld()
-    {
-        Console.WriteLine(""Hello, World!"");
-    }
-}
-```
-
-### Links and Images
-
-Link: [Avalonia UI](https://avaloniaui.net/)
-
-Image: ![Avalonia Logo](https://avatars.githubusercontent.com/u/14075148?s=200&v=4)
-
-### Table
-
-| Header1 | Header2 | Header3 |
-|---------|---------|---------|
-| Normal text | **Bold text** | `Code text` |
-| [Link](http://example.com) | *Italic text* | Other content |
-";
+            ### Ordered List
+            1. Step one
+            2. Step two
+            1. Sub-step A
+            2. Sub-step B
+            """;
         _MarkdownBox.Text = sampleMarkdown;
 
         _DismissButton.Click += delegate
@@ -77,12 +51,9 @@ Image: ![Avalonia Logo](https://avatars.githubusercontent.com/u/14075148?s=200&v
             if (string.IsNullOrEmpty(markdown))
                 return;
 
-            var builder = _manager.CreateMessage().WithMarkdown(markdown);
+            var userWantsIcon = _IconSwitch.IsChecked == true;
 
-            if (_IconSwitch.IsChecked != true)
-                builder.HideIcon();
-
-            builder.ShowInfo();
+            _manager.CreateMessage().WithMarkdown(markdown, hideIcon: !userWantsIcon).ShowInfo();
         };
     }
 }

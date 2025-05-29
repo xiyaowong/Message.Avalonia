@@ -5,6 +5,8 @@ Add markdown support for `Message.Avalonia`. Based on [Avalonia.MarkdownViewer](
 ```csharp
 using Messasge.Markdown.Avalonia;
 
+MessageManager.Default.ShowMarkdown("# Hello World");
+
 MessageManager.Default
     .CreateMessage()
     .WithMarkdown("# Hello World")
