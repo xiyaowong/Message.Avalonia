@@ -1,5 +1,6 @@
 <Project>
     <PropertyGroup>
+        <VersionPrefix>1.1.0</VersionPrefix>
         <Authors>xiyaowong</Authors>
         <Company>xiyaowong</Company>
         <RepositoryUrl>https://github.com/xiyaowong/Message.Avalonia</RepositoryUrl>

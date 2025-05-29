@@ -10,7 +10,6 @@
     </PropertyGroup>
 
     <PropertyGroup Label="NuGet">
-        <VersionPrefix>1.1.0</VersionPrefix>
         <!--suppress CheckTagEmptyBody -->
         <VersionSuffix></VersionSuffix>
         <Title>Message Avalonia</Title>

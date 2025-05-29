@@ -1,13 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net9.0</TargetFramework>
+        <TargetFrameworks>net8.0;net9.0</TargetFrameworks>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
     <PropertyGroup Label="NuGet">
-        <VersionPrefix>1.1.0</VersionPrefix>
         <!--suppress CheckTagEmptyBody -->
         <VersionSuffix></VersionSuffix>
         <Title>Message Markdown Avalonia</Title>
