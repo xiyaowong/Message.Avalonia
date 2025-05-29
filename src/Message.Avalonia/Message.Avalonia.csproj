@@ -6,30 +6,15 @@
         <LangVersion>preview</LangVersion>
         <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
         <IsPackable>true</IsPackable>
-        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <NoWarn>1701;1702;1591</NoWarn>
     </PropertyGroup>
 
-    <PropertyGroup>
+    <PropertyGroup Label="NuGet">
         <VersionPrefix>1.1.0</VersionPrefix>
         <!--suppress CheckTagEmptyBody -->
         <VersionSuffix></VersionSuffix>
-        <Authors>xiyaowong</Authors>
-        <Company>xiyaowong</Company>
         <Title>Message Avalonia</Title>
         <Description>A lightweight and user-friendly notification/toast library for Avalonia UI.</Description>
-        <RepositoryUrl>https://github.com/xiyaowong/Message.Avalonia</RepositoryUrl>
-        <PackageProjectUrl>https://github.com/xiyaowong/Message.Avalonia</PackageProjectUrl>
-        <RepositoryType>git</RepositoryType>
-        <PackageTags>avalonia;avaloniaui;ui;theme;message;notification;toast</PackageTags>
-        <Copyright>Copyright (c) 2025 xiyaowong</Copyright>
-        <PackageLicenseExpression>MIT</PackageLicenseExpression>
-        <PackageReadmeFile>README.md</PackageReadmeFile>
-    </PropertyGroup>
-
-    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-        <GenerateDocumentationFile>true</GenerateDocumentationFile>
     </PropertyGroup>
 
     <ItemGroup>
