@@ -1,0 +1,36 @@
+name: Build and Upload NuGet Packages
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '9.0.x'
+
+      - name: Restore, Build, and Pack all projects
+        shell: pwsh
+        run: |
+          $projects = Get-ChildItem -Path src -Recurse -Filter *.csproj
+          foreach ($proj in $projects) {
+            dotnet restore $proj.FullName
+            dotnet build $proj.FullName -c Release --no-restore
+            dotnet pack $proj.FullName -c Release --no-build -o nupkgs
+          }
+
+      - name: Upload NuGet packages as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: nuget-packages
+          path: ./nupkgs/*.nupkg
