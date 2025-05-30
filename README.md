@@ -1,7 +1,10 @@
 # Message.Avalonia
 
-[![NuGet](https://img.shields.io/nuget/v/Message.Avalonia.svg)](https://www.nuget.org/packages/Message.Avalonia)  
-[![NuGet](https://img.shields.io/nuget/dt/Message.Avalonia.svg)](https://www.nuget.org/packages/Message.Avalonia)
+[![NuGet](https://img.shields.io/nuget/v/Message.Avalonia.svg?label=Nuget%20%7C%20Message.Avalonia)](https://www.nuget.org/packages/Message.Avalonia)  
+[![NuGet](https://img.shields.io/nuget/dt/Message.Avalonia.svg?label=Downloads%20%7C%20Message.Avalonia)](https://www.nuget.org/packages/Message.Avalonia)
+
+[![NuGet](https://img.shields.io/nuget/v/Message.Markdown.Avalonia.svg?label=Nuget%20%7C%20Message.Markdown.Avalonia)](https://www.nuget.org/packages/Message.Avalonia)  
+[![NuGet](https://img.shields.io/nuget/dt/Message.Markdown.Avalonia.svg?label=Downloads%20%7C%20Message.Markdown.Avalonia)](https://www.nuget.org/packages/Message.Avalonia)
 
 A lightweight and easy-to-use message/notification/toast library for Avalonia UI.
 
@@ -82,6 +85,11 @@ Icons:
 <StreamGeometry x:Key="message_error_icon">
 <StreamGeometry x:Key="message_close_icon">
 ```
+
+## Markdown support
+
+Check out
+the [Message.Markdown.Avalonia](https://github.com/xiyaowong/Message.Avalonia/tree/main/src/Message.Markdown.Avalonia)
 
 ---
 

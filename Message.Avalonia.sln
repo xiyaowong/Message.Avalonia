@@ -22,8 +22,15 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Message.Avalonia.Demo.Browser", "demo\Message.Avalonia.Demo.Browser\Message.Avalonia.Demo.Browser.csproj", "{6ED153DB-1DF0-4505-9957-095C4250D36B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{2E2B3D51-163A-4A54-A746-FC327735C564}"
+	ProjectSection(SolutionItems) = preProject
+		src\Directory.Build.Props = src\Directory.Build.Props
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestAutoCreatedDefaultHost", "demo\TestAutoCreatedDefaultHost\TestAutoCreatedDefaultHost.csproj", "{7E47B45D-7EC2-4948-B78B-15E6C6473137}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Messasge.Markdown.Avalonia", "src\Messasge.Markdown.Avalonia\Messasge.Markdown.Avalonia.csproj", "{D5A5BD83-7698-42BC-A570-FE6E4BAB3350}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestMarkdown", "demo\TestMarkdown\TestMarkdown.csproj", "{2B2429B1-B0AD-4FC5-A951-F98B95BAB8F1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +58,14 @@ Global
 		{7E47B45D-7EC2-4948-B78B-15E6C6473137}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7E47B45D-7EC2-4948-B78B-15E6C6473137}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7E47B45D-7EC2-4948-B78B-15E6C6473137}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5A5BD83-7698-42BC-A570-FE6E4BAB3350}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5A5BD83-7698-42BC-A570-FE6E4BAB3350}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5A5BD83-7698-42BC-A570-FE6E4BAB3350}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5A5BD83-7698-42BC-A570-FE6E4BAB3350}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B2429B1-B0AD-4FC5-A951-F98B95BAB8F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B2429B1-B0AD-4FC5-A951-F98B95BAB8F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B2429B1-B0AD-4FC5-A951-F98B95BAB8F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B2429B1-B0AD-4FC5-A951-F98B95BAB8F1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{06CEDA82-2E05-4903-A2F0-43F5C7E0EDF1} = {9662F0D0-7A4A-4848-A2F7-D2E4785B0006}
@@ -58,5 +73,7 @@ Global
 		{6ED153DB-1DF0-4505-9957-095C4250D36B} = {9662F0D0-7A4A-4848-A2F7-D2E4785B0006}
 		{02528608-1427-4CDD-B938-F9FD794B6D3C} = {2E2B3D51-163A-4A54-A746-FC327735C564}
 		{7E47B45D-7EC2-4948-B78B-15E6C6473137} = {9662F0D0-7A4A-4848-A2F7-D2E4785B0006}
+		{D5A5BD83-7698-42BC-A570-FE6E4BAB3350} = {2E2B3D51-163A-4A54-A746-FC327735C564}
+		{2B2429B1-B0AD-4FC5-A951-F98B95BAB8F1} = {9662F0D0-7A4A-4848-A2F7-D2E4785B0006}
 	EndGlobalSection
 EndGlobal

@@ -1,0 +1,19 @@
+<Project>
+    <PropertyGroup>
+        <VersionPrefix>1.1.0</VersionPrefix>
+        <Authors>xiyaowong</Authors>
+        <Company>xiyaowong</Company>
+        <RepositoryUrl>https://github.com/xiyaowong/Message.Avalonia</RepositoryUrl>
+        <PackageProjectUrl>https://github.com/xiyaowong/Message.Avalonia</PackageProjectUrl>
+        <RepositoryType>git</RepositoryType>
+        <PackageTags>avalonia;avaloniaui;ui;theme;message;notification;toast</PackageTags>
+        <Copyright>Copyright (c) 2025 xiyaowong</Copyright>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+    </PropertyGroup>
+    
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    </PropertyGroup>
+</Project>

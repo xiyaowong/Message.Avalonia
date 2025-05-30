@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFrameworks>net8.0;net9.0</TargetFrameworks>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <PropertyGroup Label="NuGet">
+        <!--suppress CheckTagEmptyBody -->
+        <VersionSuffix></VersionSuffix>
+        <Title>Message Markdown Avalonia</Title>
+        <Description>Markdown support for Message Avalonia.</Description>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="MarkdownViewer.Core"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\Message.Avalonia\Message.Avalonia.csproj"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Include="README.md" Pack="true" PackagePath="\"/>
+    </ItemGroup>
+</Project>
