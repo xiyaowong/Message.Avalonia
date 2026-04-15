@@ -1,5 +1,5 @@
-$project = ".\demo\Message.Avalonia.Demo.Desktop"
-$folderPath = Join-Path $project "bin\Release\net9.0\win-x64\publish"
+$project = ".\Message.Avalonia.Demo.Desktop"
+$folderPath = Join-Path $project "bin\Release\net10.0\win-x64\publish"
 
 Write-Host "1. Cleanup：$folderPath"
 if (Test-Path $folderPath) {
