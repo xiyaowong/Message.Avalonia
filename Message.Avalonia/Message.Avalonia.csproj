@@ -12,7 +12,7 @@
 
     <PropertyGroup>
         <PackageId>AvionBlock.Message.Avalonia</PackageId>
-        <VersionPrefix>1.1.0</VersionPrefix>
+        <VersionPrefix>1.2.0</VersionPrefix>
         <!--suppress CheckTagEmptyBody -->
         <VersionSuffix></VersionSuffix>
         <Authors>AvionBlock; xiyaowong</Authors>
