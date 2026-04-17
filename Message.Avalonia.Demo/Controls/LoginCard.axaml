@@ -12,10 +12,10 @@
                    TextAlignment="Center">
             Avalonia Message
         </TextBlock>
-        <TextBox Name="UsernameBox" Watermark="Username" />
+        <TextBox Name="UsernameBox" PlaceholderText="Username" />
         <TextBox Name="PasswordBox"
                  PasswordChar="*"
-                 Watermark="Password" />
+                 PlaceholderText="Password" />
         <CheckBox Name="RememberBox">Remember me</CheckBox>
         <Grid ColumnDefinitions="* *">
             <Button Name="LoginButton"

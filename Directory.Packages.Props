@@ -2,26 +2,34 @@
     <!-- https://learn.microsoft.com/en-us/nuget/consume-packages/central-package-management -->
     <PropertyGroup>
         <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
-        <AvaloniaVersion>11.2.5</AvaloniaVersion>
+        <AvaloniaVersion>12.0.1</AvaloniaVersion>
+        <AvaloniaDiagnosticsVersion>11.3.14</AvaloniaDiagnosticsVersion>
     </PropertyGroup>
 
     <ItemGroup>
         <PackageVersion Include="Avalonia" Version="$(AvaloniaVersion)"/>
         <PackageVersion Include="Avalonia.Themes.Fluent" Version="$(AvaloniaVersion)"/>
         <PackageVersion Include="Avalonia.Fonts.Inter" Version="$(AvaloniaVersion)"/>
-        <PackageVersion Include="Avalonia.Diagnostics" Version="$(AvaloniaVersion)"/>
+        <PackageVersion Include="Avalonia.Diagnostics" Version="$(AvaloniaDiagnosticsVersion)"/>
         <PackageVersion Include="Avalonia.Desktop" Version="$(AvaloniaVersion)"/>
         <PackageVersion Include="Avalonia.Browser" Version="$(AvaloniaVersion)"/>
+        <PackageVersion Include="Avalonia.Headless" Version="$(AvaloniaVersion)"/>
+        <PackageVersion Include="Avalonia.Headless.XUnit" Version="$(AvaloniaVersion)"/>
 
 
-        <PackageVersion Include="CommunityToolkit.Mvvm" Version="8.3.2"/>
+        <PackageVersion Include="CommunityToolkit.Mvvm" Version="8.4.2"/>
 
-        <PackageVersion Include="Avalonia.AvaloniaEdit" Version="11.2.0"/>
-        <PackageVersion Include="AvaloniaEdit.TextMate" Version="11.2.0"/>
-        <PackageVersion Include="TextMateSharp.Grammars" Version="1.0.66"/>
+        <PackageVersion Include="Avalonia.AvaloniaEdit" Version="12.0.0"/>
+        <PackageVersion Include="AvaloniaEdit.TextMate" Version="12.0.0"/>
+        <PackageVersion Include="TextMateSharp.Grammars" Version="2.0.3"/>
 
-        <PackageVersion Include="FluentAvaloniaUI" Version="2.3.0"/>
+        <PackageVersion Include="FluentAvaloniaUI" Version="3.0.0-preview1"/>
 
         <PackageVersion Include="PublishAotCompressed" Version="1.0.5"/>
+
+        <PackageVersion Include="coverlet.collector" Version="6.0.4"/>
+        <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.14.1"/>
+        <PackageVersion Include="xunit" Version="2.9.3"/>
+        <PackageVersion Include="xunit.runner.visualstudio" Version="3.1.4"/>
     </ItemGroup>
 </Project>
