@@ -99,7 +99,8 @@
                                                  Maximum="100"
                                                  Minimum="0"
                                                  Orientation="Horizontal"
-                                                 Value="{TemplateBinding ProgressValue}" />
+                                                 Value="{TemplateBinding ProgressValue,
+                                                                                   TargetNullValue=0}" />
                                     <Button Name="PART_ProgressCancelButton"
                                             Width="20"
                                             Height="20"
