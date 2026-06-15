@@ -1,7 +1,10 @@
-﻿using System.Threading.Tasks;
+﻿using System.Runtime.Versioning;
+using System.Threading.Tasks;
 using Avalonia;
 using Avalonia.Browser;
 using Message.Avalonia.Demo;
+
+[assembly: SupportedOSPlatform("browser")]
 
 internal sealed partial class Program
 {

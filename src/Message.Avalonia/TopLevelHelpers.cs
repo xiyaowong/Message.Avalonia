@@ -36,5 +36,5 @@ internal static class TopLevelHelpers
     }
 
     public static AdornerLayer? GetAdornerLayer(this TopLevel? topLevel) =>
-        topLevel?.FindDescendantOfType<VisualLayerManager>()?.AdornerLayer;
+        topLevel?.FindDescendantOfType<AdornerLayer>();
 }

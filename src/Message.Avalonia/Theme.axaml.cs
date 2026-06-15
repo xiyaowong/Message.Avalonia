@@ -3,7 +3,7 @@ using Avalonia.Styling;
 
 namespace Message.Avalonia;
 
-public class Theme : Styles
+public partial class Theme : Styles
 {
     public Theme()
     {
